@@ -1,0 +1,77 @@
+@import "common/var.css";
+@b czb{
+  @e radio{
+    @when inline{
+      display: flex;
+      flex-wrap: wrap;
+    }
+    @e item{
+      color: var(--color-base);
+      cursor: pointer;
+      line-height: 1;
+      font-size: 0;
+      margin: 10px 0;
+      @when inline{
+        margin: 0 10px 0 0;
+      }
+      @when disabled{
+        @mixin disabled;
+      }
+      @m hasborder{
+        border: 1px solid var(--borderColor-main);
+        padding: 10px;
+        box-sizing: border-box;
+        border-radius: var(--normal-radius);
+        background-color: #fff;
+        @when choosed{
+          border: 1px solid var(--color-main);
+        }
+      }
+      @mixin cflex middle;
+      @e icon{
+        width: var(--size-base);
+        height: var(--size-base);
+        border-radius: 100px;
+        border: 1px solid var(--borderColor-main);
+        display: inline-block;
+        position: relative;
+        box-sizing: border-box;
+        &:hover{
+          border: 1px solid var(--color-main);
+        }
+        &::after{
+          position: absolute;
+          width: 6px;
+          height: 6px;
+          left: 3px;
+          top: 3px;
+          border-radius: 4px;
+          display: block;
+          border-top: 0;
+          border-left: 0;
+          content: ' ';
+          background-color: var(--color-main);
+          opacity: 0;
+          transform: scale(0);
+          transition: all 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86);
+        }
+        @when choosed{
+          border: 1px solid var(--color-main);
+          &::after{
+            transform: scale(0.875);
+            opacity: 1;
+            transition: all 0.3s cubic-bezier(0.78, 0.14, 0.15, 0.86);
+          }
+        }
+      }
+      @e name{
+        margin-left: 5px;
+        display: inline-block;
+        font-size: var(--size-base);
+        @when choosed{
+          color: var(--color-main);
+        }
+      }
+    }
+  }
+}

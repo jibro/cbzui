@@ -1,0 +1,151 @@
+@import "common/var.css";
+@b czb{
+  @e cascader{
+    position: relative;
+    font-size: var(--size-base);
+    color: var(--color-base);
+    display: inline-block;
+    @when autowidth{
+      width: 100%;
+    }
+    @e value{
+      white-space:nowrap;
+      height: var(--normal-height);
+      border: 1px solid var(--borderColor-main);
+      border-radius: var(--normal-radius);
+      box-sizing: border-box;
+      outline: 0;
+      position: relative;
+      cursor: pointer;
+      padding: 0 10px;
+      background-color: #fff;
+      overflow: hidden;
+      width: var(--input-width);
+      @when autowidth{
+        width: 100%;
+      }
+      @mixin cflex middle;
+      @m placeholder{
+        color: var(--color-999);
+      }
+      @m icon{
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        z-index: 11;
+        line-height: 1;
+        font-size: var(--size-base);
+        margin-top: -6px;
+        color: var(--borderColor-main);
+        transition-duration: 0.3s;
+        @when open{
+          transform: rotateZ(180deg);
+          transition-duration: 0.3s;
+        }
+        &.iczb-clear{
+          color: var(--color-999);
+        }
+      }
+      @when open{
+        border: 1px solid var(--color-main);
+      }
+      @when disabled{
+        @mixin disabled2;
+      }
+    }
+    @e wrap{
+      z-index: 51;
+      position: absolute;
+      top: var(--normal-height);
+      left: 0;
+      margin-top: 3px;
+      margin-bottom: 0;
+      line-height: 1;
+      font-size: 0;
+    }
+    @e list{
+      margin: 0;
+      list-style: none;
+      padding: 5px 0;
+      min-height: var(--select-minhg);
+      max-height: var(--select-maxhg);
+      border-radius: var(--normal-radius);
+      background-color: #fff;
+      overflow-y: auto;
+      display: inline-block;
+      font-size: var(--size-base);
+      border: 1px solid var(--borderColor-main);
+      box-sizing: border-box;
+      vertical-align: top;
+    }
+    @e item{
+      padding: 0 30px;
+      height: var(--selectlist-hg);
+      line-height: var(--selectlist-hg);
+      cursor: pointer;
+      position: relative;
+      color: var(--color-666);
+      &:nth-child(2n) {
+        background-color: var(--color-thin); 
+      }
+      &:hover{
+        background-color: var(--select-hover); 
+      }
+      &:after{
+        content: '\e600';
+        font-family: czbfont;
+        font-size: var(--size-min);
+        color: var(--color-ccc);
+        position: absolute;
+        right: 10px;
+      }
+      @e checkbox{
+        width: var(--size-min);
+        height: var(--size-min);
+        border-radius: 2px;
+        border: 1px solid var(--borderColor-main);
+        position: absolute;
+        box-sizing: border-box;
+        left: 10px;
+        background-color: #fff;
+        top: 10px;
+        &:hover{
+          border: 1px solid var(--color-main);
+        }
+        &::after{
+          box-sizing: content-box;
+          content: "";
+          border: 1px solid #fff;
+          border-left: 0;
+          border-top: 0;
+          height: 6px;
+          left: 3px;
+          position: absolute;
+          top: 1px;
+          transform: rotate(45deg) scaleY(0);
+          width: 3px;
+          transition: transform .1s cubic-bezier(.71,-.46,.88,.6) .05s;
+          transform-origin: center;
+        }
+        @when choosed{
+          border: 1px solid var(--color-main);
+          background-color: var(--color-main);
+          &::after{
+            transform: rotate(45deg) scaleY(1);
+          }
+        }
+        @when parentChoose{
+          display: none
+        }
+      }
+      @when noSub{
+        &:after{
+          content: '';
+        }
+      }
+      @when selected {
+        color: var(--color-main);
+      }
+    }
+  }
+}

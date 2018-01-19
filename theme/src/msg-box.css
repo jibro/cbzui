@@ -1,0 +1,48 @@
+@import "common/var.css";
+@b c{
+  @e msg-box{
+    width: var(--msg-width);
+    background-color: var(--msg-bgcolor);
+    position: fixed;
+    color: var(--color-base);
+    border-radius: 4px;
+    font-size: var(--size-base);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 901;
+    box-sizing:border-box;
+    @e title {
+      font-size: 16px;
+      text-align: center;
+      font-weight: bold;
+      padding: 10px 0;
+    }
+    @e message {
+      font-size: 16px;
+      text-align: center;
+      padding: 0 10px;
+      margin: 10px 0;
+      height: 50px;
+      overflow-y: auto;
+      color: var(--color-999);
+    }
+    @e btn{
+      border-top:1px solid var(--borderColor-main);
+      font-size: 16px;
+      text-align: center;
+      display: flex;
+      @e confirm{
+        padding: 10px 0;
+        color: var(--color-main);
+        flex: 1;
+      }
+      @e cancel{
+        padding: 10px 0;
+        color: var(--color-999);
+        flex: 1;
+        border-left: 1px solid var(--borderColor-main);
+      }
+    }
+  }
+}

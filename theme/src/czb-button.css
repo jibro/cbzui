@@ -1,0 +1,75 @@
+@import "common/var.css";
+@define-mixin buttonStyle $width,$height,$bgColor,$color,$borderColor{
+  width: $width; 
+  height: $height;
+  background-color: $bgColor;
+  color: $color;
+  border: 1px solid $borderColor;
+  font-size: var(--size-base);
+  line-height: 1;
+}
+@b czb{
+  @e button{
+    @mixin cflex;
+    border-radius: var(--normal-radius);
+    box-sizing: border-box;
+    cursor: pointer;
+    @m default{
+      @mixin buttonStyle var(--button-width),var(--normal-height),var(--color-main),#fff,var(--color-main);
+      @when hover{
+        background-color: var(--button-default-hover);
+        border: 1px solid var(--button-default-hover);
+      }
+    }
+    @m reverse{
+      @mixin buttonStyle var(--button-width),var(--normal-height),#fff,var(--color-main),var(--color-main);
+      @when hover{
+        background-color: var(--button-reverse-hover);
+      }
+    }
+    @m normal{
+      @mixin buttonStyle var(--button-width),var(--normal-height),#fff,var(--color-666),var(--borderColor-main);
+      @when hover{
+        color: var(--color-main);
+        border: 1px solid var(--color-main);
+      }
+    }
+    @m danger{
+      @mixin buttonStyle var(--button-width),var(--normal-height),var(--button-danger-color),#fff,var(--button-danger-color);
+      @when hover{
+        background-color: var(--button-danger-hover);
+        border: 1px solid var(--button-danger-hover);
+      }
+    }
+    @m text{
+      width: auto;
+      height: auto;
+      line-height: 1;
+      font-size: var(--size-base);
+      color: var(--color-base);
+      display: inline;
+      @when hover{
+        color: var(--color-main);
+      }
+    }
+    @when min{
+      width: var(--button-smallwidth); 
+      height: var(--button-smallhg);
+    }
+    @when autowidth{
+      width: 100%;
+    }
+    @when disabled{
+      @mixin disabled;
+    }
+    @when icon{
+      width: 60px;
+    }
+    @e left{
+      margin-right: 5px;
+    }
+    @e right{
+      margin-left: 5px;
+    }
+  }
+}

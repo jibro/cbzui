@@ -1,0 +1,57 @@
+@import "common/var.css";
+@define-mixin input{
+  border: 1px solid var(--borderColor-main);
+  border-radius: var(--normal-radius);
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  outline: 0;
+  color: var(--color-base);
+  font-size: var(--size-base);
+  &:focus{
+    border: 1px solid var(--color-main);
+  }
+  &::-webkit-input-placeholder{
+    color: var(--color-999);
+  }
+  &:read-only:focus{
+    border: 1px solid var(--borderColor-main);
+  }
+  &:disabled{
+    @mixin disabled2;
+  }
+}
+@b czb{
+  @e input{
+    width: var(--input-width);
+    position: relative;
+    display: inline-block;
+    @when autowidth{
+      width: 100%;
+    }
+    @e default{
+      @mixin input;
+      height: var(--normal-height);
+      padding: 0 10px;
+    }
+    @e textarea{
+      @mixin input;
+      padding: 10px;
+      min-height: var(--textarea-minheight);
+      @when hascols{
+        width: auto;
+      }
+    }
+    @e icon{
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      z-index: 11;
+      cursor: pointer;
+      line-height: 1;
+      font-size: var(--size-main);
+      transform: translateY(-50%);
+      color: var(--color-999);
+    }
+  }
+}

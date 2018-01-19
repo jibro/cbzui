@@ -1,0 +1,74 @@
+:root {
+  color: var(--color-base);
+  /* base
+  -------------------------- */
+  --size-min: 12px;
+  --size-base: 14px;
+  --size-main: 16px;
+  --size-large: 18px;
+  --color-base: #333;
+  --color-main: #00a7ea;
+  --color-666: #666;
+  --color-999: #999;
+  --color-ccc: #ccc;
+  --color-disabled: #ececec;
+  --color-thin: #f7f7f7;
+  --borderColor-main: #ddd;
+  --normal-radius: 4px;
+  --normal-height: 36px;
+  /* input */
+  --input-width: 180px;
+  --textarea-minheight: 90px;
+  /* radio */
+  /* shadow */
+  --shadow-bgcolor: rgba(0, 0, 0, .5);
+  /* toast
+  -------------------------- */
+  --toast-max-width: 300px;
+  --toast-bgcolor: rgba(0, 0, 0, .5);
+  /* msg-box
+  -------------------------- */
+  --msg-width: 85%;
+  --msg-bgcolor: #fff;
+  /* select
+  -------------------------- */
+  --selectlist-hg: 32px;
+  --select-minhg: calc( 2 * var(--selectlist-hg) );
+  --select-maxhg: calc( 8 * var(--selectlist-hg) );
+  --select-hover: rgba(0,167,234, 0.1);
+  /* button
+  -------------------------- */
+  --button-width: 90px;
+  --button-smallwidth: 70px;
+  --button-smallhg: 30px;
+  --button-default-hover: rgba(0,167,234, 0.8);
+  --button-reverse-hover: rgba(0,167,234, 0.1);
+  --button-danger-color: #f56c6c;
+  --button-danger-hover: #f78989;  
+  /* tab
+  -------------------------- */
+  --tab-hg: 38px;
+  --tab-bgcolor: #fff;
+  @define-mixin disabled{
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  @define-mixin disabled2{
+    cursor: not-allowed;
+    background-color: #ececec;
+    color: #999;
+  }
+  @define-mixin cflex $type:all{
+    display: flex;
+    @if $type == all {
+      align-items: center;
+      justify-content: center;
+    }
+    @if $type == center {
+      justify-content: center;
+    }
+    @if $type == middle {
+      align-items: center;
+    }
+  }
+}

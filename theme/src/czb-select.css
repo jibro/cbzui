@@ -1,0 +1,87 @@
+@import "common/var.css";
+@b czb{
+  @e select{
+    width: var(--input-width);
+    position: relative;
+    font-size: var(--size-base);
+    color: var(--color-base);
+    display: inline-block;
+    @when autowidth{
+      width: 100%;
+    }
+    @e value{
+      width: 100%;
+      height: var(--normal-height);
+      border: 1px solid var(--borderColor-main);
+      border-radius: var(--normal-radius);
+      box-sizing: border-box;
+      outline: 0;
+      position: relative;
+      cursor: pointer;
+      padding: 0 10px;
+      background-color: #fff;
+      overflow: hidden;
+      @mixin cflex middle;
+      @m placeholder{
+        color: var(--color-999);
+      }
+      @m icon{
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        z-index: 11;
+        line-height: 1;
+        font-size: var(--size-base);
+        margin-top: -6px;
+        color: var(--borderColor-main);
+        transition-duration: 0.3s;
+        @when open{
+          transform: rotateZ(180deg);
+          transition-duration: 0.3s;
+        }
+        &.iczb-clear{
+          color: var(--color-999);
+        }
+      }
+      @when open{
+        border: 1px solid var(--color-main);
+      }
+      @when disabled{
+        @mixin disabled2;
+      }
+    }
+    @e list{
+      list-style: none;
+      padding: 5px 0;
+      width: 100%;
+      min-height: var(--select-minhg);
+      max-height: var(--select-maxhg);
+      border: 1px solid var(--borderColor-main);
+      border-radius: var(--normal-radius);
+      background-color: #fff;
+      overflow-y: auto;
+      position: absolute;
+      top: var(--normal-height);
+      left: 0;
+      margin-top: 3px;
+      margin-bottom: 0;
+      z-index: 51;
+    }
+    @e item{
+      padding: 0 10px;
+      height: var(--selectlist-hg);
+      line-height: var(--selectlist-hg);
+      cursor: pointer;
+      color: var(--color-666);
+      &:nth-child(2n) {
+        background-color: var(--color-thin); 
+      }
+      &:hover{
+        background-color: var(--select-hover); 
+      }
+      @when choosed {
+        color: var(--color-main);
+      }
+    }
+  }
+}

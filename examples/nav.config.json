@@ -1,0 +1,87 @@
+{
+  "开发指南": [
+    {
+      "name": "giud",
+      "path": "/giud",
+      "desc": "介绍"
+    },
+    {
+      "name": "install",
+      "path": "/install",
+      "desc": "安装"
+    },
+    {
+      "name": "start",
+      "path": "/start",
+      "desc": "快速开始"
+    },
+    {
+      "name": "index",
+      "path": "/",
+      "type": "pages"
+    },
+    {
+      "name": "logs",
+      "path": "/logs",
+      "desc": "更新日志"
+    }
+  ],
+  "组件": [
+    {
+      "desc": "基础组件",
+      "path": "/component",
+      "items": [
+        {
+          "desc": "czb-input",
+          "name": "czb-input",
+          "path": "/czb-input"
+        },
+        {
+          "desc": "czb-button",
+          "name": "czb-button",
+          "path": "/czb-button"
+        },
+        {
+          "desc": "czb-radio",
+          "name": "czb-radio",
+          "path": "/czb-radio"
+        },
+        {
+          "desc": "czb-checkbox",
+          "name": "czb-checkbox",
+          "path": "/czb-checkbox"
+        },
+        {
+          "desc": "czb-tab",
+          "name": "czb-tab",
+          "path": "/czb-tab"
+        },
+        {
+          "desc": "czb-select",
+          "name": "czb-select",
+          "path": "/czb-select"
+        },
+        {
+          "desc": "czb-cascader",
+          "name": "czb-cascader",
+          "path": "/czb-cascader"
+        },
+        {
+          "desc": "czb-datepacker",
+          "name": "czb-datepacker",
+          "path": "/czb-datepacker"
+        },
+        {
+          "desc": "CToast",
+          "name": "toast",
+          "path": "/toast"
+        },
+        {
+          "desc": "CMsgBox",
+          "name": "msg-box",
+          "path": "/msg-box"
+        }
+      ]
+    }
+  ]
+}

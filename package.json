@@ -1,7 +1,7 @@
 {
   "name": "czbui",
   "version": "0.0.1",
-  "description": "This is a UI components for chezhibao",
+  "description": "This is a UI components for chezhibao pc apps",
   "author": "jibro <735110743@qq.com>",
   "main": "packages/index.js",
   "private": false,

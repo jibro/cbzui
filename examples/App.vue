@@ -55,6 +55,8 @@
   .container {
     margin: 8vh auto 0;
     width: 90%;
+    border-radius: 6px;
+    overflow: hidden;
     background-color: #333;
     box-shadow: 0 4px 30px 0 rgba(223, 225, 230, 0.5);
     .nav {

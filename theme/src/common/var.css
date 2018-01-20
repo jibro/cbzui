@@ -28,7 +28,7 @@
   --toast-bgcolor: rgba(0, 0, 0, .5);
   /* msg-box
   -------------------------- */
-  --msg-width: 85%;
+  --msg-width: 400px;
   --msg-bgcolor: #fff;
   /* select
   -------------------------- */

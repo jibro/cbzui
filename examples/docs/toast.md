@@ -1,46 +1,37 @@
 <script>
-import {CToast} from '../../packages/index'
+import {czbToast} from '../../packages/index'
 export default {
   methods: {
     showToast () {
-      CToast({
-        text: 'Hello World!',
-        timing: 2500,
-        position: 'default'
+      czbToast({
+        text: '操作成功！',
+        timing: 1500
+      }).then(function () {
+        alert('回调')
+      })
+    },
+    showToast2 () {
+      czbToast({
+        text: '操作有误！',
+        timing: 1000,
+        type: 'warn'
       })
     }
   }
 }
 </script>
-# CToast 提示
+# czb-toast 提示
 ----
 用于页面中展示提示信息。
 
 ### 基本用法
 页面中的浮层元素，自动消失。<br>
-<c-button @btnClick="showToast">showToast</c-button>
+<div class="myinput"><czb-button @btnClick="showToast">success</czb-button></div>
+<div class="myinput"><czb-button type="normal" @btnClick="showToast2">warn</czb-button></div>
 
 ::: demo
 ```html
-<template>
-  <div>
-    <c-button @btnClick="showToast">showToast</c-button>
-  </div>
-</template>
-<script>
-import {CToast} from '../../packages/index'
-export default {
-  methods: {
-    showToast () {
-      CToast({
-        text: 'Hello World!',
-        timing: 2000,
-        position: 'default'
-      })
-    }
-  }
-}
-</script>
+
 ```
 :::
 

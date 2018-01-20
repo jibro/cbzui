@@ -19,7 +19,7 @@ export default {
 <!-- <div class="myinput"><czb-input v-model="inputTxt" placeholder="required" :required="true"></czb-input></div> -->
 <div class="myinput"><czb-input v-model="inputTxt" placeholder="允许clear" :clear="true"></czb-input></div>
 <div class="myinput"><czb-input v-model="inputTxt" placeholder="textarea" type="textarea"></czb-input></div>
-<div class="myinput"><czb-input v-model="inputTxt" placeholder="cols and rows" type="textarea" :cols="15" :rows="8"></czb-input></div>
+<div class="myinput"><czb-input v-model="inputTxt" placeholder="cols and rows" type="textarea" :cols="30" :rows="8"></czb-input></div>
 <div class="myinput"><czb-input v-model="inputTxt" placeholder="autowidth text" :autowidth="true"></czb-input></div>
 <div class="myinput"><czb-input v-model="inputTxt" placeholder="autowidth textarea" type="textarea" :autowidth="true"></czb-input></div>
 

@@ -85,7 +85,7 @@
       .con{
         .logo{
           width: 42%;
-          margin: 13vh auto 0;
+          margin: 12vh auto 0;
           display: block;
         }
         .enter{

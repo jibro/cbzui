@@ -1,5 +1,5 @@
-import CToast from './toast/index'
-import CMsgBox from './msg-box/index'
+import czbToast from './toast/index'
+import czbMsgBox from './msg-box/index'
 import czbButton from './czb-button/czb-button'
 import czbInput from './czb-input/czb-input'
 import czbRadio from './czb-radio/czb-radio'
@@ -23,16 +23,16 @@ const components = [
 const install = function (Vue) {
   if (install.installed) return
   components.map(component => Vue.component(component.name, component))
-  Vue.prototype.$toast = CToast
-  Vue.prototype.$msgbox = CMsgBox
+  Vue.prototype.$toast = czbToast
+  Vue.prototype.$msgbox = czbMsgBox
 }
 
 export default{
   install
 }
 export {
-  CToast,
-  CMsgBox,
+  czbToast,
+  czbMsgBox,
   czbButton,
   czbTab,
   czbInput,

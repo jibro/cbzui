@@ -1,9 +1,9 @@
 <script>
-import {CMsgBox} from '../../packages/index'
+import {czbMsgBox} from '../../packages/index'
 export default {
   methods: {
     showMsgBox () {
-      CMsgBox({
+      czbMsgBox({
         title: '提示',
         message: '信息有误请重试！',
         showCancel: true,
@@ -20,26 +20,21 @@ export default {
   }
 }
 </script>
-# CMsgBox 弹出对话框
+# czb-msgBox 弹出对话框
 ----
 用于页面中展示消息提醒和操作确认。
 
 ### 基本用法
 页面弹出的模态框。<br>
-<c-button @btnClick="showMsgBox">showMsgBox</c-button>
+<czb-button @btnClick="showMsgBox">msgBox</czb-button>
 ::: demo
 ```html
-<template>
-  <div>
-    <c-button @btnClick="showMsgBox">showMsgBox</c-button>
-  </div>
-</template>
 <script>
-import {CMsgBox} from '../../packages/index'
+import {czbMsgBox} from '../../packages/index'
 export default {
   methods: {
     showMsgBox () {
-      CMsgBox({
+      czbMsgBox({
         title: '提示',
         message: '信息有误请重试！',
         showCancel: true,
@@ -68,6 +63,6 @@ export default {
 |confirmText   |	确认按钮文字描述   |	string   |	—	      | 确定   |
 |cancelText   |	取消按钮文字描述   |	string   |	—	     | 取消   |
 ### Promise
-CMsgBox使用即产生一个Promise，你可以通过它处理confirm和cancel的事件回调。
+czbMsgBox使用即产生一个Promise，你可以通过它处理confirm和cancel的事件回调。
 ### Others
 _传入的option参数若为 `string` 则解析为 `message` 值。_

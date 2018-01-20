@@ -57,7 +57,7 @@
     color: #208ddf;
     font-size: 12px;
     padding: 10px 0;
-    background-color: #e6eff8;
+    background-color: #d3dfea;
   }
 
   .docs-demo__code,

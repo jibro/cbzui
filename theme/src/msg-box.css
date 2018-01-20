@@ -7,41 +7,54 @@
     color: var(--color-base);
     border-radius: 4px;
     font-size: var(--size-base);
-    top: 50%;
+    top: 20%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, 0);
     z-index: 901;
     box-sizing:border-box;
+    .iczb-close{
+      position: absolute;
+      top: 12px;
+      right: 10px;
+      font-size: var(--size-large);
+      cursor: pointer;
+      color: var(--color-666);
+    }
     @e title {
       font-size: 16px;
-      text-align: center;
       font-weight: bold;
-      padding: 10px 0;
+      padding: 10px 20px 0;
     }
     @e message {
       font-size: 16px;
-      text-align: center;
-      padding: 0 10px;
+      padding: 20px 20px 0;
       margin: 10px 0;
       height: 50px;
       overflow-y: auto;
-      color: var(--color-999);
+      color: var(--color-666);
     }
     @e btn{
-      border-top:1px solid var(--borderColor-main);
-      font-size: 16px;
+      font-size: var(--font-base);
       text-align: center;
       display: flex;
+      justify-content: flex-end;
       @e confirm{
-        padding: 10px 0;
-        color: var(--color-main);
-        flex: 1;
+        padding: 6px 0;
+        color: #fff;
+        width: 80px;
+        background-color: var(--color-main);
+        border-radius: 6px;
+        margin: 10px 10px 10px 0;
+        cursor: pointer;
       }
       @e cancel{
-        padding: 10px 0;
+        padding: 6px 0;
         color: var(--color-999);
-        flex: 1;
-        border-left: 1px solid var(--borderColor-main);
+        width: 80px;
+        border: 1px solid var(--borderColor-main);
+        border-radius: 6px;
+        margin: 10px 10px 10px 0;
+        cursor: pointer;
       }
     }
   }

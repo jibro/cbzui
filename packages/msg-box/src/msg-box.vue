@@ -1,5 +1,6 @@
 <template>
   <div class="c__msg-box">
+    <i class="czbfont iczb-close" @click="cancel"></i>
     <div v-if="title" class="c__msg-box__title">{{title}}</div>
     <div class="c__msg-box__message">{{message}}</div>
     <div class="c__msg-box__btn">
@@ -11,7 +12,7 @@
 <script>
 
 export default {
-  name: 'CMsgBox',
+  name: 'czbMsgBox',
   data () {
     return {
       title: '',

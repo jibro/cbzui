@@ -1,35 +1,49 @@
 @import "common/var.css";
+@keyframes slideIn {
+  0%{
+    opacity: 0;
+    transform: translate(-50%, -50px);
+  },
+  100%{
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
 @b c{
   @e toast{
     max-width: var(--toast-max-width);
-    padding: 8px 15px;
-    background-color: var(--toast-bgcolor);
+    padding: 11px 15px;
+    min-width: 240px;
+    max-width: 600px;
+    overflow: hidden;
+    background-color: #fff;
     position: fixed;
-    color: #fff;
+    color: var(--color-base);
     border-radius: 4px;
-    font-size: var(--size-base);
+    font-size: 0;
     z-index: 1000;
     box-sizing:border-box;
-    text-align: center;
-    @m default{
-      top: 20%;
-      left: 50%;
-      transform: translate(-50%, 0);
+    box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
+    @e icon{
+      margin-right: 5px;
+      font-size: var(--size-base);
+      &.iczb-weitongyi{
+        color: #4fbb34;
+        font-weight: 500;
+      }
+      &.iczb-tishi{
+        color: #f56702;
+        font-weight: 600;
+      }
     }
-    @m top{
+    @e text{
+      font-size: var(--size-base);
+    }
+    @m default{
       top: 15px;
       left: 50%;
       transform: translate(-50%, 0);
-    }
-    @m center{
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-    @m bottom{
-      bottom: 20%;
-      left: 50%;
-      transform: translate(-50%, 0);
+      animation: slideIn 0.2s ease-in;
     }
   }
 }

@@ -72,12 +72,12 @@
           "path": "/czb-datepacker"
         },
         {
-          "desc": "CToast",
+          "desc": "czb-toast",
           "name": "toast",
           "path": "/toast"
         },
         {
-          "desc": "CMsgBox",
+          "desc": "czb-msgBox",
           "name": "msg-box",
           "path": "/msg-box"
         }

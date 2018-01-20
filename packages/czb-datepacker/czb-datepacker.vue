@@ -1,69 +1,69 @@
 <template>
-    <div class="czb__datepacker" :class="{'is-autowidth': autowidth}">
-        <div class="czb__datepacker__value" @mouseover="mouseover" @mouseout="mouseout" @click="togglePanel" :class="{'is-disabled': disabled, 'is-open': panelState}">
-            <span class="czb__datepacker__value--placeholder" v-show="value.length <= 0">
-                {{placeholder}}
-            </span>
-            <span class="czb__datepacker__value--text" v-show="value.length > 0">{{range ? value[0] + ' -- ' + value[1] : value}}</span>
-            <i class="czbfont iczb-riqi czb__datepacker__value--icon" v-show="!clearIconShow"></i>
-            <i class="czbfont iczb-clear czb__datepacker__value--icon" v-show="clearIconShow" @click.stop.prevent="cleardatepacker"></i>
-        </div>
-        <div class="czb__datepacker__panel" v-show="panelState" :style="coordinates">
-            <div class="czb__datepacker__panel__header" v-show="panelType !== 'year'">
-                <i class="czbfont iczb-xiangzuojiantou czb__arrow-left" @click="prevMonthPreview()"></i>
-                <div class="year-month-box">
-                    <div class="year-box" @click="chType('year')" v-text="tmpYear"></div>
-                    <div class="month-box" @click="chType('month')">{{tmpMonth + 1 | month(language)}}</div>
-                </div>
-                <i class="czbfont iczb-xiangyoujiantou czb__arrow-right" @click="nextMonthPreview()"></i>
-            </div>
-            <div class="czb__datepacker__panel__header" v-show="panelType === 'year'">
-                <i class="czbfont iczb-xiangzuojiantou czb__arrow-left" @click="chYearRange(0)"></i>
-                <div class="year-range">
-                    <span v-text="yearList[0]"></span> - <span v-text="yearList[yearList.length - 1]"></span>
-                </div>
-                <i class="czbfont iczb-xiangyoujiantou czb__arrow-right" @click="chYearRange(1)"></i>
-            </div>
-            <div class="type-year" v-show="panelType === 'year'">
-                <ul class="year-list">
-                    <li v-for="(item, index) in yearList"
-                        v-text="item"
-                        :class="{selected: isSelected('year', item), invalid: validateYear(item)}" 
-                        @click="selectYear(item)"
-                        :key="index"
-                    >
-                    </li>
-                </ul>
-            </div>
-            <div class="type-month" v-show="panelType === 'month'">
-                <ul class="month-list">
-                    <li v-for="(item, index) in monthList"
-                        :class="{selected: isSelected('month', index), invalid: validateMonth(index)}" 
-                        @click="selectMonth(index)"
-                        :key="index"
-                    >
-                        {{item | month(language)}}
-                    </li>
-                </ul>
-            </div>
-            <div class="type-date" v-show="panelType === 'date'">
-                <ul class="weeks">
-                    <li v-for="(item, index) in weekList" :key="index">{{item | week(language)}}</li>
-                </ul>
-                <ul class="date-list">
-                    <li v-for="(item, index) in dateList"
-                        :class="{preMonth: item.previousMonth, nextMonth: item.nextMonth,
-                            invalid: validateDate(item), firstItem: (index % 7) === 0}"
-                            :key="index"
-                        @click="selectDate(item)">
-                        <div class="message" :class="{selected: isSelected('date', item)}">
-                            <div class="bg"></div><span v-text="item.value"></span>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
+  <div class="czb__datepacker" :class="{'is-autowidth': autowidth}">
+    <div class="czb__datepacker__value" @mouseover="mouseover" @mouseout="mouseout" @click="togglePanel" :class="{'is-disabled': disabled, 'is-open': panelState}">
+      <span class="czb__datepacker__value--placeholder" v-show="value.length <= 0">
+          {{placeholder}}
+      </span>
+      <span class="czb__datepacker__value--text" v-show="value.length > 0">{{range ? value[0] + ' -- ' + value[1] : value}}</span>
+      <i class="czbfont iczb-riqi czb__datepacker__value--icon" v-show="!clearIconShow"></i>
+      <i class="czbfont iczb-clear czb__datepacker__value--icon" v-show="clearIconShow" @click.stop.prevent="cleardatepacker"></i>
     </div>
+    <div class="czb__datepacker__panel" v-show="panelState" :style="coordinates">
+      <div class="czb__datepacker__panel__header" v-show="panelType !== 'year'">
+        <i class="czbfont iczb-xiangzuojiantou czb__arrow-left" @click="prevMonthPreview()"></i>
+        <div class="year-month-box">
+            <div class="year-box" @click="chType('year')" v-text="tmpYear"></div>
+            <div class="month-box" @click="chType('month')">{{tmpMonth + 1 | month(language)}}</div>
+        </div>
+        <i class="czbfont iczb-xiangyoujiantou czb__arrow-right" @click="nextMonthPreview()"></i>
+      </div>
+      <div class="czb__datepacker__panel__header" v-show="panelType === 'year'">
+        <i class="czbfont iczb-xiangzuojiantou czb__arrow-left" @click="chYearRange(0)"></i>
+        <div class="year-range">
+            <span v-text="yearList[0]"></span> - <span v-text="yearList[yearList.length - 1]"></span>
+        </div>
+        <i class="czbfont iczb-xiangyoujiantou czb__arrow-right" @click="chYearRange(1)"></i>
+      </div>
+      <div class="type-year" v-show="panelType === 'year'">
+        <ul class="year-list">
+          <li v-for="(item, index) in yearList"
+            v-text="item"
+            :class="{selected: isSelected('year', item), invalid: validateYear(item)}" 
+            @click="selectYear(item)"
+            :key="index"
+          >
+          </li>
+        </ul>
+      </div>
+      <div class="type-month" v-show="panelType === 'month'">
+        <ul class="month-list">
+          <li v-for="(item, index) in monthList"
+            :class="{selected: isSelected('month', index), invalid: validateMonth(index)}" 
+            @click="selectMonth(index)"
+            :key="index"
+          >
+            {{item | month(language)}}
+          </li>
+        </ul>
+      </div>
+      <div class="type-date" v-show="panelType === 'date'">
+        <ul class="weeks">
+          <li v-for="(item, index) in weekList" :key="index">{{item | week(language)}}</li>
+        </ul>
+        <ul class="date-list">
+          <li v-for="(item, index) in dateList"
+            :class="{preMonth: item.previousMonth, nextMonth: item.nextMonth,
+              invalid: validateDate(item), firstItem: (index % 7) === 0}"
+              :key="index"
+            @click="selectDate(item)">
+            <div class="message" :class="{selected: isSelected('date', item)}">
+              <div class="bg"></div><span v-text="item.value"></span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>

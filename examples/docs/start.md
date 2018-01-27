@@ -7,7 +7,7 @@
 
 > 在使用之前，推荐学习 `Vue` 和 `ES2015` ，并正确配置 `Node.js` v6.x 或以上版本
 
-`chezhibao-ui` 基于 `Vue.js` 2.x+ 版本开发，所以有必要了解以下基础知识：
+`czbUI` 基于 `Vue.js` 2.x+ 版本开发，所以有必要了解以下基础知识：
 - [Vue 组件](https://cn.vuejs.org/v2/guide/components.html)
 - [单文件组件](https://cn.vuejs.org/v2/guide/single-file-components.html)
 
@@ -19,7 +19,7 @@
 > npm i -g vue-cli
 > mkdir my-project && cd my-project
 > vue init webpack
-> npm i && npm i chezhibaoui --save
+> npm i && npm i czbui --save
 ```
 ## 标准开发
 
@@ -30,10 +30,10 @@
 可以在项目的入口文件中引入所有组件或所需组件
 
 ```js
-import chezhibaoui from 'chezhibaoui' // 引入组件库
-import '../node_modules/packages/theme-default/lib/index.css' // 引入样式库
+import czbui from 'czbui' // 引入组件库
+import '../node_modules/theme/lib/index.css' // 引入样式库
 
-Vue.use(chezhibaoui)
+Vue.use(czbui)
 ```
 
 ### 单个组件按需使用
@@ -41,21 +41,21 @@ Vue.use(chezhibaoui)
 可以局部注册所需的组件，适用于与其他框架组合使用的场景
 
 ```js
-import { CButton } from 'chezhibaoui'
+import { czbButton } from 'czbui'
 
 export default {
   components: {
-    CButton
+    czbButton
   }
 }
 ```
 
-在模板中，用 `<c-button></c-button>` 自定义标签的方式使用组件
+在模板中，用 `<czb-button></czb-button>` 自定义标签的方式使用组件
 
 ```html
 <template>
   <div>
-    <c-button>这是一个按钮</c-button>
+    <czb-button>这是一个按钮</czb-button>
   </div>
 </template>
 ```

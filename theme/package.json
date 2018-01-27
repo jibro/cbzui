@@ -1,7 +1,7 @@
 {
-  "name": "chezhibao-ui-theme-default",
+  "name": "czbtheme",
   "version": "1.0.0",
-  "description": "chezhibao-ui component default theme.",
+  "description": "czbUI component default theme.",
   "main": "lib/index.css",
   "scripts": {
     "start": "npm run dev",
@@ -9,7 +9,7 @@
     "build": "gulp build"
   },
   "keywords": [
-    "chezhibao-ui",
+    "czbUI",
     "theme"
   ],
   "author": "wangjingbo",

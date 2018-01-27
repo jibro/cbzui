@@ -1,14 +1,18 @@
 <template>
 	<div class="czb__input" :class="{'is-autowidth': autowidth}">
-    <input class="czb__input__default" v-if="type !== 'textarea'" :placeholder="placeholder" :readonly="readonly || type === 'date'" :disabled="disabled" :autofocus="autofocus" :name="name" :required="required" type="text" :value="input" @input="updateVal">
-    <textarea class="czb__input__textarea" :class="{'is-hascols': cols}" :placeholder="placeholder" :readonly="readonly || type === 'date'" :disabled="disabled" :autofocus="autofocus" :name="name" :required="required" :cols="cols"  :rows="rows" v-if="type === 'textarea'" :value="input" @input="updateVal"></textarea>
-    <i class="czbfont iczb-clear czb__input__icon" @click="clearInput" v-show="type !== 'textarea' && clear && input"></i>
+    <input class="czb__input__default" v-if="type !== 'textarea'" :placeholder="placeholder" :readonly="readonly" :disabled="disabled" :autofocus="autofocus" :name="name" :required="required" type="text" :value="value" @input="updateVal">
+    <textarea class="czb__input__textarea" :class="{'is-hascols': cols}" :placeholder="placeholder" :readonly="readonly" :disabled="disabled" :autofocus="autofocus" :name="name" :required="required" :cols="cols"  :rows="rows" v-if="type === 'textarea'" :value="value" @input="updateVal"></textarea>
+    <i class="czbfont iczb-clear czb__input__icon" @click="clearInput" v-show="type !== 'textarea' && clear && value"></i>
   </div>
 </template>
 <script>
 export default {
   name: 'czb-input',
   props: {
+    value: {
+      type: [String, Number],
+      default: ''
+    },
     placeholder: {
       type: String,
       default: ''
@@ -47,29 +51,19 @@ export default {
     },
     type: {
       type: String,
-      default: ''
+      default: 'text'
     },
     autowidth: {
       type: Boolean,
       default: false
     }
   },
-  data () {
-    return {
-      input: ''
-    }
-  },
   methods: {
     updateVal (e) {
-      this.input = e.target.value
-      this.$emit('input', this.input)
+      this.$emit('input', e.target.value)
     },
     clearInput () {
-      this.input = ''
-      this.$emit('input', this.input)
-    },
-    chooseDate () {
-      console.log(2)
+      this.$emit('input', '')
     }
   }
 }

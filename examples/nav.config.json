@@ -32,52 +32,52 @@
       "path": "/component",
       "items": [
         {
-          "desc": "czb-input",
+          "desc": "czb-input 输入框",
           "name": "czb-input",
           "path": "/czb-input"
         },
         {
-          "desc": "czb-button",
+          "desc": "czb-button 按钮",
           "name": "czb-button",
           "path": "/czb-button"
         },
         {
-          "desc": "czb-radio",
+          "desc": "czb-radio 单选框",
           "name": "czb-radio",
           "path": "/czb-radio"
         },
         {
-          "desc": "czb-checkbox",
+          "desc": "czb-checkbox 多选框",
           "name": "czb-checkbox",
           "path": "/czb-checkbox"
         },
         {
-          "desc": "czb-tab",
+          "desc": "czb-tab 选项卡",
           "name": "czb-tab",
           "path": "/czb-tab"
         },
         {
-          "desc": "czb-select",
+          "desc": "czb-select 下拉框",
           "name": "czb-select",
           "path": "/czb-select"
         },
         {
-          "desc": "czb-cascader",
+          "desc": "czb-cascader 级联选择",
           "name": "czb-cascader",
           "path": "/czb-cascader"
         },
         {
-          "desc": "czb-datepacker",
+          "desc": "czb-datepacker 日期控件",
           "name": "czb-datepacker",
           "path": "/czb-datepacker"
         },
         {
-          "desc": "czb-toast",
+          "desc": "czb-toast 轻提示",
           "name": "toast",
           "path": "/toast"
         },
         {
-          "desc": "czb-msgBox",
+          "desc": "czb-msgBox 弹出对话框",
           "name": "msg-box",
           "path": "/msg-box"
         }

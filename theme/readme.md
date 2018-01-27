@@ -1,3 +1,3 @@
 # Theme default
 
-this is theme default of chezhibao-ui
+this is theme default of czbUI

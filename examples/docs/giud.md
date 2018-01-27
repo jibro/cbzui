@@ -2,13 +2,15 @@
 
 ----
 
-`chezhibao-ui` 是一款基于 `Vue.js 2.0` 的前端 UI 组件库，主要用于快速开发移动端应用
-
+`czbUI` 是一款基于 `Vue.js 2.0` 的前端 UI 组件库，主要用于快速开发桌面web应用<br>
+- 适用于拥有HTML+CSS+JAVASCRIPT基础，对前后端分离、MVVM、模块化、组件化感兴趣的同学
+- 希望你抛开 `jquery` 、减少DOM操作，用数据驱动的思维去使用它
+- 初代版本，后续会持续更新和完善，也会有不同主题供选择，请多提供建议和意见
 ## 特性
 
 - 基于 `Vue.js` 开发的 UI 组件
 - 基础布局采用Flex弹性盒子结构
-- 使用 npm + webpack + babel 的工作流，支持 ES2015
+- 使用 npm + webpack + babel 的工作流，支持 ES6
 - 提供友好的 API，灵活使用组件
 ## 设计规范
 <style lang="less">
@@ -120,4 +122,4 @@
 
 ## 浏览器支持
 
-- 现代移动端浏览器
+- "> 1%,last 2 versions,not ie <= 8"

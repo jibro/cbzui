@@ -25,7 +25,7 @@ export default {
 用于页面中展示消息提醒和操作确认。
 
 ### 基本用法
-页面弹出的模态框。<br>
+页面弹出的提示框。<br>
 <czb-button @btnClick="showMsgBox">msgBox</czb-button>
 ::: demo
 ```html

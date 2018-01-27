@@ -13,12 +13,12 @@ npm install -g cnpm --registry=https://registry.npm.taobao.org
 推荐使用 npm 的方式进行开发，享受 node 生态圈和 webpack 工具链带来的便利。通过 npm 安装的模块包，我们可以轻松的使用 import 或者 require 的方式引用
 
 ```bash
-npm install chezhibaoui --save
+npm install czbui --save
 或
-cnpm install chezhibaoui --save
+cnpm install czbui --save
 ```
 ## import packages
-import chezhibaoui from 'chezhibaoui'
+import czbui from 'czbui'
 
 
 

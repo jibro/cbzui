@@ -34,7 +34,7 @@
       color: var(--color-666);
     }
     @e btn{
-      font-size: var(--font-base);
+      font-size: var(--size-base);
       text-align: center;
       display: flex;
       justify-content: flex-end;

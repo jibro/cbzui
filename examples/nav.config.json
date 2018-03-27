@@ -80,6 +80,11 @@
           "desc": "czb-msgBox 弹出对话框",
           "name": "msg-box",
           "path": "/msg-box"
+        },
+        {
+          "desc": "czb-table 表格",
+          "name": "czb-table",
+          "path": "/czb-table"
         }
       ]
     }

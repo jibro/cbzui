@@ -23,6 +23,7 @@
     font-size: var(--size-base);
     color: var(--color-base);
     display: inline-block;
+    vertical-align: top;
     @when autowidth{
       width: 100%;
     }

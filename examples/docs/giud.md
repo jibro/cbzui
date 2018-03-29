@@ -68,7 +68,7 @@
         <div class="box-content color00a7ea">
             <div>
                 <span>#00a7ea</span>
-                <span>rgb(0,167,234)</span>
+                <span>rgb(0,151,224)</span>
             </div>
         </div>
         <div class="box-title">主色调</div>

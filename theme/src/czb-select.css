@@ -6,10 +6,12 @@
     font-size: var(--size-base);
     color: var(--color-base);
     display: inline-block;
+    vertical-align: top;
     @when autowidth{
       width: 100%;
     }
     @e value{
+      line-height: 1;
       width: 100%;
       height: var(--normal-height);
       border: 1px solid var(--borderColor-main);

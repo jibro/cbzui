@@ -1,5 +1,53 @@
 @import "common/var.css";
 @b czb{
   @e table{
+    @e wrap {
+      border: 1px solid var(--borderColor-main);
+    }
+    @e head{
+      display: flex;
+      @e item{
+        width: 200px;
+        height: 40px;
+        border-right: 1px solid var(--borderColor-main);
+        box-sizing: border-box;
+        padding: 0 15px;
+        line-height: 40px;
+        background-color: #f7f7f7;
+        font-weight: bold;
+        &:last-child{
+          border-right: 0;
+          width: auto;
+          flex: 1;
+        }
+      }
+    }
+    @e content{
+      @e row {
+        display: flex;
+        border-bottom: 1px solid var(--borderColor-main);
+        background-color: #fff;
+        cursor: pointer;
+        &:last-child{
+          border-bottom: 0;
+        }
+        &:hover{
+          background-color: var(--select-hover);
+        }
+      }
+      @e col{
+        width: 200px;
+        height: 40px;
+        border-right: 1px solid var(--borderColor-main);
+        box-sizing: border-box;
+        padding: 0 15px;
+        line-height: 40px;
+        &:last-child{
+          border-right: 0;
+          width: auto;
+          flex: 1;
+        }
+      }
+    }
   }
 }

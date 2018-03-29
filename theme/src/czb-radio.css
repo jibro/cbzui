@@ -19,7 +19,7 @@
       }
       @m hasborder{
         border: 1px solid var(--borderColor-main);
-        padding: 10px;
+        padding: 8px;
         box-sizing: border-box;
         border-radius: var(--normal-radius);
         background-color: #fff;

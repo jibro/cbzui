@@ -7,17 +7,17 @@
   --size-main: 16px;
   --size-large: 18px;
   --color-base: #333;
-  --color-main: #00a7ea;
+  --color-main: #0097e0;
   --color-666: #666;
   --color-999: #999;
   --color-ccc: #ccc;
   --color-disabled: #ececec;
   --color-thin: #f7f7f7;
-  --borderColor-main: #ddd;
-  --normal-radius: 4px;
-  --normal-height: 36px;
+  --borderColor-main: #e7e7e7;
+  --normal-radius: 2px;
+  --normal-height: 32px;
   /* input */
-  --input-width: 180px;
+  --input-width: 150px;
   --textarea-minheight: 90px;
   /* radio */
   /* shadow */
@@ -32,17 +32,17 @@
   --msg-bgcolor: #fff;
   /* select
   -------------------------- */
-  --selectlist-hg: 32px;
+  --selectlist-hg: 30px;
   --select-minhg: calc( 2 * var(--selectlist-hg) );
   --select-maxhg: calc( 8 * var(--selectlist-hg) );
-  --select-hover: rgba(0,167,234, 0.1);
+  --select-hover: rgba(0,151,224, 0.1);
   /* button
   -------------------------- */
-  --button-width: 90px;
-  --button-smallwidth: 70px;
-  --button-smallhg: 30px;
-  --button-default-hover: rgba(0,167,234, 0.8);
-  --button-reverse-hover: rgba(0,167,234, 0.1);
+  --button-width: 70px;
+  --button-smallwidth: 50px;
+  --button-smallhg: 26px;
+  --button-default-hover: rgba(0,151,224, 0.8);
+  --button-reverse-hover: rgba(0,151,224, 0.1);
   --button-danger-color: #f56c6c;
   --button-danger-hover: #f78989;  
   /* tab

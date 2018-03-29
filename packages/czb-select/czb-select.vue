@@ -101,11 +101,11 @@ export default {
         }
         if (getElementTop(selectDom) - scrollTop + selectDom.offsetHeight + listHeight >= winHg) {
           selectlistDom.style.top = 'auto'
-          selectlistDom.style.bottom = '36px'
+          selectlistDom.style.bottom = '32px'
           selectlistDom.style.marginTop = 0
           selectlistDom.style.marginBottom = '3px'
         } else {
-          selectlistDom.style.top = '36px'
+          selectlistDom.style.top = '32px'
           selectlistDom.style.bottom = 'auto'
           selectlistDom.style.marginTop = '3px'
           selectlistDom.style.marginBottom = 0

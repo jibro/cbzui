@@ -55,6 +55,7 @@
     @when min{
       width: var(--button-smallwidth); 
       height: var(--button-smallhg);
+      font-size: var(--size-min);
     }
     @when autowidth{
       width: 100%;

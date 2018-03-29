@@ -29,6 +29,7 @@
     width: var(--input-width);
     position: relative;
     display: inline-block;
+    vertical-align: top;
     @when autowidth{
       width: 100%;
     }
@@ -52,8 +53,8 @@
       z-index: 11;
       cursor: pointer;
       line-height: 1;
-      font-size: var(--size-main);
-      transform: translateY(-50%);
+      font-size: var(--size-base);
+      margin-top: -6px;
       color: var(--color-999);
     }
   }

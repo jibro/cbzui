@@ -29,8 +29,9 @@
       </div>
     </div>
     <div class="page-list-table-wrap bgf">
-      <czb-table :columns="columns" :tableData="tableData"></czb-table>
+      <czb-table :columns="columns" :tableData="tableData" :hasCheck="true" v-model="choosedData" :pagination="pagination"></czb-table>
     </div>
+    <!-- {{choosedData}} -->
   </div>
 </template>
 
@@ -39,28 +40,48 @@ export default {
   name: 'list',
   data() {
     return {
-      msg: 'Welcome to Your Vue.js App',
+      choosedData: [],
       selectData: [
         { id: 0, name: 'option1' },
         { id: 1, name: 'option2' },
         { id: 2, name: 'option3' },
         { id: 3, name: 'option4' },
-        { id: 4, name: 'option5' },
+        { id: 4, name: 'option5' }
       ],
       selectedVal: {},
       inputText: '',
+      pagination: {
+        rows: 10,
+        page: 1,
+        total: 20
+      },
       columns: [
         {
           title: '姓名',
-          key: 'name'
+          key: 'name',
+          width: 100,
+          render(val) {
+            return `<a href="javascript:void(0)">${val}</a>`;
+          }
         },
         {
           title: '年龄',
+          width: 150,
           key: 'age'
         },
         {
           title: '地址',
+          width: 200,
           key: 'address'
+        },
+        {
+          title: '操作',
+          key: 'others',
+          render() { // val, item, i
+            // this.sss();
+            console.log(this);
+            return '<a href="javascript:void(0)" onclick="">操作1</a><a href="javascript:void(0)">操作2</a>';
+          }
         }
       ],
       tableData: [
@@ -75,9 +96,38 @@ export default {
           name: '李四',
           age: 22,
           address: '南京市浦口区星火路'
+        },
+        {
+          id: 2,
+          name: '王五',
+          age: 23,
+          address: '南京市浦口区星火路'
+        },
+        {
+          id: 3,
+          name: '李明',
+          age: 23,
+          address: '南京市浦口区星火路'
+        },
+        {
+          id: 4,
+          name: '孙一',
+          age: 23,
+          address: '南京市浦口区星火路'
+        },
+        {
+          id: 5,
+          name: '赵六',
+          age: 23,
+          address: '南京市浦口区星火路'
         }
       ]
     };
   },
+  methods: {
+    sss() {
+      alert(2);
+    }
+  }
 };
 </script>

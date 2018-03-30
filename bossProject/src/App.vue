@@ -33,7 +33,7 @@
 
 <script>
 export default {
-  name: 'page-index',
+  name: 'page-index'
 };
 </script>
 <style lang="less">

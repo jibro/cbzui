@@ -6,6 +6,7 @@
   --size-base: 14px;
   --size-main: 16px;
   --size-large: 18px;
+  --color-white: #fff;
   --color-base: #333;
   --color-main: #0097e0;
   --color-666: #666;
@@ -29,7 +30,6 @@
   /* msg-box
   -------------------------- */
   --msg-width: 400px;
-  --msg-bgcolor: #fff;
   /* select
   -------------------------- */
   --selectlist-hg: 30px;

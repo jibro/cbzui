@@ -2,7 +2,7 @@
 @b c{
   @e msg-box{
     width: var(--msg-width);
-    background-color: var(--msg-bgcolor);
+    background-color: var(--color-white);
     position: fixed;
     color: var(--color-base);
     border-radius: 4px;

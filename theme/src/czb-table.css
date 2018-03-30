@@ -7,12 +7,13 @@
     @e head{
       display: flex;
       @e item{
-        width: 200px;
-        height: 40px;
+        min-width: 90px;
+        height: 36px;
         border-right: 1px solid var(--borderColor-main);
+        border-bottom: 1px solid var(--borderColor-main);
         box-sizing: border-box;
         padding: 0 15px;
-        line-height: 40px;
+        @mixin cflex middle;
         background-color: #f7f7f7;
         font-weight: bold;
         &:last-child{
@@ -20,6 +21,9 @@
           width: auto;
           flex: 1;
         }
+      }
+      @e check{
+        min-width: 46px;
       }
     }
     @e content{
@@ -36,17 +40,85 @@
         }
       }
       @e col{
-        width: 200px;
-        height: 40px;
+        min-width: 90px;
+        min-height: 34px;
         border-right: 1px solid var(--borderColor-main);
         box-sizing: border-box;
-        padding: 0 15px;
-        line-height: 40px;
+        padding: 5px 15px;
+        @mixin cflex middle;
         &:last-child{
           border-right: 0;
           width: auto;
           flex: 1;
         }
+        a{
+          color:var(--color-main);
+          margin-right: 8px;
+        }
+        a:link,a:active,a:visited,a:hover{color:var(--color-main);}
+      }
+      @e check{
+        min-width: 46px;
+      }
+    }
+    @e checkbox{
+      width: var(--size-base);
+      height: var(--size-base);
+      border-radius: 2px;
+      border: 1px solid var(--borderColor-main);
+      display: inline-block;
+      position: relative;
+      box-sizing: border-box;
+      background-color: var(--color-white);
+      cursor: pointer;
+      &:hover{
+        border: 1px solid var(--color-main);
+      }
+      &::after{
+        box-sizing: content-box;
+        content: "";
+        border: 1px solid #fff;
+        border-left: 0;
+        border-top: 0;
+        height: 7px;
+        left: 4px;
+        position: absolute;
+        top: 1px;
+        transform: rotate(45deg) scaleY(0);
+        width: 3px;
+        transition: transform .15s cubic-bezier(.71,-.46,.88,.6) .05s;
+        transform-origin: center;
+      }
+      @when choosed{
+        border: 1px solid var(--color-main);
+        background-color: var(--color-main);
+        &::after{
+          transform: rotate(45deg) scaleY(1);
+        }
+      }
+    }
+    @e pagination{
+      @e wrap{
+        display: flex;
+        border: 1px solid var(--borderColor-main);
+        &>div{
+          border-right: 1px solid var(--borderColor-main);
+        }
+      }
+      @e previous{
+        padding: 11px 14px;
+        height: 36px;
+        cursor: pointer;
+      }
+      @e item{
+        padding: 11px 14px;
+        height: 36px;
+        cursor: pointer;
+      }
+      @e next{
+        padding: 11px 14px;
+        height: 36px;
+        cursor: pointer;
       }
     }
   }

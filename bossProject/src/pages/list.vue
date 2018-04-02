@@ -22,19 +22,22 @@
         <czb-input v-model="inputText" placeholder="请输入编号" :clear="true"></czb-input>
       </div>
       <div class="page-search-item">
-        <czb-button>检索</czb-button>
+        <czb-button><i class="czbfont iczb-sousuo" slot="left"></i>检索</czb-button>
       </div>
       <div class="page-search-item">
-        <czb-button type="danger"><i class="iconfont icon-wechat" slot="left"></i>重置</czb-button>
+        <czb-button type="reverse"><i class="czbfont iczb-shuaxin" slot="left"></i>重置</czb-button>
       </div>
     </div>
     <div class="page-list-table-wrap bgf">
-      <czb-table :columns="columns" :tableData="tableData" :hasCheck="true" v-model="choosedData" :pagination="pagination"></czb-table>
+      <div class="page-operation">
+        <czb-button :min="true">新增</czb-button>
+        <czb-button type="reverse" :min="true">修改</czb-button>
+        <czb-button type="danger" :min="true">删除</czb-button>
+      </div>
+      <czb-table :columns="columns" :tableData="tableData" :hasCheck="true" v-model="choosedData" :pagination="pagination" :handle="handle" @handleClick="sss"></czb-table>
     </div>
-    <!-- {{choosedData}} -->
   </div>
 </template>
-
 <script>
 export default {
   name: 'list',
@@ -73,15 +76,6 @@ export default {
           title: '地址',
           width: 200,
           key: 'address'
-        },
-        {
-          title: '操作',
-          key: 'others',
-          render() { // val, item, i
-            // this.sss();
-            console.log(this);
-            return '<a href="javascript:void(0)" onclick="">操作1</a><a href="javascript:void(0)">操作2</a>';
-          }
         }
       ],
       tableData: [
@@ -121,12 +115,13 @@ export default {
           age: 23,
           address: '南京市浦口区星火路'
         }
-      ]
+      ],
+      handle: ['操作1', '操作2']
     };
   },
   methods: {
-    sss() {
-      alert(2);
+    sss(item) {
+      console.log(item);
     }
   }
 };

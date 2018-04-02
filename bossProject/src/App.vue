@@ -10,8 +10,14 @@
       <!-- <div class="page-aside-title cw">云检测管理系统</div> -->
       <div class="page-menu">
         <ul class="page-menu-list">
-          <li>营销管理</li>
-          <li>消息管理</li>
+          <li>
+            <i class="iconfont icon-PC"></i>
+            <span>营销管理</span>
+          </li>
+          <li>
+            <i class="iconfont icon-duanxin"></i>
+            <span>消息管理</span>
+          </li>
         </ul>
       </div>
     </div>
@@ -33,7 +39,27 @@
 
 <script>
 export default {
-  name: 'page-index'
+  name: 'page-index',
+  data() {
+    return {
+      menu: [
+        {
+          id: '0',
+          name: '营销管理',
+          sub: [
+            {
+              id: '01',
+              name: '营销管理1'
+            },
+            {
+              id: '02',
+              name: '营销管理2'
+            }
+          ]
+        }
+      ]
+    };
+  }
 };
 </script>
 <style lang="less">

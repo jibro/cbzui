@@ -1,8 +1,13 @@
 @import "common/var.css";
 @b czb{
   @e table{
+    @e box{
+      overflow-x: auto;
+      position: relative;
+    }
     @e wrap {
       border: 1px solid var(--borderColor-main);
+      width: 1200px;
     }
     @e head{
       display: flex;
@@ -27,6 +32,8 @@
       }
     }
     @e content{
+      max-height: 660px;
+      overflow-y: auto;
       @e row {
         display: flex;
         border-bottom: 1px solid var(--borderColor-main);

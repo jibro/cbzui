@@ -23,18 +23,13 @@
         </div>
       </div>
     </div>
-    <!-- <div class="czb__table__pagination">
+    <div class="czb__table__pagination">
       <div class="czb__table__pagination__wrap">
         <div class="czb__table__pagination__previous">previous</div>
-        <div class="czb__table__pagination__item">1</div>
-        <div class="czb__table__pagination__item">2</div>
-        <div class="czb__table__pagination__item">3</div>
-        <div class="czb__table__pagination__item">4</div>
-        <div class="czb__table__pagination__item">5</div>
-        <div class="czb__table__pagination__item">6</div>
+        <div class="czb__table__pagination__item" v-for="(num, i) in pages" :key="i" :class="{'active': pagination.page == num}">{{num}}</div>
         <div class="czb__table__pagination__next">next</div>
       </div>
-    </div> -->
+    </div>
   </div>
 </template>
 <script>
@@ -68,6 +63,16 @@ export default{
       return this.tableData.filter(obj => {
         return obj.isChoosed
       })
+    },
+    pages () {
+      if (this.pagination) {
+        const pageNum = Math.ceil(this.pagination.total / this.pagination.rows)
+        let pages = []
+        for (let i = 0; i <= pageNum; i++) {
+          pages.push(i + 1)
+        }
+        return pages
+      }
     }
   },
   methods: {
@@ -94,9 +99,9 @@ export default{
       this.$emit('handleClick', obj)
     },
     wrapWidthFn () {
-      let sum = 0;
+      let sum = 0
       if (this.hasCheck) {
-        sum += 46;
+        sum += 46
       }
       this.columns.forEach(obj => {
         if (obj.width) {
@@ -109,15 +114,18 @@ export default{
         sum += this.handle.length * 90
       }
       if (sum > this.$refs.box.offsetWidth) {
-        return `${sum}px`;
+        return `${sum}px`
       } else {
-        return 'auto';
+        return 'auto'
       }
     }
   },
   mounted () {
     this.$nextTick(() => {
-      this.wrapWidth = this.wrapWidthFn();
+      this.wrapWidth = this.wrapWidthFn()
+      window.onresize = () => {
+        this.wrapWidth = this.wrapWidthFn()
+      }
     })
   }
 }

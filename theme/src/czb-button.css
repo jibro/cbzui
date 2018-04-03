@@ -68,9 +68,15 @@
     }
     @e left{
       margin-right: 5px;
+      i{
+        font-size: var(--size-min);
+      }
     }
     @e right{
       margin-left: 5px;
+      i{
+        font-size: var(--size-min);
+      }
     }
   }
 }

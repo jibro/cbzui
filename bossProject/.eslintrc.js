@@ -28,7 +28,7 @@ module.exports = {
     'no-console': 'off',
     'no-alert': 'off',
     'max-len': 'off',
-    'linebreak-style': ['error', 'windows'],
+    'linebreak-style': 'off',
     "comma-dangle": ["error", "never"],
     // don't require .vue extension when importing
     'import/extensions': ['error', 'always', {

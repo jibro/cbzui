@@ -1,0 +1,52 @@
+[
+  {
+    "name": "sub-1",
+    "key": "sub1",
+    "icon": "iczb-riqi",
+    "items": [
+      {
+        "name": "item1",
+        "key": "item-1",
+        "path": "/item-1",
+        "icon": "iczb-riqi"
+      },
+      {
+        "name": "item2",
+        "key": "item-2",
+        "path": "/item-2"
+      },
+      {
+        "name": "item3",
+        "key": "item-3",
+        "path": "/item-3"
+      }
+    ]
+  },
+  {
+    "name": "sub-2",
+    "key": "sub2",
+    "items": [
+      {
+        "name": "item4",
+        "key": "item-4",
+        "path": "/item-4"
+      },
+      {
+        "name": "item5",
+        "key": "item-5",
+        "path": "/item-5"
+      },
+      {
+        "name": "item6",
+        "key": "item-6",
+        "path": "/item-6"
+      }
+    ]
+  },
+  {
+    "name": "item7",
+    "key": "item-7",
+    "path": "/item-7",
+    "icon": "iczb-riqi"
+  }
+]

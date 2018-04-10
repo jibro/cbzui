@@ -85,6 +85,21 @@
           "desc": "czb-table 表格",
           "name": "czb-table",
           "path": "/czb-table"
+        },
+        {
+          "desc": "czb-pagination 分页",
+          "name": "czb-pagination",
+          "path": "/czb-pagination"
+        },
+        {
+          "desc": "czb-menu 导航",
+          "name": "czb-menu",
+          "path": "/czb-menu"
+        },
+        {
+          "desc": "czb-modal 对话框",
+          "name": "czb-modal",
+          "path": "/czb-modal"
         }
       ]
     }

@@ -9,6 +9,9 @@ import czbSelect from './czb-select/czb-select'
 import czbCascader from './czb-cascader/czb-cascader'
 import czbDatepacker from './czb-datepacker/czb-datepacker'
 import czbTable from './czb-table/czb-table'
+import czbPagination from './czb-pagination/czb-pagination'
+import czbModal from './czb-modal/czb-modal'
+import czbMenu from './czb-menu/czb-menu'
 
 const components = [
   czbButton,
@@ -19,7 +22,10 @@ const components = [
   czbSelect,
   czbCascader,
   czbDatepacker,
-  czbTable
+  czbTable,
+  czbPagination,
+  czbModal,
+  czbMenu,
 ]
 
 const install = function (Vue) {
@@ -43,5 +49,8 @@ export {
   czbSelect,
   czbCascader,
   czbDatepacker,
-  czbTable
+  czbTable,
+  czbPagination,
+  czbModal,
+  czbMenu,
 }

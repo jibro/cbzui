@@ -1,5 +1,6 @@
 <template>
-    <ul :style="{height:height}" class="czb_menu">
+    <div>
+        <ul :style="{height:height}" class="czb_menu">
         <li v-if="item.items&&item.items.length>0" v-for="item in data" :key="item.key" class="czb_menu_subMenu" :class="{'czb_menu_subMenu_open':openKeys.filter(child=>child==item.key).length>0}">
             <div @click="onTitleClick(item.key)" class="czb_menu_subMenu_title">
                 <i v-if="item.icon" class="czbfont anticon" :class="item.icon"></i>
@@ -7,33 +8,34 @@
                 <i class="czbfont iczb-arrow_down czb_menu_subMenu_arror" :class="{'arror_open':openKeys.filter(child=>child==item.key).length>0}"></i>
             </div>
             <ul v-if="openKeys.filter(child=>child==item.key).length>0" class="czb_menu czb_menu_subMenu">
-                <li v-for="child in item.items" :key="child.key" @click="onSelectKey(child)" class="czb_menu_item" :class="{'czb_menu_item_active':mySelectKey==child.key}">
+                <li v-for="child in item.items" :key="child.key" @click="onSelectedKey(child)" class="czb_menu_item" :class="{'czb_menu_item_active':mySelectedKey==child.key}">
                     <i v-if="child.icon" class="czbfont anticon" :class="child.icon"></i>
                     <span>{{child.name}}</span>
                 </li>
             </ul>
         </li>
-        <li v-else :key="item.key" @click="onSelectKey(item)" class="czb_menu_item czb_menu_item_root" :class="{'czb_menu_item_active':mySelectKey==item.key}">
+        <li v-else :key="item.key" @click="onSelectedKey(item)" class="czb_menu_item czb_menu_item_root" :class="{'czb_menu_item_active':mySelectedKey==item.key}">
             <i v-if="item.icon" class="czbfont anticon" :class="item.icon"></i>
             <span>{{item.name}}</span>
         </li>
     </ul>
+    </div>
 </template>
 <script>
     export default {
         name: 'czb-menu',
         data() {
             return {
-                mySelectKey:this.selectKey
+                mySelectedKey:this.selectedKey
             }
         },
         watch:{
-            selectKey(val) {
-                if(this.mySelectKey!=val){
-                    this.mySelectKey = val
+            selectedKey(val) {
+                if(this.mySelectedKey!=val){
+                    this.mySelectedKey = val
                 }
             },
-            mySelectKey(val){
+            mySelectedKey(val){
                 let selectItem = null
                 this.data.map(item=>{
                     if(item.key==val){
@@ -51,7 +53,7 @@
                         })
                     }
                 })
-                this.$emit("onSelectKey",selectItem)
+                this.$emit("onSelectedKey",selectItem)
             }
         },
         props: {
@@ -61,9 +63,11 @@
             },
             openKeys:{
                 type: [Array,Object],
-                default: []
+                default: function () {
+                    return []
+                }
             },
-            selectKey:{
+            selectedKey:{
                 type: [Number,String],
                 default: ''
             },
@@ -73,12 +77,12 @@
             }
         },
         mounted () {
-            if(this.selectKey){
+            if(this.selectedKey){
                 let fathChild = null
                 this.data.map(item=>{
                     if(item.items&&item.items.length>0){
                         let list = item.items
-                        let filterList=list.filter(child=>child.key ==this.selectKey)
+                        let filterList=list.filter(child=>child.key ==this.selectedKey)
                         if(filterList.length>0){
                             fathChild = item
                         }
@@ -104,8 +108,8 @@
                 }
                 this.$emit("onTitleClick",this.openKeys)
             },
-            onSelectKey(child){
-                this.mySelectKey = child.key
+            onSelectedKey(child){
+                this.mySelectedKey = child.key
             }
         }
     }

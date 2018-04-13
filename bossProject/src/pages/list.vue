@@ -34,11 +34,13 @@
         <czb-button type="reverse" :min="true">修改</czb-button>
         <czb-button type="danger" :min="true">删除</czb-button>
       </div>
-      <czb-table :columns="columns" :tableData="tableData" :hasCheck="true" v-model="choosedData" :pagination="pagination" :handle="handle" @handleClick="sss"></czb-table>
+      <czb-table :columns="columns" :tableData="tableData" :hasCheck="true" v-model="choosedData" :pagination="pagination" :handle="handle" @handleClick="sss" @goPage="goPage"></czb-table>
     </div>
   </div>
 </template>
 <script>
+import API from '@/api';
+
 export default {
   name: 'list',
   data() {
@@ -56,7 +58,7 @@ export default {
       pagination: {
         rows: 10,
         page: 1,
-        total: 20
+        total: 60
       },
       columns: [
         {
@@ -122,7 +124,16 @@ export default {
   methods: {
     sss(item) {
       console.log(item);
+    },
+    goPage (num) {
+      console.log(num)
+      this.pagination.page = num;
     }
+  },
+  mounted() {
+    API.envSearch({ page: 1, pageSize: 10, branchName: '', domain: '', status: '' }).then((res) => {
+      console.log(res);
+    });
   }
 };
 </script>

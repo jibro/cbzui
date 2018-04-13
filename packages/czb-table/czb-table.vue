@@ -25,9 +25,9 @@
     </div>
     <div class="czb__table__pagination">
       <div class="czb__table__pagination__wrap">
-        <div class="czb__table__pagination__previous">previous</div>
-        <div class="czb__table__pagination__item" v-for="(num, i) in pages" :key="i" :class="{'active': pagination.page == num}">{{num}}</div>
-        <div class="czb__table__pagination__next">next</div>
+        <div class="czb__table__pagination__previous" :class="{'nopage': pagination.page == 1}">上一页</div>
+        <div class="czb__table__pagination__item" v-for="(num, i) in pages" :key="i" :class="{'active': pagination.page == num}" @click="goPage(num)">{{num}}</div>
+        <div class="czb__table__pagination__next" :class="{'nopage': pagination.page == pages.length}">下一页</div>
       </div>
     </div>
   </div>
@@ -68,8 +68,8 @@ export default{
       if (this.pagination) {
         const pageNum = Math.ceil(this.pagination.total / this.pagination.rows)
         let pages = []
-        for (let i = 0; i <= pageNum; i++) {
-          pages.push(i + 1)
+        for (let i = 1; i <= pageNum; i++) {
+          pages.push(i)
         }
         return pages
       }
@@ -118,6 +118,9 @@ export default{
       } else {
         return 'auto'
       }
+    },
+    goPage (num) {
+      this.$emit('goPage', num)
     }
   },
   mounted () {

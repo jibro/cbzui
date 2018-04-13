@@ -105,31 +105,49 @@
       }
     }
     @e pagination{
+      text-align: right;
       @e wrap{
-        display: flex;
+        /* display: flex; */
         border: 1px solid var(--borderColor-main);
+        overflow: hidden;
+        display: inline-block;
+        margin-top: 10px;
         &>div{
           border-right: 1px solid var(--borderColor-main);
+          &:last-child{
+            border-right: 0;
+          }
         }
       }
       @e previous{
-        padding: 11px 14px;
-        height: 36px;
+        padding: 9px 14px;
+        height: 32px;
         cursor: pointer;
+        float: left;
+        &.nopage{
+          cursor: not-allowed;
+          color: var(--color-ccc);
+        }
       }
       @e item{
-        padding: 11px 14px;
-        height: 36px;
+        padding: 9px 14px;
+        height: 32px;
         cursor: pointer;
+        float: left;
         &.active{
           background-color: var(--color-main);
           color: var(--color-white);
         }
       }
       @e next{
-        padding: 11px 14px;
-        height: 36px;
+        float: left;
+        padding: 9px 14px;
+        height: 32px;
         cursor: pointer;
+        &.nopage{
+          cursor: not-allowed;
+          color: var(--color-ccc);
+        }
       }
     }
   }

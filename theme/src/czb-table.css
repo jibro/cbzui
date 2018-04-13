@@ -121,6 +121,10 @@
         padding: 11px 14px;
         height: 36px;
         cursor: pointer;
+        &.active{
+          background-color: var(--color-main);
+          color: var(--color-white);
+        }
       }
       @e next{
         padding: 11px 14px;

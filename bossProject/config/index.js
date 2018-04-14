@@ -12,7 +12,7 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/api': {
-        target: '172.16.50.30:18080/',
+        target: 'http://172.16.12.66:18080/',
         changeOrigin: true,
         secure: false,
         pathRewrite: {
@@ -21,7 +21,7 @@ module.exports = {
       }
     },
     // Various Dev Server settings
-    host: '172.16.51.12', // can be overwritten by process.env.HOST
+    host: '172.16.51.14', // can be overwritten by process.env.HOST
     port: 8090, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     autoOpenBrowser: false,
     errorOverlay: true,
@@ -31,7 +31,7 @@ module.exports = {
     // Use Eslint Loader?
     // If true, your code will be linted during bundling and
     // linting errors and warnings will be shown in the console.
-    useEslint: true,
+    useEslint: false,
     // If true, eslint errors and warnings will also be shown in the error overlay
     // in the browser.
     showEslintErrorsInOverlay: false,

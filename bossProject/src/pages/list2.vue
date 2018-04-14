@@ -1,41 +1,6 @@
 <template>
   <div class="page-list-wrap">
-    <div class="page-list-search bgf">
-      <div class="page-search-item">
-        <label class="page-label"><span>发放状态:</span></label>
-        <czb-select :datas="selectData" v-model="selectedVal" placeholder="请选择" :clear="true"></czb-select>
-      </div>
-      <div class="page-search-item">
-        <label class="page-label"><span>发放状态:</span></label>
-        <czb-select :datas="selectData" v-model="selectedVal" placeholder="请选择" :clear="true"></czb-select>
-      </div>
-      <div class="page-search-item">
-        <label class="page-label"><span>发放状态:</span></label>
-        <czb-select :datas="selectData" v-model="selectedVal" placeholder="请选择" :clear="true"></czb-select>
-      </div>
-      <div class="page-search-item">
-        <label class="page-label"><span>发放状态:</span></label>
-        <czb-select :datas="selectData" v-model="selectedVal" placeholder="请选择" :clear="true"></czb-select>
-      </div>
-      <div class="page-search-item">
-        <label class="page-label"><span>编号:</span></label>
-        <czb-input v-model="inputText" placeholder="请输入编号" :clear="true"></czb-input>
-      </div>
-      <div class="page-search-item">
-        <czb-button><i class="czbfont iczb-sousuo" slot="left"></i>检索</czb-button>
-      </div>
-      <div class="page-search-item">
-        <czb-button type="reverse"><i class="czbfont iczb-shuaxin" slot="left"></i>重置</czb-button>
-      </div>
-    </div>
-    <div class="page-list-table-wrap bgf">
-      <div class="page-operation">
-        <czb-button :min="true">新增</czb-button>
-        <czb-button type="reverse" :min="true">修改</czb-button>
-        <czb-button type="danger" :min="true">删除</czb-button>
-      </div>
-      <czb-table :columns="columns" :tableData="tableData" :hasCheck="true" v-model="choosedData" :pagination="pagination" :handle="handle" @handleClick="sss" @goPage="goPage"></czb-table>
-    </div>
+    2222222222222222
   </div>
 </template>
 <script>

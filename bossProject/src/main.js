@@ -5,6 +5,8 @@ import App from './App';
 import router from './router';
 import czbUI from '../../packages/index';
 import '../../theme/lib/index.css';
+import store from './store'
+
 
 Vue.use(czbUI);
 
@@ -14,6 +16,7 @@ Vue.config.productionTip = false;
 new Vue({
   el: '#app',
   router,
+  store: store,
   components: { App },
   template: '<App/>'
 });

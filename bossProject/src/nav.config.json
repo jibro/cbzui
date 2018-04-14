@@ -1,0 +1,44 @@
+[
+  {
+    "name": "测试1",
+    "key": "sub-1",
+    "items": [
+      {
+        "name": "测试1",
+        "key": "list1",
+        "path": "/list1",
+        "code": 1
+      },
+      {
+        "name": "测试2",
+        "key": "list2",
+        "path": "/list2",
+        "code": 7
+      },
+      {
+        "name": "测试3",
+        "key": "list3",
+        "path": "/list3",
+        "code": 3
+      }
+    ]
+  },
+  {
+    "name": "测试2",
+    "key": "sub-2",
+    "items": [
+      {
+        "name": "测试4",
+        "key": "list4",
+        "path": "/list4",
+        "code": 4
+      }
+    ]
+  },
+  {
+    "name": "测试3",
+    "key": "list5",
+    "code": 2,
+    "path": "/list5"
+  }
+]

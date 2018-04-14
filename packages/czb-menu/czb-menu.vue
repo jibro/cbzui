@@ -1,6 +1,5 @@
 <template>
-    <div>
-        <ul :style="{height:height}" class="czb_menu">
+        <ul :style="{height:height,width:width}" class="czb_menu">
         <li v-if="item.items&&item.items.length>0" v-for="item in data" :key="item.key" class="czb_menu_subMenu" :class="{'czb_menu_subMenu_open':openKeys.filter(child=>child==item.key).length>0}">
             <div @click="onTitleClick(item.key)" class="czb_menu_subMenu_title">
                 <i v-if="item.icon" class="czbfont anticon" :class="item.icon"></i>
@@ -19,7 +18,6 @@
             <span>{{item.name}}</span>
         </li>
     </ul>
-    </div>
 </template>
 <script>
     export default {
@@ -57,9 +55,13 @@
             }
         },
         props: {
+            width:{
+                type: [String],
+                default: '100%'
+            },
             height:{
                 type: [String],
-                default: ''
+                default: '100%'
             },
             openKeys:{
                 type: [Array,Object],
@@ -132,7 +134,6 @@
         line-height: 0;
         color: hsla(0,0%,100%,.65);
         background: #000c17;
-        width: 256px;
         border-right: 0;
     }
     .czb_menu_subMenu{

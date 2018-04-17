@@ -4,9 +4,9 @@
         <div class="czb-modal-wrap">
             <div :style="{width:width}" class="czb-modal">
                 <div class="czb-modal-content">
-                    <button @click="myVisible=false" class="czb-modal-close"><i class="czbfont iczb-clear czb-modal-close-x"></i></button>
+                    <button @click="myVisible=false" class="czb-modal-close"><i class="czbfont iczb-close czb-modal-close-x"></i></button>
                     <div class="czb-modal-header">
-                        <div class="czb-modal-title">title</div>
+                        <div class="czb-modal-title">{{title}}</div>
                     </div>
                     <div :style="{height:height}" class="czb-modal-body">
                         <slot></slot>
@@ -41,13 +41,17 @@
         computed: {
         },
         props: {
+            title: {
+                type: [String],
+                require: true
+            },
             visible: {
                 type: [Boolean],
                 default: false,
             },
             width:{
                 type: [String],
-                default: '520px'
+                default: '600px'
             },
             height:{
                 type: [String],

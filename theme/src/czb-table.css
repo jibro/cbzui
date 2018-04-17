@@ -1,19 +1,28 @@
 @import "common/var.css";
 @b czb{
   @e table{
+    position: relative;
     @e box{
       overflow-x: auto;
       position: relative;
-    }
-    @e wrap {
       border: 1px solid var(--borderColor-main);
-      width: 1200px;
+      @when fixed-right{
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: var(--color-white);
+      }
     }
+    /* @e wrap {
+      width: 1200px;
+    } */
     @e head{
       display: flex;
+      overflow: hidden;
       @e item{
-        min-width: 90px;
+        min-width: 46px;
         height: 36px;
+        /* float: left; */
         border-right: 1px solid var(--borderColor-main);
         border-bottom: 1px solid var(--borderColor-main);
         box-sizing: border-box;
@@ -26,19 +35,20 @@
           width: auto;
           flex: 1;
         }
+        /* @when flexnone{
+          flex: none;
+        } */
       }
       @e check{
         min-width: 46px;
       }
     }
     @e content{
-      max-height: 660px;
-      overflow-y: auto;
       @e row {
         display: flex;
+        overflow: hidden;
         border-bottom: 1px solid var(--borderColor-main);
         background-color: #fff;
-        cursor: pointer;
         &:last-child{
           border-bottom: 0;
         }
@@ -47,16 +57,23 @@
         }
       }
       @e col{
-        min-width: 90px;
+        /* float: left; */
+        min-width: 46px;
         min-height: 34px;
         border-right: 1px solid var(--borderColor-main);
         box-sizing: border-box;
         padding: 5px 15px;
+        word-wrap: break-word;
+        word-break: break-all;
         @mixin cflex middle;
+        line-height: 1.2;
         &:last-child{
           border-right: 0;
           width: auto;
           flex: 1;
+        }
+        @when flexnone{
+          flex: none;
         }
         a{
           color:var(--color-main);
@@ -101,52 +118,6 @@
         background-color: var(--color-main);
         &::after{
           transform: rotate(45deg) scaleY(1);
-        }
-      }
-    }
-    @e pagination{
-      text-align: right;
-      @e wrap{
-        /* display: flex; */
-        border: 1px solid var(--borderColor-main);
-        overflow: hidden;
-        display: inline-block;
-        margin-top: 10px;
-        &>div{
-          border-right: 1px solid var(--borderColor-main);
-          &:last-child{
-            border-right: 0;
-          }
-        }
-      }
-      @e previous{
-        padding: 9px 14px;
-        height: 32px;
-        cursor: pointer;
-        float: left;
-        &.nopage{
-          cursor: not-allowed;
-          color: var(--color-ccc);
-        }
-      }
-      @e item{
-        padding: 9px 14px;
-        height: 32px;
-        cursor: pointer;
-        float: left;
-        &.active{
-          background-color: var(--color-main);
-          color: var(--color-white);
-        }
-      }
-      @e next{
-        float: left;
-        padding: 9px 14px;
-        height: 32px;
-        cursor: pointer;
-        &.nopage{
-          cursor: not-allowed;
-          color: var(--color-ccc);
         }
       }
     }

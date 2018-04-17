@@ -11,19 +11,41 @@
       <div class="page-menu">
         <ul class="page-menu-list">
           <li>
-            <i class="iconfont icon-PC"></i>
-            <span>营销管理</span>
+            <router-link to="/">
+              <i class="iconfont icon-PC"></i>
+              <span>配置查询</span>
+            </router-link>
           </li>
           <li>
-            <i class="iconfont icon-duanxin"></i>
-            <span>消息管理</span>
+            <router-link to="/list1">
+              <i class="iconfont icon-PC"></i>
+              <span>中间件查询</span>
+            </router-link>
+          </li>
+          <li>
+            <router-link to="/list2">
+              <i class="iconfont icon-PC"></i>
+              <span>服务查询</span>
+            </router-link>
+          </li>
+          <li>
+            <router-link to="/list3">
+              <i class="iconfont icon-PC"></i>
+              <span>容器查询</span>
+            </router-link>
+          </li>
+          <li>
+            <router-link to="/list4">
+              <i class="iconfont icon-PC"></i>
+              <span>环境查询</span>
+            </router-link>
           </li>
         </ul>
       </div>
     </div>
     <div class="page-content-wrap">
       <div class="page-top">
-        <div class="page-top-title">后台管理系统</div>
+        <div class="page-top-title">{{$route.meta.title}}</div>
         <div class="page-top-info">
           <div class="page-top-welcome">欢迎您<span>管理员</span></div>
           <div class="page-top-cancel cw tc">注销</div>
@@ -33,7 +55,7 @@
         <router-view></router-view>
       </div>
     </div>
-    <div class="page-bottom"></div>
+    <!-- <div class="page-bottom"></div> -->
   </div>
 </template>
 

@@ -12,12 +12,16 @@
 .bgf{
   background-color: @normalColor;
 }
+html, body{
+  height: 100%;
+}
 body{
   background-color: #f0f0f0;
   font-size: 14px;
   line-height: 1;
 }
 .page-wrap{
+  height: 100%;
   .page-aside{
     width: 200px;
     background-color: @baseColor;
@@ -25,7 +29,7 @@ body{
     top: 0;
     left:0;
     bottom: 0;
-    z-index: 1011;
+    z-index: 110;
     .page-aside-top{
       width: 80px;
       img{
@@ -43,7 +47,8 @@ body{
     }
     .page-menu{
       .page-menu-list{
-        &>li{
+        &>li a{
+          display: block;
           height: 36px;
           padding: 0 15px;
           line-height: 36px;
@@ -71,11 +76,15 @@ body{
   }
   .page-content-wrap{
     margin-left: 200px;
-    height: 700px;
+    height: 100%;
     position: relative;
     .page-content{
       padding: 70px 20px 20px 20px;
+      height: 100%;
       .page-list-wrap{
+        height: 100%;
+        display: flex;
+        flex-direction: column;
         .page-list-search{
           width: 100%;
           border-radius: 2px;
@@ -97,19 +106,30 @@ body{
               display: flex;
               align-items: center;
               justify-content: flex-end;
+              word-wrap: break-word;
+              word-break: break-all;
+            }
+            &.page-label-zjj{
+              width: 80px;
             }
           }
         }
         .page-list-table-wrap{
+          flex: 1;
+          margin-top: 10px;
+          padding: 15px 15px 62px;
+          position: relative;
           .page-operation{
             display: flex;
             &>div{
               margin: 0 8px 8px 0;
             }
           }
-          height: 400px;
-          margin-top: 10px;
-          padding: 15px;
+          .pagination{
+            position: absolute;
+            right: 15px;
+            bottom: 15px;
+          }
         }
       }
     }
@@ -124,7 +144,7 @@ body{
       box-shadow: 0 2px 2px rgba(0,0,0,.03), 0 1px 0 rgba(0,0,0,.03);
       line-height: 50px;
       display: flex;
-      z-index: 1010;
+      z-index: 101;
       .page-top-title{
         padding-left: 20px;
         flex: 1;
@@ -161,5 +181,38 @@ body{
     position: fixed;
     bottom: 0;
     left: 0;
+  }
+  .page-form{
+    .page-form-item{
+      display: flex;
+      margin: 10px 0;
+      .page-form-label{
+        width: 102px;
+        vertical-align: top;
+        display: inline-block;
+        margin-right: 10px;
+        &>span{
+          height: 32px;
+          text-align: right;
+          font-size: @baseSize;
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+        }
+      }
+    }
+  }
+  .no-data{
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .no-data-main{
+      text-align: center;
+      p{
+        color: #999;
+        margin-top: 10px;
+      }
+    }
   }
 }

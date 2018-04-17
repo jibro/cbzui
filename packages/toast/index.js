@@ -8,7 +8,6 @@ let czbToast = (option = {}) => { // 参数
 // init:text,timing
 ToastConstructor.prototype.init = function (option = {}) {
   this.vm = this.$mount()
-  console.log(typeof option)
   if (typeof option !== 'object') {
     this.text = option
   } else {

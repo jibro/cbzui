@@ -19,8 +19,7 @@ export default {
   props: {
     value: {
       type: [String, Object, Array],
-      default: '',
-      required: true
+      default: ''
     },
     placeholder: {
       type: String,

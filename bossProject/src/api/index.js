@@ -35,6 +35,13 @@ export default {
   delService(params) {
     return axios.post('/cloud/service/delService', qs.stringify(params));
   },
+  // 模板服务
+  addTemplateService(params) {
+    return axios.post('/cloud/service/addTemplateService', qs.stringify(params));
+  },
+  delTemplateService(params) {
+    return axios.post('/cloud/service/delTemplateService', qs.stringify(params));
+  },
   // 容器查询
   searchContainer(params) {
     return axios.post('/cloud/container/search', qs.stringify(params));
@@ -52,13 +59,19 @@ export default {
   searchEnvironment(params) {
     return axios.post('/cloud/environment/search', qs.stringify(params));
   },
-  searchEnvironment(params) {
-    return axios.post('/cloud/environment/search', qs.stringify(params));
+  createEnvironment(params) {
+    return axios.post('/cloud/environment/create', qs.stringify(params));
   },
-  searchEnvironment(params) {
-    return axios.post('/cloud/environment/search', qs.stringify(params));
+  releaseEnvironment(params) {
+    return axios.post('/cloud/environment/release', qs.stringify(params));
   },
-  searchEnvironment(params) {
-    return axios.post('/cloud/environment/search', qs.stringify(params));
+  // exportEnvironment(branchName) {
+  //   return axios.get(`/cloud/environment/export/${branchName}`);
+  // },
+  logEnvironment(params) {
+    return axios.post('/cloud/environment/log', qs.stringify(params));
   },
+  deleteEnvironment(params) {
+    return axios.post('/cloud/environment/delete', qs.stringify(params));
+  }
 };

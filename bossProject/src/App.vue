@@ -17,25 +17,31 @@
             </router-link>
           </li>
           <li>
-            <router-link to="/list1">
+            <router-link to="/componentList">
               <i class="iconfont icon-PC"></i>
               <span>中间件查询</span>
             </router-link>
           </li>
           <li>
-            <router-link to="/list2">
+            <router-link to="/serviceList">
               <i class="iconfont icon-PC"></i>
               <span>服务查询</span>
             </router-link>
           </li>
           <li>
-            <router-link to="/list3">
+            <router-link to="/templateServiceList">
+              <i class="iconfont icon-PC"></i>
+              <span>模板服务查询</span>
+            </router-link>
+          </li>
+          <li>
+            <router-link to="/containerList">
               <i class="iconfont icon-PC"></i>
               <span>容器查询</span>
             </router-link>
           </li>
           <li>
-            <router-link to="/list4">
+            <router-link to="/environmentList">
               <i class="iconfont icon-PC"></i>
               <span>环境查询</span>
             </router-link>

@@ -33,7 +33,7 @@
       </div>
       <no-data :show="tableData.length === 0"></no-data>
     </div>
-    <czb-modal title="新增" :visible="addVisible" @closeModel="addVisible=false" @onsubmit="addSubmit">
+    <czb-modal title="新增配置" :visible="addVisible" @closeModel="addVisible=false" @onsubmit="addSubmit">
       <div class="page-form">
         <div class="page-form-item">
           <label class="page-form-label"><span>配置名称:</span></label>
@@ -53,7 +53,7 @@
         </div>
       </div>
     </czb-modal>
-    <czb-modal title="修改" :visible="updateVisible" @closeModel="updateVisible=false" @onsubmit="updateSubmit">
+    <czb-modal title="修改配置" :visible="updateVisible" @closeModel="updateVisible=false" @onsubmit="updateSubmit">
       <div class="page-form">
         <div class="page-form-item">
           <label class="page-form-label"><span>配置名称:</span></label>

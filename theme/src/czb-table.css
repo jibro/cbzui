@@ -2,6 +2,7 @@
 @b czb{
   @e table{
     position: relative;
+    width: 100%;
     @e box{
       overflow-x: auto;
       position: relative;
@@ -20,7 +21,7 @@
       display: flex;
       overflow: hidden;
       @e item{
-        min-width: 46px;
+        min-width: 58px;
         height: 36px;
         /* float: left; */
         border-right: 1px solid var(--borderColor-main);
@@ -30,10 +31,12 @@
         @mixin cflex middle;
         background-color: #f7f7f7;
         font-weight: bold;
+        &:nth-last-child(2){
+          width: auto!important;
+          flex: 1;
+        }
         &:last-child{
           border-right: 0;
-          width: auto;
-          flex: 1;
         }
         /* @when flexnone{
           flex: none;
@@ -58,7 +61,7 @@
       }
       @e col{
         /* float: left; */
-        min-width: 46px;
+        min-width: 58px;
         min-height: 34px;
         border-right: 1px solid var(--borderColor-main);
         box-sizing: border-box;
@@ -67,14 +70,16 @@
         word-break: break-all;
         @mixin cflex middle;
         line-height: 1.2;
-        &:last-child{
-          border-right: 0;
-          width: auto;
+        &:nth-last-child(2){
+          width: auto!important;
           flex: 1;
         }
-        @when flexnone{
-          flex: none;
+        &:last-child{
+          border-right: 0;
         }
+        /* @when flexnone{
+          flex: none;
+        } */
         a{
           color:var(--color-main);
           margin-right: 8px;

@@ -194,11 +194,26 @@ body{
         &>span{
           height: 32px;
           text-align: right;
-          font-size: @baseSize;
+          font-size: @mainSize;
           display: flex;
           align-items: center;
           justify-content: flex-end;
+          color: #999;
         }
+      }
+      .page-form-text{
+        height: 32px;
+        display: flex;
+        align-items: center;
+        flex: 1;
+        overflow: hidden;
+        line-height: 1.1;
+      }
+      .page-form-multitext{
+        max-height: 100px;
+        flex: 1;
+        overflow-y: auto;
+        padding: 6px 0;
       }
     }
   }

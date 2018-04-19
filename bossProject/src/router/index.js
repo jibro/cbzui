@@ -1,10 +1,11 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import list from '@/pages/list';
-import list1 from '@/pages/list.1';
-import list2 from '@/pages/list.2';
-import list3 from '@/pages/list.3';
-import list4 from '@/pages/list.4';
+import configList from '@/pages/configList';
+import componentList from '@/pages/componentList';
+import serviceList from '@/pages/serviceList';
+import templateServiceList from '@/pages/templateServiceList';
+import containerList from '@/pages/containerList';
+import environmentList from '@/pages/environmentList';
 
 Vue.use(Router);
 
@@ -12,40 +13,48 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'list',
-      component: list,
+      name: 'configList',
+      component: configList,
       meta: {
         title: '配置查询'
       }
     },
     {
-      path: '/list1',
-      name: 'list1',
-      component: list1,
+      path: '/componentList',
+      name: 'componentList',
+      component: componentList,
       meta: {
         title: '中间件查询'
       }
     },
     {
-      path: '/list2',
-      name: 'list2',
-      component: list2,
+      path: '/serviceList',
+      name: 'serviceList',
+      component: serviceList,
       meta: {
         title: '服务查询'
       }
     },
     {
-      path: '/list3',
-      name: 'list3',
-      component: list3,
+      path: '/templateServiceList',
+      name: 'templateServiceList',
+      component: templateServiceList,
+      meta: {
+        title: '模板服务查询'
+      }
+    },
+    {
+      path: '/containerList',
+      name: 'containerList',
+      component: containerList,
       meta: {
         title: '容器查询'
       }
     },
     {
-      path: '/list4',
-      name: 'list4',
-      component: list4,
+      path: '/environmentList',
+      name: 'environmentList',
+      component: environmentList,
       meta: {
         title: '环境查询'
       }

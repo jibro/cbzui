@@ -1,77 +1,80 @@
 <template>
-    <ul class="czb__pagination__ul">
-        <li :aria-disabled="childCurrent<2" @click="leftClick" class="czb__pagination__prev"><</li>
-        <li @click="onChange(index)" :key="index" v-for="index in indexNumber" class="czb__pagination__li" :class="{'is-checked': childCurrent==index}">
-            {{index}}
-        </li>
-        <li @click="rightClick" class="czb__pagination__prev">></li>
-    </ul>
+  <div class="czb__pagination">
+    <div class="czb__pagination__arr" v-if="pagination.pageArr">
+      <czb-select :datas="pagination.pageArr" placeholder="请选择" :autowidth="true" @chooseItem="chooseItem"></czb-select>
+    </div>
+    <div class="czb__pagination__wrap">
+      <div class="czb__pagination__previous" :class="{'nopage': pagination.page == 1}" @click="pagination.page != 1 && goPage(pagination.page - 1)">
+        <i class="czbfont iczb-xiangzuojiantou"></i>
+      </div>
+      <div class="czb__pagination__item" :class="{'active': pagination.page == 1}" @click="goPage(1)">1</div>
+      <div class="czb__pagination__more" v-if="showPrevMore">...</div>
+      <div class="czb__pagination__item" v-for="(num, i) in pages" :key="i" :class="{'active': pagination.page == num}" @click="goPage(num)">{{num}}</div>
+      <div class="czb__pagination__more" v-if="showNextMore">...</div>
+      <div class="czb__pagination__item" v-if="pageNum != 1" :class="{'active': pagination.page == pageNum}" @click="goPage(pageNum)">{{pageNum}}</div>
+      <div class="czb__pagination__next" :class="{'nopage': pagination.page == pageNum}" 
+      @click="pagination.page != pageNum && goPage(pagination.page + 1)">
+        <i class="czbfont iczb-xiangyoujiantou"></i>
+      </div>
+    </div>
+  </div>
 </template>
 <script>
-    export default {
-        name: 'czb-pagination',
-        data() {
-            return {
-                childCurrent:this.current
+  export default {
+    name: 'czb-pagination',
+    data () {
+      return {
+        showPrevMore: false,
+        showNextMore: false,
+        pageNum: 0
+      }
+    },
+    props: {
+      pagination: {
+        type: Object
+      }
+    },
+    computed: {
+      pages () {
+        if (this.pagination) {
+          this.pageNum = Math.ceil(this.pagination.total / this.pagination.pageSize)
+          const array = []
+          const pageCount = this.pageNum
+          const current = this.pagination.page
+          const _offset = 2
+          const offset = {
+            start: current - _offset,
+            end: current + _offset
+          }
+          if (offset.start < 1) {
+            offset.end = offset.end + (1 - offset.start)
+            offset.start = 1
+          }
+          if (offset.end > pageCount) {
+            offset.start = offset.start - (offset.end - pageCount)
+            if (offset.start < 1) offset.start = 1
+            offset.end = pageCount
+          }
+          this.showPrevMore = (offset.start > 1)
+          this.showNextMore = (offset.end < pageCount)
+          if (pageCount !== 1) {
+            for (let i = offset.start + 1; i < offset.end; i++) {
+              array.push(i)
             }
-        },
-        watch:{
-            current(val){
-                this.childCurrent = val
-            },
-            childCurrent(val){
-                this.$emit("onChange",val);
-            }
-        },
-        computed: {
-            indexNumber: function () {
-                let index = this.total/this.pageSize
-                index = index>0?index:1
-                let list = []
-                for (let i = 1;i<=index;i++){
-                    list.push(i)
-                }
-                return this.total?list:[]
-            }
-        },
-        props: {
-            current: {
-                type: [Number],
-                default: 0,
-                validator: function (value) {
-                    return value >= 0
-                }
-            },
-            pageSize: {
-                type: [Number],
-                default: 10,
-                validator: function (value) {
-                    return value >= 0
-                }
-            },
-            total: {
-                type: [Number],
-                default: 0,
-                required: true,
-                validator: function (value) {
-                    return value >= 0
-                }
-            }
-        },
-        methods: {
-            onChange(index){
-                this.childCurrent = index
-            },
-            leftClick(){
-                if(this.childCurrent>1){
-                    this.childCurrent = this.childCurrent-1
-                }
-            },
-            rightClick(){
-                if(this.childCurrent<this.indexNumber.length){
-                    this.childCurrent = this.childCurrent+1
-                }
-            }
+          }
+          return array
         }
+      }
+    },
+    methods: {
+      goPage (num) {
+        this.checkedAll = false
+        this.$emit('goPage', num)
+      },
+      chooseItem (item) {
+        this.pagination.pageSize = item.id
+        this.$emit('goPage', 1)
+      }
     }
+  }
 </script>

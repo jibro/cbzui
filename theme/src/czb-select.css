@@ -9,6 +9,7 @@
     vertical-align: top;
     @when autowidth{
       width: 100%;
+      flex: 1;
     }
     @e value{
       line-height: 1;

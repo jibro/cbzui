@@ -8,6 +8,7 @@
     vertical-align: top;
     @when autowidth{
       width: 100%;
+      flex: 1;
     }
     @e value{
       line-height: 1;
@@ -25,6 +26,7 @@
       width: var(--input-width);
       @when autowidth{
         width: 100%;
+        flex: 1;
       }
       @mixin cflex middle;
       @m placeholder{

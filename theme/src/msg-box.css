@@ -10,8 +10,9 @@
     top: 20%;
     left: 50%;
     transform: translate(-50%, 0);
-    z-index: 901;
+    z-index: 1901;
     box-sizing:border-box;
+    box-shadow: -1px 0px 4px rgba(0,0,0,.2);
     .iczb-close{
       position: absolute;
       top: 12px;
@@ -43,7 +44,7 @@
         color: #fff;
         width: 80px;
         background-color: var(--color-main);
-        border-radius: 6px;
+        border-radius: var(--normal-radius);
         margin: 10px 10px 10px 0;
         cursor: pointer;
       }

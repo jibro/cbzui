@@ -32,6 +32,7 @@
     vertical-align: top;
     @when autowidth{
       width: 100%;
+      flex: 1;
     }
     @e default{
       @mixin input;

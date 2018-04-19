@@ -13,6 +13,7 @@ module.exports = {
     proxyTable: {
       '/api': {
         target: 'http://172.16.12.66:18080/',
+        // target: 'http://cloud.mychebao.com/',
         changeOrigin: true,
         secure: false,
         pathRewrite: {

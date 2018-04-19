@@ -59,6 +59,7 @@
     }
     @when autowidth{
       width: 100%;
+      flex: 1;
     }
     @when disabled{
       @mixin disabled;

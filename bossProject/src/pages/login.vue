@@ -43,7 +43,7 @@ export default {
   },
   methods: {
     commit() {
-      API.loginCommit({ username: this.username, password: this.password }).then((res) => {
+      API.login({ username: this.username, password: this.password }).then((res) => {
         if (res.data.token) {
           window.localStorage.token = res.data.token;
           window.localStorage.brantch = res.data.brantch

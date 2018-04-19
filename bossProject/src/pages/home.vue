@@ -15,7 +15,7 @@
         <div class="page-top-title">后台管理系统</div>
         <div class="page-top-info">
           <div class="page-top-welcome">欢迎您<span>管理员</span></div>
-          <div class="page-top-cancel cw tc">注销</div>
+          <div @click="cancellation" class="page-top-cancel cw tc">注销</div>
         </div>
       </div>
       <div class="page-content">
@@ -68,8 +68,8 @@
           }
           this.menu = data
           let hash = window.location.hash.split('/')
-          let isBl=false
-          if(hash.length>1){
+          if(hash.length>1&&hash[1]){
+            let isBl=false
             for(let i=0;i<data.length;i++){
               if (data[i].path) {
                 if (window.location.hash.indexOf(data[i].path)>-1) {
@@ -88,13 +88,13 @@
                 }
               }
             }
-          }
-          if(!isBl){
-            this.$router.push('noPage')
+            if(!isBl){
+              this.$router.push('noPage')
+            }
           }
         }else{
           this.menu = []
-          // this.$router.push('noPage')
+          this.$router.push('noPage')
         }
         this.$store.dispatch('initMenuData',this.menu)
       }).catch((e) => {
@@ -109,6 +109,10 @@
       onSelectedKey(item) {
         this.selectedKey = item.key
         this.$router.push(item.path)
+      },
+      cancellation(){
+        window.localStorage.token=''
+        this.$router.push('login')
       }
     }
   };

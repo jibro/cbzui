@@ -9,8 +9,7 @@
 
 <style scoped type="text/stylus">
   .error-page {
-    width: 600px;
-    margin: 20px 0;
+    margin: 120px 0;
     text-align: center!important
   }
   .text-yellow{

@@ -44,10 +44,10 @@ export default {
   methods: {
     commit() {
       API.loginCommit({ username: this.username, password: this.password }).then((res) => {
-        if (res.status === 200&&res.data) {
-          window.localStorage.token = res.data;
+        if (res.data.token) {
+          window.localStorage.token = res.data.token;
+          window.localStorage.brantch = res.data.brantch
           let url = this.getUrlPage('url')
-          console.log(url)
           if (url) {
             window.location.replace(url)
           } else {
@@ -60,12 +60,6 @@ export default {
             type: 'warn'
           })
         }
-      }).catch((e) => {
-        this.$toast({
-          text: `${e}`,
-          timing: 1500,
-          type: 'warn'
-        })
       })
     },
     getUrlPage (name) {

@@ -15,16 +15,20 @@ axios.interceptors.request.use(function (config) {
 })
 
 axios.interceptors.response.use(function (response) {
-  return response
+  return response.data
 }, function (error) {
+  const {data} = error.response
   var status = error.response && error.response.status
-  if (status != 200) {
-    if (status == 403) {
-      window.localStorage.token = ''
-      window.msgbox( '用户会话过期', function () {
-        window.logout()
-      })
-    }
+  if (status == 401) {
+    window.localStorage.token = ''
+    window.localStorage.brantch = ''
+    window.msgbox('用户会话过期', function () {
+      window.logout()
+    })
+  }else{
+    let meg = data.error?data.error:data
+    window.msgbox(`${meg}`, function () {
+    })
   }
   return Promise.reject(error)
 })
@@ -37,6 +41,6 @@ export default {
     return axios.post('/cloud/login/auth', params);
   },
   queryMenuByName(name) {
-    return axios.get('/cloud/user/getPermissions?name='+name);
+    return axios.get('/cloud/user/getPermissions?name=' + name);
   }
 };

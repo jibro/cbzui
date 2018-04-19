@@ -18,37 +18,41 @@
         if (to.name === 'login') {
           next()
         } else {
-          if (to.name === 'home' || to.name === 'noPage') {
-            next()
-          } else {
-            const toName = to.name
-            console.log(toName)
-            if (!toName) {
-              next({name: 'noPage'})
+          if(window.localStorage.token){
+            if (to.name === 'home' || to.name === 'noPage') {
+              next()
             } else {
-              let isBl=false
-              for (let y = 0; y < accessMenu.length; y++) {
-                if (accessMenu[y].path) {
-                  if (accessMenu[y].key == toName) {
-                    isBl=true
-                    break;
-                  }
-                } else if (accessMenu[y].items && accessMenu[y].items.length > 0) {
-                  let list = accessMenu[y].items
-                  for (let i = 0; i < list.length; i++) {
-                    if (list[i].key==toName) {
+              const toName = to.name
+              console.log(toName)
+              if (!toName) {
+                next({name: 'noPage'})
+              } else {
+                let isBl=false
+                for (let y = 0; y < accessMenu.length; y++) {
+                  if (accessMenu[y].path) {
+                    if (accessMenu[y].key == toName) {
                       isBl=true
                       break;
                     }
+                  } else if (accessMenu[y].items && accessMenu[y].items.length > 0) {
+                    let list = accessMenu[y].items
+                    for (let i = 0; i < list.length; i++) {
+                      if (list[i].key==toName) {
+                        isBl=true
+                        break;
+                      }
+                    }
                   }
                 }
-              }
-              if (isBl) {
-                next()
-              } else {
-                next({name: 'noPage'})
+                if (isBl) {
+                  next()
+                } else {
+                  next({name: 'noPage'})
+                }
               }
             }
+          }else{
+            next({name: 'login'})
           }
         }
       })

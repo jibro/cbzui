@@ -3,7 +3,7 @@ import qs from 'qs';
 
 axios.defaults.timeout = 10000;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
-axios.defaults.baseURL = '/api/';
+axios.defaults.baseURL = '/cloudapi/';
 
 axios.interceptors.request.use(function (config) {
   let token = localStorage.token
@@ -23,6 +23,7 @@ axios.interceptors.response.use(function (response) {
   if (status == 401) {
     window.localStorage.token = ''
     window.localStorage.brantch = ''
+    window.localStorage.userName = ''
     window.msgbox('用户会话过期', function () {
       window.logout()
     })
@@ -85,8 +86,8 @@ export default {
   restartContainer(params) {
     return axios.post('/cloud/container/restartContainer', qs.stringify(params));
   },
-  replaceWar(params) {
-    return axios.post('/cloud/container/replaceWar', params, {headers:{'Content-Type':'multipart/form-data'}});
+  replaceWar(params, config) {
+    return axios.post('/cloud/container/replaceWar', params, config);
   },
   // 环境查询
   searchEnvironment(params) {
@@ -106,5 +107,57 @@ export default {
   },
   deleteEnvironment(params) {
     return axios.post('/cloud/environment/delete', qs.stringify(params));
-  }
+  },
+  // 用户角色权限
+  queryAllUser() {
+    return axios.get('/cloud/user/queryAllUser');
+  },
+  queryAllRole() {
+    return axios.get('/cloud/role/queryAllRole');
+  },
+  queryAllPermisson() {
+    return axios.get('/cloud/permisson/queryAllPermisson');
+  },
+  queryRolePermissionsRole(roleName) {
+    return axios.get(`/cloud/role/queryRolePermissionsRole?roleName=${roleName}`);
+  },
+  getRoles(name) {
+    return axios.get(`/cloud/user/getRoles?name=${name}`);
+  },
+  addRolePermissionsRole(params) {
+    return axios.put('/cloud/role/addRolePermissionsRole', params);
+  },
+  updateRolePermissionsRole(params) {
+    return axios.put('/cloud/role/updateRolePermissionsRole', params);
+  },
+  addPermisson(params) {
+    return axios.put('/cloud/permisson/addPermisson', params);
+  },
+  addRole(params) {
+    return axios.put('/cloud/role/addRole', params);
+  },
+  addUser(params) {
+    return axios.put('/cloud/user/addUser', params);
+  },
+  updateRole(params) {
+    return axios.post('/cloud/role/updateRole', params);
+  },
+  updateUserRoles(username, params) {
+    return axios.post(`/cloud/user/updateUserRoles/${username}`, params);
+  },
+  updateUser(params) {
+    return axios.post('/cloud/user/updateUser', params);
+  },
+  deleteUser(params) {
+    return axios.delete('/cloud/user/deleteUser', {data: params});
+  },
+  deleteRole(params) {
+    return axios.delete('/cloud/role/deleteRole', {data: params});
+  },
+  updatePermisson(params) {
+    return axios.post('/cloud/permisson/updatePermisson', params);
+  },
+  deletePermisson(params) {
+    return axios.delete('/cloud/permisson/deletePermisson', {data: params});
+  },
 };

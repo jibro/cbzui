@@ -77,9 +77,13 @@
         &:last-child{
           border-right: 0;
         }
-        /* @when flexnone{
-          flex: none;
-        } */
+        @when ellipsis{
+          display: block;
+          white-space:nowrap;
+          overflow:hidden;
+          text-overflow:ellipsis;
+          padding: 9px 15px;
+        }
         a{
           color:var(--color-main);
           margin-right: 8px;

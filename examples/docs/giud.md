@@ -40,7 +40,7 @@
                 }
             }
             &.color00a7ea{
-                background-color: #00a7ea;
+                background-color: #0097e0;
             }
             &.color333{
                 background-color: #333;
@@ -48,8 +48,8 @@
             &.color999{
                 background-color: #999;
             }
-            &.colorddd{
-                background-color: #ddd;
+            &.colore7e7e7{
+                background-color: #e7e7e7;
             }
             &.colorfd4f5c{
                 background-color: #fd4f5c;
@@ -67,7 +67,7 @@
     <div class="box">
         <div class="box-content color00a7ea">
             <div>
-                <span>#00a7ea</span>
+                <span>#0097e0</span>
                 <span>rgb(0,151,224)</span>
             </div>
         </div>
@@ -92,9 +92,9 @@
         <div class="box-title">提示性文本色</div>
     </div>
     <div class="box">
-        <div class="box-content colorddd">
+        <div class="box-content colore7e7e7">
             <div>
-                <span>#dddddd</span>
+                <span>#e7e7e7</span>
                 <span>rgb(221,221,221)</span>
             </div>
         </div>

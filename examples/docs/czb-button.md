@@ -207,7 +207,7 @@ export default {
 |default    |	按钮名称  |	string   |	—           |	  —     |
 |left    |	按钮左图标  |	element   |	—           |	  —     |
 |right    |	按钮右图标  |	element   |	—           |	  —     |
-### Attributes
+### props
 | 参数      | 说明                                 | 类型      | 可选值       | 默认值   |
 |---------- |------------------------------------ |---------- |------------- |-------- |
 |type	  | 按钮类型    |	string   | default/normal/reverse/danger/text   |default|

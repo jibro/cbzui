@@ -1,5 +1,17 @@
 [
   {
+    "name": "首页",
+    "key": "welcome",
+    "code": 1,
+    "path": "/welcome"
+  },
+  {
+    "name": "用户角色权限",
+    "key": "userRoleAuth",
+    "code": 1,
+    "path": "/userRoleAuth"
+  },
+  {
     "name": "配置查询",
     "key": "configList",
     "code": 1,

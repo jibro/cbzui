@@ -133,7 +133,6 @@
         zoom: 1;
         line-height: 0;
         color: hsla(0,0%,100%,.65);
-        background: #000c17;
         border-right: 0;
     }
     .czb_menu_subMenu{
@@ -212,7 +211,7 @@
 
     .czb_menu_item_active{
         color: #fff!important;
-        background-color: #1890FF!important;
+        background-color: #0097e0!important;
     }
 
     .czb_menu_item_root{

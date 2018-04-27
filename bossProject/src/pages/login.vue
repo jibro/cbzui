@@ -1,7 +1,7 @@
 <template>
   <div class="login">
     <div class="logo">
-      <img src="../assets/logo.png">
+      <img src="../assets/img/logo.png">
     </div>
     <div class="content">
       <div class="from">
@@ -24,7 +24,7 @@
           <p style="text-align: center;color: white">输入用户名密码登录车置宝开放平台</p>
         </div>
       </div>
-      <div class="copyright">2012-2016 © 车置宝&nbsp;www.mychebao.com
+      <div class="copyright">2012-2018 © 车置宝&nbsp;www.chezhibao.com
       </div>
     </div>
   </div>
@@ -44,14 +44,15 @@ export default {
   methods: {
     commit() {
       API.login({ username: this.username, password: this.password }).then((res) => {
-        if (res.data.token) {
+        if (res.data && res.data.token) {
           window.localStorage.token = res.data.token;
           window.localStorage.brantch = res.data.brantch
+          window.localStorage.userName = res.data.userName
           let url = this.getUrlPage('url')
           if (url) {
             window.location.replace(url)
           } else {
-            this.$router.push('/');
+            this.$router.push('/welcome');
           }
         }else{
           this.$toast({

@@ -2,21 +2,19 @@
 @b czb{
   @e pagination{
     line-height: 1;
-    text-align: right;
     @e arr{
       width: 70px;
       text-align: left;
       display: inline-block;
       vertical-align: top;
-      margin-top: 10px;
     }
     @e wrap{
       /* display: flex; */
       border: 1px solid var(--borderColor-main);
       overflow: hidden;
       display: inline-block;
-      margin-top: 10px;
       height: 32px;
+      border-radius: var(--normal-radius);
       &>div{
         border-right: 1px solid var(--borderColor-main);
         &:last-child{
@@ -36,9 +34,9 @@
       }
     }
     @e item{
-      line-height: 30px;
+      line-height: 32px;
       padding: 0 14px;
-      height: 30px;
+      height: 32px;
       cursor: pointer;
       float: left;
       &.active{
@@ -48,9 +46,9 @@
     }
     @e next{
       float: left;
-      line-height: 30px;
+      line-height: 32px;
       padding: 0 8px;
-      height: 30px;
+      height: 32px;
       cursor: pointer;
       &.nopage{
         cursor: not-allowed;
@@ -61,8 +59,8 @@
       width: 38px;
       float: left;
       text-align: center;
-      height: 30px;
-      line-height: 30px;
+      height: 32px;
+      line-height: 32px;
     }
   }
 }

@@ -26,12 +26,12 @@
           <i class="czbfont iczb-add" slot="left"></i>创建环境
         </czb-button>
       </div>
-      <!-- hasCheck false -->
-      <czb-table v-if="tableData.length > 0" :columns="columns" :tableData="tableData" v-model="choosedData"  @handleClick="handleClick" :handle="handle"></czb-table>
+      <!-- hascheck false -->
+      <czb-table v-if="tableData.length > 0" :columns="columns" :tabledata="tableData" v-model="choosedData"  @handleClick="handleClick" :handle="handle"></czb-table>
       <div class="pagination" v-if="tableData.length > 0">
         <czb-pagination :pagination="pagination" @goPage="goPage"></czb-pagination>
       </div>
-      <no-data :show="tableData.length === 0"></no-data>
+      <no-data :show="noDatas"></no-data>
     </div>
     <czb-modal title="创建环境" :visible="addVisible" @closeModel="addVisible=false" @onsubmit="addSubmit">
       <div class="page-form">
@@ -77,19 +77,24 @@
         </div>
       </div>
     </czb-modal>
+    <loading v-if="!loaded"></loading>
   </div>
 </template>
 <script>
 import API from '@/api';
 import {formatDate} from '@/utils';
 import noData from '@/components/noData';
+import loading from '@/components/loading';
 export default {
   name: 'list-2',
   components: {
-    noData
+    noData,
+    loading
   },
   data() {
     return {
+      noDatas: false,
+      loaded: false,
       choosedData: [],
       selectedVal: {},
       statusData: [
@@ -210,7 +215,7 @@ export default {
         })
       }
       if (obj.btnIndex === 1) {
-        window.open(`/api/cloud/environment/export/${obj.row.branchName}`);
+        window.open(`/cloudapi/cloud/environment/export/${obj.row.branchName}`);
       }
       if (obj.btnIndex === 2) {
         API.logEnvironment({
@@ -247,6 +252,8 @@ export default {
       this.getDataList();
     },
     getDataList() {
+      this.loaded = false;
+      this.noDatas = false;
       API.searchEnvironment({
         page: this.pagination.page,
         pageSize: this.pagination.pageSize,
@@ -254,6 +261,7 @@ export default {
         domain: this.searchObj.domain,
         status: this.searchObj.status.id || ''
       }).then((res) => {
+        this.loaded = true;
         console.log(res.data);
         this.tableData = res.items;
         this.pagination.page = res.page;
@@ -261,7 +269,12 @@ export default {
         if (res.page > 1 && this.tableData.length === 0) {
           this.pagination.page = res.page - 1;
           this.getDataList();
+        } else if (this.tableData.length === 0) {
+          this.noDatas = true;
         }
+      }).catch((e) => {
+        this.loaded = true;
+        this.noDatas = true;
       });
     },
     toSearch() {
@@ -274,6 +287,9 @@ export default {
         domain: '',
         status: ''
       });
+      this.statusData.forEach(obj => {
+        obj.isChoosed = false
+      })
       this.toSearch();
     },
     addItem() {

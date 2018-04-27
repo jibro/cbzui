@@ -1,6 +1,7 @@
 <template>
 	<div class="czb__input" :class="{'is-autowidth': autowidth}">
-    <input class="czb__input__default" v-if="type !== 'textarea'" :placeholder="placeholder" :readonly="readonly" :disabled="disabled" :autofocus="autofocus" :name="name" :required="required" type="text" :value="value" @input="updateVal">
+    <input class="czb__input__default" v-if="type !== 'textarea' && type !== 'password'" :placeholder="placeholder" :readonly="readonly" :disabled="disabled" :autofocus="autofocus" :name="name" :required="required" type="text" :value="value" @input="updateVal">
+    <input class="czb__input__default" v-if="type === 'password'" :placeholder="placeholder" :autofocus="autofocus" :name="name" :required="required" type="password" :value="value" @input="updateVal">
     <textarea class="czb__input__textarea" :class="{'is-hascols': cols}" :placeholder="placeholder" :readonly="readonly" :disabled="disabled" :autofocus="autofocus" :name="name" :required="required" :cols="cols"  :rows="rows" v-if="type === 'textarea'" :value="value" @input="updateVal"></textarea>
     <i class="czbfont iczb-clear czb__input__icon" @click="clearInput" v-show="type !== 'textarea' && clear && value"></i>
   </div>

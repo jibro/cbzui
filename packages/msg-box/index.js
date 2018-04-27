@@ -9,6 +9,7 @@ let czbMsgBox = (option = {}) => {
 MsgBoxConstructor.prototype.init = function (option = {}) {
   this.vm = this.$mount()
   this.shadow = new ShadowConstructor().$mount()
+  if (option === null) option = {}
   if (typeof option !== 'object') {
     this.message = option
   } else {

@@ -24,7 +24,7 @@
         display: block;
         position: relative;
         padding: 8px 24px;
-        color: #c79739;
+        color: #0097e0;
         font-weight: normal;
         line-height: 1.5;
         cursor: pointer;

@@ -17,12 +17,12 @@ export default {
 # czb-datepacker 日期控件
 ----
 ### 基本用法
-<div class="myinput"><czb-datepacker v-model="date" placeholder="请选择日期"></czb-datepacker></div>
-<div class="myinput"><czb-datepacker v-model="date" placeholder="请选择日期 允许clear" :clear="true"></czb-datepacker></div>
-<div class="myinput"><czb-datepacker v-model="date" placeholder="请选择日期 disabled" :clear="true" :disabled="true"></czb-datepacker></div>
-<div class="myinput"><czb-datepacker v-model="date" placeholder="请选择日期 min max" :clear="true" min="2017-02-10" max="2018-12-29"></czb-datepacker></div>
-<div class="myinput"><czb-datepacker v-model="date" placeholder="请选择日期 autowidth" :autowidth="true"></czb-datepacker></div>
-<div class="myinput"><czb-datepacker v-model="date2" placeholder="请选择日期范围" :clear="true" :autowidth="true" :range="true"></czb-datepacker></div>
+<div class="myinput"><czb-datepacker v-model="date" placeholder="日期"></czb-datepacker></div>
+<div class="myinput"><czb-datepacker v-model="date" placeholder="日期 允许clear" :clear="true"></czb-datepacker></div>
+<div class="myinput"><czb-datepacker v-model="date" placeholder="日期 disabled" :clear="true" :disabled="true"></czb-datepacker></div>
+<div class="myinput"><czb-datepacker v-model="date" placeholder="日期 min max" :clear="true" min="2017-02-10" max="2018-12-29"></czb-datepacker></div>
+<div class="myinput"><czb-datepacker v-model="date" placeholder="日期 autowidth" :autowidth="true"></czb-datepacker></div>
+<div class="myinput"><czb-datepacker v-model="date2" placeholder="日期范围" :clear="true" :autowidth="true" :range="true"></czb-datepacker></div>
 
 ## {{date}}
 ## {{date2}}
@@ -33,12 +33,12 @@ export default {
 ```html
 <template>
   <div>
-    <div class="myinput"><czb-datepacker v-model="date" placeholder="请选择日期"></czb-datepacker></div>
-    <div class="myinput"><czb-datepacker v-model="date" placeholder="请选择日期 允许clear" :clear="true"></czb-datepacker></div>
-    <div class="myinput"><czb-datepacker v-model="date" placeholder="请选择日期 disabled" :clear="true" :disabled="true"></czb-datepacker></div>
-    <div class="myinput"><czb-datepacker v-model="date" placeholder="请选择日期 min max" :clear="true" min="2017-02-10" max="2018-12-29"></czb-datepacker></div>
-    <div class="myinput"><czb-datepacker v-model="date" placeholder="请选择日期 autowidth" :autowidth="true"></czb-datepacker></div>
-    <div class="myinput"><czb-datepacker v-model="date2" placeholder="请选择日期范围" :clear="true" :autowidth="true" :range="true"></czb-datepacker></div>
+    <div class="myinput"><czb-datepacker v-model="date" placeholder="日期"></czb-datepacker></div>
+    <div class="myinput"><czb-datepacker v-model="date" placeholder="日期 允许clear" :clear="true"></czb-datepacker></div>
+    <div class="myinput"><czb-datepacker v-model="date" placeholder="日期 disabled" :clear="true" :disabled="true"></czb-datepacker></div>
+    <div class="myinput"><czb-datepacker v-model="date" placeholder="日期 min max" :clear="true" min="2017-02-10" max="2018-12-29"></czb-datepacker></div>
+    <div class="myinput"><czb-datepacker v-model="date" placeholder="日期 autowidth" :autowidth="true"></czb-datepacker></div>
+    <div class="myinput"><czb-datepacker v-model="date2" placeholder="日期范围" :clear="true" :autowidth="true" :range="true"></czb-datepacker></div>
   </div>
 </template>
 <script>
@@ -58,7 +58,7 @@ export default {
 </script>
 ```
 :::
-### Attributes
+### props
 | 参数      | 说明                                 | 类型      | 可选值       | 默认值   |
 |---------- |------------------------------------ |---------- |------------- |-------- |
 |value	  | 绑定及输出值    |	string/object/array   | —   ||

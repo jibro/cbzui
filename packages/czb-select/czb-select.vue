@@ -9,7 +9,7 @@
       <i class="czbfont iczb-clear czb__select__value--icon"  v-show="clearIconShow" @click.stop.prevent="clearSelect"></i>
     </div>
     <ul class="czb__select__list" v-show="isopen" ref="selectlistdom">
-      <li class="czb__select__item" :class="{'is-choosed': item.isChoosed}" v-for="item in datas" :key="item.id" @click.stop.prevent="itemClick(item)">{{item.name}}</li>
+      <li class="czb__select__item" :class="{'is-choosed': item.isChoosed}" v-for="(item, i) in datas" :key="item.id" @click.stop.prevent="itemClick(item, i)">{{item.name}}</li>
     </ul>
   </div>
 </template>
@@ -119,14 +119,14 @@ export default {
       this.isopen = false
       this.clearIconShow = false
     },
-    itemClick (item) {
+    itemClick (item, i) {
       if (!this.multi) {
         this.clearSelect()
-        this.$set(item, 'isChoosed', true)
+        this.$set(this.datas[i], 'isChoosed', true)
         this.$emit('chooseItem', item)
         this.$emit('input', item)
       } else {
-        this.$set(item, 'isChoosed', !item.isChoosed)
+        this.$set(this.datas[i], 'isChoosed', !item.isChoosed)
         this.$emit('chooseItem', this.choosedData)
         this.$emit('input', this.choosedData)
       }

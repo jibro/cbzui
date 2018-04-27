@@ -10,6 +10,10 @@
         <czb-select :datas="statusData" v-model="searchObj.status" placeholder="请选择状态" :clear="true"></czb-select>
       </div>
       <div class="page-search-item">
+        <label class="page-label"><span>容器类型:</span></label>
+        <czb-select :datas="typeData" v-model="searchObj.type" placeholder="请选择类型" :clear="true"></czb-select>
+      </div>
+      <div class="page-search-item">
         <czb-button @btnClick="toSearch"><i class="czbfont iczb-sousuo" slot="left"></i>检索</czb-button>
       </div>
       <div class="page-search-item">
@@ -17,16 +21,16 @@
       </div>
     </div>
     <div class="page-list-table-wrap bgf">
-      <!-- hasCheck false -->
-      <czb-table v-if="tableData.length > 0" :columns="columns" :tableData="tableData" v-model="choosedData"  @handleClick="handleClick" :handle="handle"></czb-table>
+      <!-- hascheck false -->
+      <czb-table v-if="tableData.length > 0" :columns="columns" :tabledata="tableData" v-model="choosedData"  @handleClick="handleClick" :handle="handle"></czb-table>
       <div class="pagination" v-if="tableData.length > 0">
         <czb-pagination :pagination="pagination" @goPage="goPage"></czb-pagination>
       </div>
-      <no-data :show="tableData.length === 0"></no-data>
+      <no-data :show="noDatas"></no-data>
     </div>
     <czb-modal title="查看端口" :visible="sub.visible" @closeModel="sub.visible=false" @onsubmit="sub.visible=false">
       <div class="page-sub">
-        <czb-table v-if="sub.tableData.length > 0" :columns="sub.columns" :tableData="sub.tableData"></czb-table>
+        <czb-table v-if="sub.tableData.length > 0" :columns="sub.columns" :tabledata="sub.tableData"></czb-table>
         <div class="pagination" v-if="sub.tableData.length > 0">
           <czb-pagination :pagination="sub.pagination" @goPage="goPageSub"></czb-pagination>
         </div>
@@ -34,22 +38,30 @@
     </czb-modal>
     <czb-modal title="更新war" :visible="updateVisible" @closeModel="updateVisible=false" @onsubmit="updateWar">
       <form enctype="multipart/form-data" ref="$warfile">
-        <input type="file" name="war">
+        <input type="file" name="war" ref="$war">
+        <div class="progress" :style="{backgroundImage:'linear-gradient(to right,#0097e0 0%,#0097e0 '+progress+',#e8e8e8 '+progress+',#e8e8e8 100%)'}"></div>
       </form>
     </czb-modal>
+    <loading v-if="!loaded"></loading>
   </div>
 </template>
 <script>
 import API from '@/api';
 import {formatDate} from '@/utils';
 import noData from '@/components/noData';
+import loading from '@/components/loading';
 export default {
   name: 'list-2',
   components: {
-    noData
+    noData,
+    loading
   },
   data() {
     return {
+      noDatas: false,
+      loaded: false,
+      clicked: false,
+      progress: '0%',
       choosedData: [],
       selectedVal: {},
       choosedRow: '',
@@ -64,8 +76,9 @@ export default {
       ],
       searchObj: {
         name: '',
-        branchName: 'dragon-1672',
-        status: ''
+        branchName: 'dragon-1767',
+        status: '',
+        type: ''
       },
       pagination: {
         pageSize: 10,
@@ -204,16 +217,26 @@ export default {
       this.getDataList();
     },
     getDataList() {
+      this.loaded = false;
+      this.noDatas = false;
       API.searchContainer({
         page: this.pagination.page,
         pageSize: this.pagination.pageSize,
         name: this.searchObj.name,
         branchName: this.searchObj.branchName,
-        status: this.searchObj.status.id || ''
+        status: this.searchObj.status.id || '',
+        type: this.searchObj.type.id || ''
       }).then((res) => {
+        this.loaded = true;
         console.log(res.data);
         this.tableData = res.items;
         this.pagination.total = res.total;
+        if (this.tableData.length === 0) {
+          this.noDatas = true;
+        }
+      }).catch((e) => {
+        this.loaded = true;
+        this.noDatas = true;
       });
     },
     toSearch() {
@@ -223,8 +246,15 @@ export default {
     resetSearch() {
       Object.assign(this.searchObj, {
         name: '',
-        status: ''
+        status: '',
+        type: ''
       });
+      this.typeData.forEach(obj => {
+        obj.isChoosed = false
+      })
+      this.statusData.forEach(obj => {
+        obj.isChoosed = false
+      })
       this.toSearch();
     },
     goPageSub(num) {
@@ -232,18 +262,36 @@ export default {
       this.getNodePort();
     },
     updateWar() {
-      let formData = new FormData(this.$refs.$warfile);
-      formData.append("name", this.choosedRow.name);
-      formData.append("branchName", this.choosedRow.environment.branchName);
-      API.replaceWar(formData).then(res => {
-        console.log(res)
-        if (res.success) {
-          this.$toast('更新成功！');
-          this.updateVisible = false;
-        } else {
-          this.$msgbox(res.message);
+      if (!this.clicked) {
+        this.clicked = true;
+        let formData = new FormData(this.$refs.$warfile);
+        formData.append("name", this.choosedRow.name);
+        formData.append("branchName", this.choosedRow.environment.branchName);
+        let config = {
+          onUploadProgress: progressEvent => {
+            var complete = (progressEvent.loaded / progressEvent.total * 100 | 0) + '%'
+            this.progress = complete
+          },
+          headers: {'Content-Type':'multipart/form-data'}
         }
-      })
+        API.replaceWar(formData, config).then(res => {
+          console.log(res)
+          this.clicked = false;
+          if (res.success) {
+            this.$toast('更新成功！');
+            this.updateVisible = false;
+            this.progress = '0%';
+            this.$refs.$war.value = '';
+          } else {
+            this.progress = '0%';
+            this.$msgbox(res.message);
+          }
+        }).catch(e => {
+          this.progress = '0%';
+          this.clicked = false;
+          this.$msgbox(e);
+        })
+      }
     }
   },
   created() {

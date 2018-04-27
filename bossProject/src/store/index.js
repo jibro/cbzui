@@ -11,7 +11,8 @@ import * as mutations from './mutations'
 Vue.use(Vuex)
 
 const state = {
-  menuData: []
+  menuData: [],
+  selectedKey: ''
 }
 
 export default new Vuex.Store({

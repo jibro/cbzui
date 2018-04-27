@@ -17,27 +17,32 @@
       </div>
     </div>
     <div class="page-list-table-wrap bgf">
-      <!-- hasCheck false -->
-      <czb-table v-if="tableData.length > 0" :columns="columns" :tableData="tableData" v-model="choosedData"></czb-table>
+      <!-- hascheck false -->
+      <czb-table v-if="tableData.length > 0" :columns="columns" :tabledata="tableData" v-model="choosedData"></czb-table>
       <div class="pagination" v-if="tableData.length > 0">
         <czb-pagination :pagination="pagination" @goPage="goPage"></czb-pagination>
       </div>
-      <no-data :show="tableData.length === 0"></no-data>
+      <no-data :show="noDatas"></no-data>
     </div>
     </czb-modal>
+    <loading v-if="!loaded"></loading>
   </div>
 </template>
 <script>
 import API from '@/api';
 import {formatDate} from '@/utils';
 import noData from '@/components/noData';
+import loading from '@/components/loading';
 export default {
   name: 'list-1',
   components: {
-    noData
+    noData,
+    loading
   },
   data() {
     return {
+      noDatas: false,
+      loaded: false,
       choosedData: [],
       selectedVal: {},
       searchObj: {
@@ -96,15 +101,24 @@ export default {
       this.getDataList();
     },
     getDataList() {
+      this.loaded = false;
+      this.noDatas = false;
       API.searchComponent({
         page: this.pagination.page,
         pageSize: this.pagination.pageSize,
         name: this.searchObj.name,
         status: this.searchObj.status.id || ''
       }).then((res) => {
+        this.loaded = true;
         console.log(res.data);
         this.tableData = res.items;
         this.pagination.total = res.total;
+        if (this.tableData.length === 0) {
+          this.noDatas = true;
+        }
+      }).catch((e) => {
+        this.loaded = true;
+        this.noDatas = true;
       });
     },
     toSearch() {
@@ -116,6 +130,9 @@ export default {
         name: '',
         status: ''
       };
+      this.statusData.forEach(obj => {
+        obj.isChoosed = false
+      })
       this.toSearch();
     }
   },

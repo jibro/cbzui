@@ -1,5 +1,5 @@
 @mainColor: #0097e0;
-@baseColor: #2e3e4e;
+@baseColor: #002240;
 @normalColor: #fff;
 @mainSize: 14px;
 @baseSize: 12px;
@@ -22,6 +22,10 @@ body{
 }
 .page-wrap{
   height: 100%;
+  .page-tabs{
+    width: 300px;
+    margin-bottom: 10px;
+  }
   .page-aside{
     width: 200px;
     background-color: @baseColor;
@@ -55,7 +59,7 @@ body{
           color: #fff;
           position: relative;
           opacity: 0.8;
-          background-color: #203040;
+          background-color: @baseColor;
           cursor: pointer;
           // &::after{
           //   content: '';
@@ -89,6 +93,7 @@ body{
           width: 100%;
           border-radius: 2px;
           padding: 15px;
+          margin-bottom: 10px;
           .page-search-item{
             display: inline-block;
             // line-height: 32px;
@@ -116,7 +121,6 @@ body{
         }
         .page-list-table-wrap{
           flex: 1;
-          margin-top: 10px;
           padding: 15px 15px 62px;
           position: relative;
           .page-operation{
@@ -129,6 +133,23 @@ body{
             position: absolute;
             right: 15px;
             bottom: 15px;
+          }
+        }
+      }
+      .page-multi{
+        min-height: 100%;
+        display: flex;
+        flex-direction: column;
+        .page-multi-wrap{
+          display: flex;
+          flex: 1;
+          .page-multi-role, .page-multi-auth, .page-multi-user{
+            padding: 15px;
+            flex: 1;
+          }
+          .page-multi-btn{
+            display: inline-block;
+            margin-bottom: 8px;
           }
         }
       }
@@ -162,14 +183,14 @@ body{
         .page-top-cancel{
           width: 60px;
           height: 30px;
-          background-color: #bcbcbc;
+          background-color: @mainColor;
           display: inline-block;
           line-height: 30px;
           border-radius: 2px;
           margin: 0 15px;
           cursor: pointer;
           &:hover{
-            opacity: 0.6;
+            opacity: 0.7;
           }
         }
       }
@@ -230,4 +251,37 @@ body{
       }
     }
   }
+  .k8sloading{
+    width: 100px;
+    height: 100px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    .k8sloading-wrap{
+      width: 100px;
+      height: 100px;
+      background: url('../img/loading_circle.png');
+      animation: zhuan linear 1s infinite;
+    }
+    .k8sloading-icon{
+      width: 100px;
+      height: 100px;
+      background: url('../img/loading_logo.png');
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+  form{
+    .progress{
+      width: 100%;
+      height: 5px;
+      margin-top: 10px;
+    }
+  }
+}
+@keyframes zhuan {
+  0%{transform: rotateZ(0deg)}
+  100%{transform: rotateZ(360deg)}
 }

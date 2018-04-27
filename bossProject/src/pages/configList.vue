@@ -26,12 +26,13 @@
           <i class="czbfont iczb-add" slot="left"></i>新增配置
         </czb-button>
       </div>
-      <!-- hasCheck false -->
-      <czb-table v-if="tableData.length > 0" :columns="columns" :tableData="tableData" v-model="choosedData"  @handleClick="handleClick" :handle="handle"></czb-table>
+      <!-- hascheck false -->
+      <!-- ellipsis false -->
+      <czb-table v-if="tableData.length > 0" :columns="columns" :tabledata="tableData" v-model="choosedData"  @handleClick="handleClick" :handle="handle"></czb-table>
       <div class="pagination" v-if="tableData.length > 0">
         <czb-pagination :pagination="pagination" @goPage="goPage"></czb-pagination>
       </div>
-      <no-data :show="tableData.length === 0"></no-data>
+      <no-data :show="noDatas"></no-data>
     </div>
     <czb-modal title="新增配置" :visible="addVisible" @closeModel="addVisible=false" @onsubmit="addSubmit">
       <div class="page-form">
@@ -73,19 +74,24 @@
         </div>
       </div>
     </czb-modal>
+    <loading v-if="!loaded"></loading>
   </div>
 </template>
 <script>
 import API from '@/api';
 import {formatDate} from '@/utils';
 import noData from '@/components/noData';
+import loading from '@/components/loading';
 export default {
   name: 'list',
   components: {
-    noData
+    noData,
+    loading
   },
   data() {
     return {
+      noDatas: false,
+      loaded: false,
       choosedData: [],
       selectedVal: {},
       searchObj: {
@@ -180,6 +186,8 @@ export default {
       this.getDataList();
     },
     getDataList() {
+      this.loaded = false;
+      this.noDatas = false;
       API.searchConfig({
         page: this.pagination.page,
         pageSize: this.pagination.pageSize,
@@ -187,6 +195,7 @@ export default {
         group: this.searchObj.group,
         value: this.searchObj.value
       }).then((res) => {
+        this.loaded = true;
         console.log(res.data);
         this.tableData = res.items;
         this.pagination.page = res.page;
@@ -194,7 +203,12 @@ export default {
         if (res.page > 1 && this.tableData.length === 0) {
           this.pagination.page = res.page - 1;
           this.getDataList();
+        } else if (this.tableData.length === 0) {
+          this.noDatas = true;
         }
+      }).catch((e) => {
+        this.loaded = true;
+        this.noDatas = true;
       });
     },
     toSearch() {

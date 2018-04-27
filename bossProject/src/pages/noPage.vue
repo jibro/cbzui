@@ -1,8 +1,8 @@
 <template>
   <div id="error" class="error-page">
-    <h2 class="headline text-yellow"> 404</h2>
+    <h2 class="headline text-yellow">404</h2>
     <div class="error-content">
-      <h3><i class="fa fa-warning text-yellow"></i> 页面找不到了</h3>
+      <h3><i class="fa fa-warning text-yellow"></i>页面找不到了</h3>
     </div>
   </div>
 </template>
@@ -24,7 +24,7 @@
     color: #20A0FF;
   }
   .error-page>.headline {
-    font-size: 100px;
+    font-size: 90px;
     font-weight: 300
   }
 
@@ -47,7 +47,9 @@
 
   .error-page>.error-content>h3 {
     font-weight: 300;
-    font-size: 25px
+    font-size: 20px;
+    margin-top: 10px;
+    color: #999;
   }
 
   @media (max-width: 991px) {

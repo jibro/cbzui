@@ -98,7 +98,7 @@ export default{
     checkAll () {
       this.checkedAll = !this.checkedAll
       this.tabledata.forEach(item => {
-        this.$set(item, 'isChoosed', !item.isChoosed)
+        this.$set(item, 'isChoosed', this.checkedAll)
       })
       this.$emit('chooseItem', this.choosedData)
       this.$emit('input', this.choosedData)

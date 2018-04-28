@@ -6,7 +6,7 @@ export default {
         {id: 1, name: '小明', desc: '小明在放学的路上'},
         {id: 2, name: '小强', desc: '小强作业没写完，被留在学校打扫卫生'},
       ],
-      tableData2: [
+      tabledata2: [
         {id: 1, name: '小明', desc: '小明在放学的路上'},
         {id: 2, name: '小强', desc: '小强作业没写完，被留在学校打扫卫生,被留在学校打扫卫生'},
       ],
@@ -76,9 +76,9 @@ export default {
 
 ### 基本用法
 普通czb-table组件包含columns和tableData，可以根据width设置每一行的宽度
-<czb-table  :columns="columns" :tabledata="tabledata"></czb-table><br/>
+<czb-table  :columns="columns" :tabledata="tabledata2"></czb-table><br/>
 ellipsis属性：代表溢出“...”显示
-<czb-table :columns="columns" :tabledata="tableData2" :ellipsis="true"></czb-table><br/>
+<czb-table :columns="columns" :tabledata="tabledata2" :ellipsis="true"></czb-table><br/>
 hasCheck属性：让表格支持多选，v-model里可以绑定被选中的行
 <czb-table  :columns="columns" :tabledata="tabledata" :hascheck="true" v-model="choosedData"></czb-table>
 {{choosedData}}<br/>
@@ -94,9 +94,9 @@ handle属性：显示操作栏，handleClick事件里可以进行回调，这边
 <template>
   <div>
     普通czb-table组件包含columns和tableData，可以根据width设置每一行的宽度
-    <czb-table  :columns="columns" :tabledata="tabledata"></czb-table><br/>
+    <czb-table  :columns="columns" :tabledata="tabledata2"></czb-table><br/>
     ellipsis属性：代表溢出“...”显示
-    <czb-table :columns="columns" :tabledata="tableData2" :ellipsis="true"></czb-table><br/>
+    <czb-table :columns="columns" :tabledata="tabledata2" :ellipsis="true"></czb-table><br/>
     hasCheck属性：让表格支持多选，v-model里可以绑定被选中的行
     <czb-table  :columns="columns" :tabledata="tabledata" :hascheck="true" v-model="choosedData"></czb-table>
     {{choosedData}}<br/>
@@ -116,7 +116,7 @@ export default {
         {id: 1, name: '小明', desc: '小明在放学的路上'},
         {id: 2, name: '小强', desc: '小强作业没写完，被留在学校打扫卫生'},
       ],
-      tableData2: [
+      tabledata2: [
         {id: 1, name: '小明', desc: '小明在放学的路上'},
         {id: 2, name: '小强', desc: '小强作业没写完，被留在学校打扫卫生,被留在学校打扫卫生'},
       ],

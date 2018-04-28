@@ -58,7 +58,7 @@ export default {
 | 参数      | 说明                                 | 类型      | 可选值       | 默认值   |
 |---------- |------------------------------------ |---------- |------------- |-------- |
 |visible      |	显示状态                     |	 boolean  |	—           |	false       |
-|width	      | 弹出框宽度                           |	String   |		—           |	520px      |
+|width	      | 弹出框宽度                           |	String   |		—           |	600px      |
 |height |	内容主体高度                         |	 String   |	—             |	  |
 
 ### Events

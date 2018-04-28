@@ -1,7 +1,7 @@
 <style lang="less" type="text/less">
   .side-nav{
     display: inline-block;
-    padding: 32px 0;
+    padding: 32px 0 0;
     color: #00a7ea;
     background-color: #333;
     z-index: 99;

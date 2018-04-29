@@ -13,12 +13,23 @@ export default {
         pageSize: 10,
         page: 1,
         total: 30
+      },
+      pagination3: {
+        pageSize: 10,
+        page: 1,
+        total: 80
       }
     }
   },
   methods: {
     goPage(num) {
       this.pagination.page = num;
+    },
+    goPage2(num) {
+      this.pagination2.page = num;
+    },
+    goPage3(num) {
+      this.pagination3.page = num;
     }
   }
 }
@@ -31,7 +42,9 @@ export default {
 正常的分页<br>
 <czb-pagination :pagination="pagination" @goPage="goPage"></czb-pagination><br>
 没有可选每页条数框<br>
-<czb-pagination :pagination="pagination2" @goPage="goPage"></czb-pagination>
+<czb-pagination :pagination="pagination2" @goPage="goPage2"></czb-pagination><br>
+页数较多的情况<br>
+<czb-pagination :pagination="pagination3" @goPage="goPage3"></czb-pagination>
 ::: demo
 ```html
 <template>

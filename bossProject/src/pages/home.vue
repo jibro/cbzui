@@ -27,7 +27,6 @@
 </template>
 
 <script>
-  import menuData from '../nav.config'
   import API from '@/api';
   import {mapState} from 'vuex'
 

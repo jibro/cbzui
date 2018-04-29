@@ -70,7 +70,7 @@
       </div>
     </czb-modal>
     <czb-modal title="查看本用户的所有角色" :visible="userRoleVisible" @closeModel="userRoleVisible = false" @onsubmit="userRoleVisible = false">
-      <ul class="page-list">
+      <ul class="page-modal-list">
         <li v-for="x in thisUserRoles">{{x}}</li>
       </ul>
     </czb-modal>
@@ -78,7 +78,7 @@
       <czb-checkbox :datas="needUserRole" :hasborder="true" v-model="chooseUserRole"></czb-checkbox>
     </czb-modal>
     <czb-modal title="查看本角色权限" :visible="permissonVisible" @closeModel="permissonVisible = false" @onsubmit="permissonVisible = false">
-      <ul class="page-list">
+      <ul class="page-modal-list">
         <li v-for="x in thisRolePermissons">{{x}}</li>
       </ul>
     </czb-modal>
@@ -306,7 +306,7 @@ export default {
         this.updateUserRoleVisible = true;
         this.choosedUserRow = obj.row;
         axios.all([
-          this.queryAllUser(),
+          this.queryAllRole(),
           this.getRoles(obj.row.username)
         ]).then(axios.spread(() => {
           this.needUserRole = [];
@@ -403,6 +403,7 @@ export default {
           this.thisUserRoles = res.data;
           show && (this.userRoleVisible = true);
         } else {
+          this.thisUserRoles = [];
           show && this.$msgbox('暂未绑定角色！');
         }
       })
@@ -411,9 +412,10 @@ export default {
       return API.queryRolePermissionsRole(name).then(res => {
         console.log(res)
         if (res && res.length > 0) {
-          this.thisRolePermissons = res
+          this.thisRolePermissons = res;
           show && (this.permissonVisible = true);
         } else {
+          this.thisRolePermissons = [];
           show && this.$msgbox('暂未绑定权限！');
         }
       })

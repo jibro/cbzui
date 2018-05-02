@@ -91,9 +91,7 @@ const router =  new Router({
   base: '/bossProject',
   routes: myRoutes
 });
-let enter = false;
 let needArr = [];
-let userName = window.localStorage.userName;
 let fxRouter = function (arr) {
   arr.forEach(obj => {
     needArr.push({
@@ -133,18 +131,21 @@ let menuFun = function (to, from, next) {
     next({name: 'login'});
   }
 }
+let enter = false;
 router.beforeEach((to, from, next) => {
   if (to.name === 'login') {
     next();
-  } else if (!enter) {
-    enter = true;
+  } else if (from.name === 'login' || !enter) {
+    let userName = window.localStorage.userName;
     let menu = [];
+    enter = true;
     if (userName) {
-      API.queryMenuByName(userName).then((res) => {
-        let urlList = res.data;
-        if (urlList && urlList.length > 0) {
+      API.getUserDetail(userName).then((res) => {
+        store.dispatch('toSaveUserInfo', res.data);
+        let permissions = store.state.userInfo.permissions;
+        if (permissions && permissions.length > 0) {
           needArr.forEach(obj => {
-            if (urlList.indexOf(obj.path) !== -1) {
+            if (permissions.indexOf(obj.path) !== -1) {
               menu.push(obj);
             }
           })

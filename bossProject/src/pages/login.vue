@@ -46,8 +46,7 @@ export default {
       API.login({ username: this.username, password: this.password }).then((res) => {
         if (res.data && res.data.token) {
           window.localStorage.token = res.data.token;
-          window.localStorage.brantch = res.data.brantch
-          window.localStorage.userName = res.data.userName
+          window.localStorage.userName = res.data.userName;
           let url = this.getUrlPage('url')
           if (url) {
             window.location.replace(url)
@@ -56,7 +55,7 @@ export default {
           }
         }else{
           this.$toast({
-            text: `登陆失败`,
+            text: `登录失败`,
             timing: 1500,
             type: 'warn'
           })

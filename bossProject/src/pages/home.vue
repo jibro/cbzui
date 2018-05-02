@@ -14,7 +14,7 @@
       <div class="page-top">
         <div class="page-top-title">{{$route.meta.title}}</div>
         <div class="page-top-info">
-          <div class="page-top-welcome">欢迎您<span>{{userName}}</span></div>
+          <div class="page-top-welcome">欢迎您<span>{{$store.state.userInfo.userName}}</span></div>
           <div @click="cancellation" class="page-top-cancel cw tc">注销</div>
         </div>
       </div>
@@ -34,8 +34,7 @@
     name: 'home',
     data() {
       return {
-        menu: [],
-        userName: ''
+        menu: []
       };
     },
     computed: mapState({
@@ -48,14 +47,11 @@
         this.$router.push(item.path)
       },
       cancellation(){
-        window.localStorage.token=''
-        window.localStorage.brantch = ''
-        window.localStorage.userName = ''
-        this.$router.push('login')
+        window.localStorage.token='';
+        window.localStorage.userName = '';
+        this.$store.dispatch('toSaveUserInfo', '');
+        this.$router.push('login');
       }
-    },
-    mounted () {
-      this.userName = window.localStorage.userName;
     }
   };
 </script>

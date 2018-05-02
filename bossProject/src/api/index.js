@@ -1,6 +1,6 @@
 import axios from 'axios';
 import qs from 'qs';
-
+import store from '../store'
 axios.defaults.timeout = 10000;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
 axios.defaults.baseURL = '/cloudapi/';
@@ -21,11 +21,11 @@ axios.interceptors.response.use(function (response) {
   const {data} = error.response
   var status = error.response && error.response.status
   if (status == 401) {
-    window.localStorage.token = ''
-    window.localStorage.brantch = ''
-    window.localStorage.userName = ''
+    window.localStorage.token = '';
+    window.localStorage.userName = '';
+    store.dispatch('toSaveUserInfo', '');
     window.msgbox('用户会话过期', function () {
-      window.logout()
+      window.logout();
     })
   }else{
     let meg = data.error?data.error:data
@@ -36,10 +36,14 @@ axios.interceptors.response.use(function (response) {
 })
 
 export default {
-  // 配置查询
-  queryMenuByName(name) {
-    return axios.get('/cloud/user/getPermissions?name=' + name);
+  // 登录
+  login(params) {
+    return axios.post('/cloud/login/auth', params);
   },
+  getUserDetail(name) {
+    return axios.get('/cloud/user/getUserDetail?name=' + name);
+  },
+  // 配置查询
   searchConfig(params) {
     return axios.post('/cloud/config/search', qs.stringify(params));
   },
@@ -51,9 +55,6 @@ export default {
   },
   delConfig(params) {
     return axios.post('/cloud/config/delConfig', qs.stringify(params));
-  },
-  login(params) {
-    return axios.post('/cloud/login/auth', params);
   },
   // 中间件查询
   searchComponent(params) {
@@ -128,7 +129,7 @@ export default {
     return axios.put('/cloud/role/addRolePermissionsRole', params);
   },
   updateRolePermissionsRole(params) {
-    return axios.put('/cloud/role/updateRolePermissionsRole', params);
+    return axios.post('/cloud/role/updateRolePermissionsRole', params);
   },
   addPermisson(params) {
     return axios.put('/cloud/permisson/addPermisson', params);

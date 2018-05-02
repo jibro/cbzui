@@ -1,6 +1,6 @@
 <template>
   <div class="welcome bgf">
-    <h2>welcome, <span>{{userName}}</span></h2>
+    <h2>welcome, <span>{{$store.state.userInfo.userName}}</span></h2>
     <h2>持续集成项目管理</h2>    
     <h2>{{new Date() | formatData}}</h2>
   </div>
@@ -9,11 +9,6 @@
 import {formatDate} from '@/utils';
 export default {
   name: 'welcome',
-  data () {
-    return {
-      userName: window.localStorage.userName
-    }
-  },
   filters: {
     formatData: function (val) {
       if (val) {

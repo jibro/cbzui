@@ -76,7 +76,7 @@ export default {
       ],
       searchObj: {
         name: '',
-        branchName: 'dragon-1767',
+        branchName: this.$store.state.userInfo.brantch,
         status: '',
         type: ''
       },

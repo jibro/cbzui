@@ -67,12 +67,12 @@ export default {
       ],
       searchObj: {
         name: '',
-        branchName: 'dragon-1767',
+        branchName: this.$store.state.userInfo.brantch,
         status: ''
       },
       addObj: {
         name: '',
-        branchName: 'dragon-1767'
+        branchName: this.$store.state.userInfo.brantch
       },
       addVisible: false,
       pagination: {

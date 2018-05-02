@@ -1,6 +1,6 @@
 <template>
   <div class="page-list-wrap">
-    <div class="page-list-search bgf">
+    <div class="page-list-search bgf" v-if="isSuperRole">
       <div class="page-search-item">
         <label class="page-label"><span>分支名称:</span></label>
         <czb-input v-model="searchObj.branchName" placeholder="请输入分支名称" :clear="true"></czb-input>
@@ -21,7 +21,7 @@
       </div>
     </div>
     <div class="page-list-table-wrap bgf">
-      <div class="page-operation">
+      <div class="page-operation" v-if="isSuperRole">
         <czb-button width="80px" @btnClick="addItem" :min="true">
           <i class="czbfont iczb-add" slot="left"></i>创建环境
         </czb-button>
@@ -95,6 +95,7 @@ export default {
     return {
       noDatas: false,
       loaded: false,
+      isSuperRole: this.$store.state.userInfo.roles.indexOf('超级管理员') !== -1,
       choosedData: [],
       selectedVal: {},
       statusData: [
@@ -313,6 +314,7 @@ export default {
     }
   },
   created() {
+    this.searchObj.branchName = !this.isSuperRole?this.$store.state.userInfo.brantch:'';
     this.getDataList();
   }
 };

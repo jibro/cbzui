@@ -12,7 +12,8 @@ Vue.use(Vuex)
 
 const state = {
   menuData: [],
-  selectedKey: ''
+  selectedKey: '',
+  userInfo: ''
 }
 
 export default new Vuex.Store({

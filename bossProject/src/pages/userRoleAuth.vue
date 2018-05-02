@@ -36,36 +36,36 @@
     <czb-modal title="新增用户" :visible="addUserVisible" @closeModel="addUserVisible=false" @onsubmit="addUserSubmit">
       <div class="page-form">
         <div class="page-form-item">
-          <label class="page-form-label"><span>username:</span></label>
-          <czb-input v-model="addUserObj.username" placeholder="请输入username" :autowidth="true"></czb-input>
+          <label class="page-form-label"><span>用户名:</span></label>
+          <czb-input v-model="addUserObj.username" placeholder="请输入用户名" :autowidth="true"></czb-input>
         </div>
         <div class="page-form-item">
-          <label class="page-form-label"><span>email:</span></label>
-          <czb-input v-model="addUserObj.email" placeholder="请输入email" :autowidth="true"></czb-input>
+          <label class="page-form-label"><span>电子邮箱:</span></label>
+          <czb-input v-model="addUserObj.email" placeholder="请输入电子邮箱" :autowidth="true"></czb-input>
         </div>
         <div class="page-form-item">
-          <label class="page-form-label"><span>password:</span></label>
-          <czb-input type="password" v-model="addUserObj.password" placeholder="请输入password" :autowidth="true"></czb-input>
+          <label class="page-form-label"><span>密码:</span></label>
+          <czb-input type="password" v-model="addUserObj.password" placeholder="请输入密码" :autowidth="true"></czb-input>
         </div>
         <div class="page-form-item">
-          <label class="page-form-label"><span>branchPath:</span></label>
-          <czb-input v-model="addUserObj.branchPath" placeholder="请输入branchPath" :autowidth="true"></czb-input>
+          <label class="page-form-label"><span>分支:</span></label>
+          <czb-input v-model="addUserObj.branchPath" placeholder="请输入分支" :autowidth="true"></czb-input>
         </div>
       </div>
     </czb-modal>
     <czb-modal title="修改用户" :visible="updateUserVisible" @closeModel="updateUserVisible=false" @onsubmit="updateUserSubmit">
       <div class="page-form">
         <div class="page-form-item">
-          <label class="page-form-label"><span>username:</span></label>
-          <czb-input v-model="updateUserObj.username" placeholder="请输入username" :autowidth="true" :disabled="true"></czb-input>
+          <label class="page-form-label"><span>用户名:</span></label>
+          <czb-input v-model="updateUserObj.username" placeholder="请输入用户名" :autowidth="true" :disabled="true"></czb-input>
         </div>
         <div class="page-form-item">
-          <label class="page-form-label"><span>email:</span></label>
-          <czb-input v-model="updateUserObj.email" placeholder="请输入email" :autowidth="true"></czb-input>
+          <label class="page-form-label"><span>电子邮箱:</span></label>
+          <czb-input v-model="updateUserObj.email" placeholder="请输入电子邮箱" :autowidth="true"></czb-input>
         </div>
         <div class="page-form-item">
-          <label class="page-form-label"><span>branchPath:</span></label>
-          <czb-input v-model="updateUserObj.branchPath" placeholder="请输入branchPath" :autowidth="true"></czb-input>
+          <label class="page-form-label"><span>分支:</span></label>
+          <czb-input v-model="updateUserObj.branchPath" placeholder="请输入分支" :autowidth="true"></czb-input>
         </div>
       </div>
     </czb-modal>
@@ -88,48 +88,48 @@
     <czb-modal title="新增角色" :visible="addRoleVisible" @closeModel="addRoleVisible=false" @onsubmit="addRoleSubmit">
       <div class="page-form">
         <div class="page-form-item">
-          <label class="page-form-label"><span>name:</span></label>
-          <czb-input v-model="addRoleObj.name" placeholder="请输入name" :autowidth="true"></czb-input>
+          <label class="page-form-label"><span>角色名称:</span></label>
+          <czb-input v-model="addRoleObj.name" placeholder="请输入角色名称" :autowidth="true"></czb-input>
         </div>
         <div class="page-form-item">
-          <label class="page-form-label"><span>type:</span></label>
-          <czb-input v-model="addRoleObj.type" placeholder="请输入type" :autowidth="true"></czb-input>
+          <label class="page-form-label"><span>角色类型:</span></label>
+          <czb-input v-model="addRoleObj.type" placeholder="请输入角色类型" :autowidth="true"></czb-input>
         </div>
       </div>
     </czb-modal>
     <czb-modal title="修改角色" :visible="updateRoleVisible" @closeModel="updateRoleVisible=false" @onsubmit="updateRoleSubmit">
       <div class="page-form">
         <div class="page-form-item">
-          <label class="page-form-label"><span>name:</span></label>
-          <czb-input v-model="updateRoleObj.name" placeholder="请输入name" :autowidth="true"></czb-input>
+          <label class="page-form-label"><span>角色名称:</span></label>
+          <czb-input v-model="updateRoleObj.name" placeholder="请输入角色名称" :autowidth="true"></czb-input>
         </div>
         <div class="page-form-item">
-          <label class="page-form-label"><span>type:</span></label>
-          <czb-input v-model="updateRoleObj.type" placeholder="请输入type" :autowidth="true"></czb-input>
+          <label class="page-form-label"><span>角色类型:</span></label>
+          <czb-input v-model="updateRoleObj.type" placeholder="请输入角色类型" :autowidth="true"></czb-input>
         </div>
       </div>
     </czb-modal>
     <czb-modal title="新增权限" :visible="addVisible" @closeModel="addVisible=false" @onsubmit="addSubmit">
       <div class="page-form">
         <div class="page-form-item">
-          <label class="page-form-label"><span>name:</span></label>
-          <czb-input v-model="addObj.name" placeholder="请输入name" :autowidth="true"></czb-input>
+          <label class="page-form-label"><span>权限名称:</span></label>
+          <czb-input v-model="addObj.name" placeholder="请输入权限名称" :autowidth="true"></czb-input>
         </div>
         <div class="page-form-item">
-          <label class="page-form-label"><span>url:</span></label>
-          <czb-input v-model="addObj.url" placeholder="请输入url" :autowidth="true"></czb-input>
+          <label class="page-form-label"><span>权限url:</span></label>
+          <czb-input v-model="addObj.url" placeholder="请输入权限url" :autowidth="true"></czb-input>
         </div>
       </div>
     </czb-modal>
     <czb-modal title="修改权限" :visible="updateVisible" @closeModel="updateVisible=false" @onsubmit="updateSubmit">
       <div class="page-form">
         <div class="page-form-item">
-          <label class="page-form-label"><span>name:</span></label>
-          <czb-input v-model="updateObj.name" placeholder="请输入name" :autowidth="true"></czb-input>
+          <label class="page-form-label"><span>权限名称:</span></label>
+          <czb-input v-model="updateObj.name" placeholder="请输入权限名称" :autowidth="true"></czb-input>
         </div>
         <div class="page-form-item">
-          <label class="page-form-label"><span>url:</span></label>
-          <czb-input v-model="updateObj.url" placeholder="请输入url" :autowidth="true"></czb-input>
+          <label class="page-form-label"><span>权限url:</span></label>
+          <czb-input v-model="updateObj.url" placeholder="请输入权限url" :autowidth="true"></czb-input>
         </div>
       </div>
     </czb-modal>
@@ -198,22 +198,22 @@ export default {
       chooseUserRole: '',
       userColumns: [
         {
-          title: 'username',
+          title: '用户名',
           width: '20%',
           key: 'username'
         },
         {
-          title: 'email',
+          title: '电子邮箱',
           width: '20%',
           key: 'email'
         },
         {
-          title: 'branchPath',
+          title: '分支',
           width: '20%',
           key: 'branchPath'
         },
         {
-          title: 'loginTime',
+          title: '登录时间',
           width: '20%',
           key: 'loginTime',
           render(val) {
@@ -235,12 +235,12 @@ export default {
       ],
       permissonColumns: [
         {
-          title: 'name',
+          title: '权限名称',
           width: '30%',
           key: 'name'
         },
         {
-          title: 'url',
+          title: '权限url',
           width: '30%',
           key: 'url'
         }

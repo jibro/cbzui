@@ -3,13 +3,13 @@ import MsgBox from './src/msg-box'     // 引入组件
 import Shadow from '../shadow/shadow'
 let MsgBoxConstructor = Vue.extend(MsgBox) // 返回一个“扩展实例构造器”
 let ShadowConstructor = Vue.extend(Shadow)
-let czbMsgBox = (option = {}) => {
+let czbMsgBox = (option) => {
   return new MsgBoxConstructor().init(option)
 }
-MsgBoxConstructor.prototype.init = function (option = {}) {
+MsgBoxConstructor.prototype.init = function (option) {
   this.vm = this.$mount()
   this.shadow = new ShadowConstructor().$mount()
-  if (option === null) option = {}
+  if (!option) option = {}
   if (typeof option !== 'object') {
     this.message = option
   } else {

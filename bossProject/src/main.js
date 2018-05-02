@@ -3,7 +3,7 @@
 import Vue from 'vue';
 import App from './App';
 import router from './router';
-import czbUI from '../../packages/index';
+import czbUI from '../../lib/czbui';
 import '../../theme/lib/index.css';
 import store from './store'
 

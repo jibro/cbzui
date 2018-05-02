@@ -88,7 +88,7 @@ const myRoutes = [
 ];
 const router =  new Router({
   mode: 'history',
-  base: '/bossProject',
+  base: '/bossproject',
   routes: myRoutes
 });
 let needArr = [];

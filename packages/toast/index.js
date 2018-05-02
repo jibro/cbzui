@@ -2,13 +2,13 @@ import Vue from 'vue'
 import Toast from './src/toast'     // 引入组件
 let ToastConstructor = Vue.extend(Toast) // 返回一个“扩展实例构造器”
 
-let czbToast = (option = {}) => { // 参数
+let czbToast = (option) => { // 参数
   return new ToastConstructor().init(option)
 }
 // init:text,timing
-ToastConstructor.prototype.init = function (option = {}) {
+ToastConstructor.prototype.init = function (option) {
   this.vm = this.$mount()
-  if (option === null) option = {}
+  if (!option) option = {}
   if (typeof option !== 'object') {
     this.text = option
   } else {

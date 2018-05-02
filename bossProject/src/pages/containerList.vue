@@ -31,7 +31,7 @@
     <czb-modal title="查看端口" :visible="sub.visible" @closeModel="sub.visible=false" @onsubmit="sub.visible=false">
       <div class="page-sub">
         <czb-table v-if="sub.tableData.length > 0" :columns="sub.columns" :tabledata="sub.tableData"></czb-table>
-        <div class="pagination" v-if="sub.tableData.length > 0">
+        <div class="page-sub-pagination" v-if="sub.tableData.length > 0">
           <czb-pagination :pagination="sub.pagination" @goPage="goPageSub"></czb-pagination>
         </div>
       </div>

@@ -3,8 +3,8 @@
 import Vue from 'vue';
 import App from './App';
 import router from './router';
-import czbUI from '../../lib/czbui';
-import '../../theme/lib/index.css';
+import czbUI from '~/js/czbui';
+import '~/style/index.css';
 import store from './store'
 
 

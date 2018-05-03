@@ -119,20 +119,23 @@ body{
             }
           }
         }
-        .page-list-table-wrap{
+        .page-list-table-box{
           flex: 1;
-          padding: 15px 15px 62px;
-          position: relative;
-          .page-operation{
-            display: flex;
-            &>div{
-              margin: 0 8px 8px 0;
+          .page-list-table-wrap{
+            padding: 15px 15px 62px;
+            position: relative;
+            min-height: 100%;
+            .page-operation{
+              display: flex;
+              &>div{
+                margin: 0 8px 8px 0;
+              }
             }
-          }
-          .pagination{
-            position: absolute;
-            right: 15px;
-            bottom: 15px;
+            .pagination{
+              position: absolute;
+              right: 15px;
+              bottom: 15px;
+            }
           }
         }
       }
@@ -141,11 +144,11 @@ body{
         display: flex;
         flex-direction: column;
         .page-multi-wrap{
-          display: flex;
           flex: 1;
           .page-multi-role, .page-multi-auth, .page-multi-user{
             padding: 15px;
             width: 100%;
+            min-height: 100%;
           }
           .page-multi-btn{
             display: inline-block;

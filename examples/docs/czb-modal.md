@@ -3,7 +3,8 @@ import {czbModal,czbButton,czbInput} from '../../packages/index'
 export default {
   data () {
     return {
-      visible:false
+      visible: false,
+      inputTxt: ''
     }
   },
   methods: {
@@ -24,7 +25,7 @@ export default {
 ### 基本用法
 点击弹出框。<br>
 <czb-button @btnClick='clickShow'>点击</czb-button>
-<czb-modal :visible='visible' @closeModel='visible=false' @onsubmit='onsubmit'>
+<czb-modal title="示例" :visible='visible' @closeModel='visible=false' @onsubmit='onsubmit'>
      <czb-input v-model="inputTxt" placeholder="请输入内容"></czb-input></div>
 </czb-modal>
 
@@ -32,7 +33,7 @@ export default {
 ```html
 <template>
   <div>
-  <czb-modal :visible='visible' @closeModel='visible=false' @onsubmit='onsubmit'>22222222</czb-modal>
+  <czb-modal title="示例" :visible='visible' @closeModel='visible=false' @onsubmit='onsubmit'>22222222</czb-modal>
   </div>
 </template>
 <script>
@@ -40,7 +41,8 @@ import {czbModal} from '../../packages/index'
 export default {
    data () {
     return {
-      visible:false
+      visible: false,
+      inputTxt: ''
     }
   },
   methods: {

@@ -165,7 +165,6 @@ export default {
       updateUserObj: {
         username: '',
         email: '',
-        password: '',
         branchPath: ''
       },
       addRoleObj: {
@@ -466,6 +465,12 @@ export default {
       this.addRoleVisible = true;
     },
     addUserSubmit() {
+      for(let key in this.addUserObj) {
+        if(!this.addUserObj[key]) {
+          this.$msgbox('字段不可以为空！');
+          return;
+        }
+      }
       if (this.addUserObj.email && this.addUserObj.email.indexOf('@') === -1) {
         this.$msgbox('请输入正确的电子邮箱！');
         return;
@@ -488,6 +493,12 @@ export default {
       })
     },
     updateUserSubmit() {
+      for(let key in this.updateUserObj) {
+        if(!this.updateUserObj[key]) {
+          this.$msgbox('字段不可以为空！');
+          return;
+        }
+      }
       if (this.updateUserObj.email && this.updateUserObj.email.indexOf('@') === -1) {
         this.$msgbox('请输入正确的电子邮箱！');
         return;
@@ -509,6 +520,12 @@ export default {
       })
     },
     addRoleSubmit() {
+      for(let key in this.addRoleObj) {
+        if(!this.addRoleObj[key]) {
+          this.$msgbox('字段不可以为空！');
+          return;
+        }
+      }
       API.addRole(this.addRoleObj).then(res => {
         console.log(res);
         if (res.success) {
@@ -525,6 +542,12 @@ export default {
       })
     },
     addSubmit() {
+      for(let key in this.addObj) {
+        if(!this.addObj[key]) {
+          this.$msgbox('字段不可以为空！');
+          return;
+        }
+      }
       API.addPermisson(this.addObj).then(res => {
         console.log(res);
         if (res.success) {
@@ -541,6 +564,12 @@ export default {
       })
     },
     updateRoleSubmit() {
+      for(let key in this.updateRoleObj) {
+        if(!this.updateRoleObj[key]) {
+          this.$msgbox('字段不可以为空！');
+          return;
+        }
+      }
       API.updateRole(this.updateRoleObj).then(res => {
         console.log(res);
         if (res.success) {
@@ -553,6 +582,12 @@ export default {
       })
     },
     updateSubmit() {
+      for(let key in this.updateObj) {
+        if(!this.updateObj[key]) {
+          this.$msgbox('字段不可以为空！');
+          return;
+        }
+      }
       API.updatePermisson(this.updateObj).then(res => {
         console.log(res);
         if (res.success) {

@@ -16,15 +16,16 @@
         <czb-button type="reverse" @btnClick="resetSearch"><i class="czbfont iczb-shuaxin" slot="left"></i>重置</czb-button>
       </div>
     </div>
-    <div class="page-list-table-wrap bgf">
-      <!-- hascheck false -->
-      <czb-table v-if="tableData.length > 0" :columns="columns" :tabledata="tableData" v-model="choosedData"></czb-table>
-      <div class="pagination" v-if="tableData.length > 0">
-        <czb-pagination :pagination="pagination" @goPage="goPage"></czb-pagination>
+    <div class="page-list-table-box">
+      <div class="page-list-table-wrap bgf">
+        <!-- hascheck false -->
+        <czb-table v-if="tableData.length > 0" :columns="columns" :tabledata="tableData" v-model="choosedData"></czb-table>
+        <div class="pagination" v-if="tableData.length > 0">
+          <czb-pagination :pagination="pagination" @goPage="goPage"></czb-pagination>
+        </div>
+        <no-data :show="noDatas"></no-data>
       </div>
-      <no-data :show="noDatas"></no-data>
     </div>
-    </czb-modal>
     <loading v-if="!loaded"></loading>
   </div>
 </template>

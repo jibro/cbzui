@@ -16,18 +16,20 @@
         <czb-button type="reverse" @btnClick="resetSearch"><i class="czbfont iczb-shuaxin" slot="left"></i>重置</czb-button>
       </div>
     </div>
-    <div class="page-list-table-wrap bgf">
-      <div class="page-operation">
-        <czb-button width="80px" @btnClick="addItem" :min="true">
-          <i class="czbfont iczb-add" slot="left"></i>新增服务
-        </czb-button>
+    <div class="page-list-table-box">
+      <div class="page-list-table-wrap bgf">
+        <div class="page-operation">
+          <czb-button width="80px" @btnClick="addItem" :min="true">
+            <i class="czbfont iczb-add" slot="left"></i>新增服务
+          </czb-button>
+        </div>
+        <!-- hascheck false -->
+        <czb-table v-if="tableData.length > 0" :columns="columns" :tabledata="tableData" v-model="choosedData"  @handleClick="handleClick" :handle="handle"></czb-table>
+        <div class="pagination" v-if="tableData.length > 0">
+          <czb-pagination :pagination="pagination" @goPage="goPage"></czb-pagination>
+        </div>
+        <no-data :show="noDatas"></no-data>
       </div>
-      <!-- hascheck false -->
-      <czb-table v-if="tableData.length > 0" :columns="columns" :tabledata="tableData" v-model="choosedData"  @handleClick="handleClick" :handle="handle"></czb-table>
-      <div class="pagination" v-if="tableData.length > 0">
-        <czb-pagination :pagination="pagination" @goPage="goPage"></czb-pagination>
-      </div>
-      <no-data :show="noDatas"></no-data>
     </div>
     <czb-modal title="新增服务" :visible="addVisible" @closeModel="addVisible=false" @onsubmit="addSubmit">
       <div class="page-form">

@@ -54,28 +54,32 @@ const myRoutes = [
         meta: {
           title: '中间件查询'
         }
-      },{
+      },
+      {
         path: '/serviceList',
         name: 'serviceList',
         component:  resolve=>require(['@/pages/serviceList'],resolve),
         meta: {
           title: '服务查询'
         }
-      },{
+      },
+      {
         path: '/templateServiceList',
         name: 'templateServiceList',
         component:  resolve=>require(['@/pages/templateServiceList'],resolve),
         meta: {
           title: '模板服务查询'
         }
-      },{
+      },
+      {
         path: '/containerList',
         name: 'containerList',
         component:  resolve=>require(['@/pages/containerList'],resolve),
         meta: {
           title: '容器查询'
         }
-      },{
+      },
+      {
         path: '/environmentList',
         name: 'environmentList',
         component:  resolve=>require(['@/pages/environmentList'],resolve),

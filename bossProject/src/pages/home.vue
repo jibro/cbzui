@@ -56,6 +56,6 @@
   };
 </script>
 <style lang="less">
-  @import url('../assets/style/base.less');
-  @import url('../assets/style/main.less');
+  @import url('../assets/css/base.less');
+  @import url('../assets/css/main.less');
 </style>

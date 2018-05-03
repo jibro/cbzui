@@ -4,7 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import demoBlock from './components/demo-block.vue'
-import czbUI from '../lib/czbui'
+import czbUI from '../lib/czbui.min'
 import '../theme/lib/index.css'
 
 Vue.component('demo-block', demoBlock)

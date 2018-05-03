@@ -9,7 +9,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, '../lib'),
     publicPath: '/lib/',
-    filename: 'czbui.js',
+    filename: 'czbui.min.js',
     library: 'czbui',       // 模块名称
     libraryTarget: 'umd',   // 输出格式
     umdNamedDefine: true    // 是否将模块名称作为 AMD 输出的命名空间
@@ -50,6 +50,12 @@ module.exports = {
       'process.env': {
           NODE_ENV: '"development"'
       }
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
+      },
+      sourceMap: false
     })
   ]
 }

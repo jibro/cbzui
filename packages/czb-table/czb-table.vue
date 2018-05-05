@@ -16,7 +16,7 @@
             </div>
             <div class="czb__table__content__col" v-for="col in columns" :key="col.key" v-html="(col.render && col.render(row[col.key], row, index)) || row[col.key]" :style="{'width': Math.ceil(boxWidth *parseInt(col.width)/100) + 'px'}" :class="{'is-ellipsis': ellipsis}"></div>
             <div class="czb__table__content__col" v-if="handle" :style="{'width': Math.ceil(boxWidth *parseInt(handle.width)/100) + 'px'}">
-              <a href="javascript:void(0)" v-for="(obj, btnIndex) in handle.btns" :key="btnIndex" @click="handleClick({btnIndex, row, index})">
+              <a href="javascript:void(0)" v-for="(obj, btnIndex) in handle.btns" :key="btnIndex" @click="handleClick({btnIndex, row, index})" v-show="!obj.isHide">
                 <i v-if="handle.type == 'icon'" :class="[handle.fontClass, obj.name]" :title="obj.title"></i>
                 <span v-else :title="obj.title">{{obj.name}}</span>
               </a>
@@ -33,7 +33,7 @@
         <div class="czb__table__content">
           <div class="czb__table__content__row" v-for="(row, index) in tabledata" :key="row.id" :style="{'height': row.handleHg + 'px'}">
             <div class="czb__table__content__col" :style="{'width': Math.ceil(boxWidth *parseInt(handle.width)/100) + 'px'}">
-              <a href="javascript:void(0)" v-for="(obj, btnIndex) in handle.btns" :key="btnIndex" @click="handleClick({btnIndex, row, index})">
+              <a href="javascript:void(0)" v-for="(obj, btnIndex) in handle.btns" :key="btnIndex" @click="handleClick({btnIndex, row, index})" v-show="!obj.isHide">
                 <i v-if="handle.type == 'icon'" :class="[handle.fontClass, obj.name]" :title="obj.title"></i>
                 <span v-else :title="obj.title">{{obj.name}}</span>
               </a>

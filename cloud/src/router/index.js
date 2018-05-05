@@ -36,7 +36,7 @@ const myRoutes = [
         name: 'userRoleAuth',
         component:  resolve=>require(['@/pages/userRoleAuth'],resolve),
         meta: {
-          title: '用户角色权限'
+          title: '角色权限管理'
         }
       },
       {
@@ -44,7 +44,7 @@ const myRoutes = [
         name: 'configList',
         component:  resolve=>require(['@/pages/configList'],resolve),
         meta: {
-          title: '配置查询'
+          title: '统一配置管理'
         }
       },
       {
@@ -52,7 +52,7 @@ const myRoutes = [
         name: 'componentList',
         component:  resolve=>require(['@/pages/componentList'],resolve),
         meta: {
-          title: '中间件查询'
+          title: '中间件管理'
         }
       },
       {
@@ -60,7 +60,7 @@ const myRoutes = [
         name: 'serviceList',
         component:  resolve=>require(['@/pages/serviceList'],resolve),
         meta: {
-          title: '服务查询'
+          title: '服务管理'
         }
       },
       {
@@ -68,7 +68,7 @@ const myRoutes = [
         name: 'templateServiceList',
         component:  resolve=>require(['@/pages/templateServiceList'],resolve),
         meta: {
-          title: '模板服务查询'
+          title: '模板服务管理'
         }
       },
       {
@@ -76,7 +76,7 @@ const myRoutes = [
         name: 'containerList',
         component:  resolve=>require(['@/pages/containerList'],resolve),
         meta: {
-          title: '容器查询'
+          title: '容器管理'
         }
       },
       {
@@ -84,7 +84,7 @@ const myRoutes = [
         name: 'environmentList',
         component:  resolve=>require(['@/pages/environmentList'],resolve),
         meta: {
-          title: '环境查询'
+          title: '环境管理'
         }
       }
     ]
@@ -92,7 +92,7 @@ const myRoutes = [
 ];
 const router =  new Router({
   mode: 'history',
-  base: '/bossproject',
+  base: '/cloud',
   routes: myRoutes
 });
 let needArr = [];

@@ -5,7 +5,7 @@
     </div>
     <div class="content">
       <div class="from">
-        <h3 class="from-title">车置宝开放平台</h3>
+        <h3 class="from-title">ZcCloud置车云平台</h3>
         <div class="form-group">
           <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
           <input v-model="username" id="username" name="username" class="form-control" type="text" autocomplete="off" placeholder="用户名"
@@ -21,7 +21,7 @@
           </button>
         </div>
         <div class="create-account">
-          <p style="text-align: center;color: white">输入用户名密码登录车置宝开放平台</p>
+          <p style="text-align: center;color: white">输入用户名密码登录ZcCloud置车云平台</p>
         </div>
       </div>
       <div class="copyright">2012-2018 © 车置宝&nbsp;www.chezhibao.com

@@ -86,7 +86,7 @@ export default {
         },
         {
           title: '创建时间',
-          width: '18%',
+          width: '19%',
           key: 'creationTime',
           render(val) {
             return formatDate(new Date(val), 'yyyy-MM-dd hh:mm:ss');

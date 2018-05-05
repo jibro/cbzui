@@ -41,7 +41,8 @@
     <czb-modal title="更新war" :visible="updateVisible" @closeModel="updateVisible=false" @onsubmit="updateWar">
       <form enctype="multipart/form-data" ref="$warfile">
         <input type="file" name="war" ref="$war">
-        <div class="progress" :style="{backgroundImage:'linear-gradient(to right,#0097e0 0%,#0097e0 '+progress+',#e8e8e8 '+progress+',#e8e8e8 100%)'}"></div>
+        <div class="progress" :class="{'progress-anim': progress}"></div>
+        
       </form>
     </czb-modal>
     <loading v-if="!loaded"></loading>
@@ -63,11 +64,12 @@ export default {
       noDatas: false,
       loaded: false,
       clicked: false,
-      progress: '0%',
+      progress: false,
       choosedData: [],
       selectedVal: {},
       choosedRow: '',
       updateVisible: false,
+      isSuperRole: this.$store.state.userInfo.roles.indexOf('10001') !== -1,
       statusData: [
         {id: 1, name:'已启用'},
         {id: 2, name:'未启用'}
@@ -78,7 +80,7 @@ export default {
       ],
       searchObj: {
         name: '',
-        branchName: this.$store.state.userInfo.brantch,
+        branchName: '',
         status: '',
         type: ''
       },
@@ -129,7 +131,7 @@ export default {
       ],
       tableData: [],
       handle: {
-        width: '8%',
+        width: '9%',
         type: 'icon',
         fontClass: 'czbfont',
         btns: [
@@ -171,7 +173,7 @@ export default {
           render: val => {
             return val.name;
           }
-        }],
+        }]
       }
     };
   },
@@ -270,33 +272,32 @@ export default {
         formData.append("name", this.choosedRow.name);
         formData.append("branchName", this.choosedRow.environment.branchName);
         let config = {
-          onUploadProgress: progressEvent => {
-            var complete = (progressEvent.loaded / progressEvent.total * 100 | 0) + '%'
-            this.progress = complete
-          },
           headers: {'Content-Type':'multipart/form-data'}
         }
+        this.progress = true;
         API.replaceWar(formData, config).then(res => {
           console.log(res)
           this.clicked = false;
+          this.progress = false;
           if (res.success) {
             this.$toast('更新成功！');
             this.updateVisible = false;
-            this.progress = '0%';
             this.$refs.$war.value = '';
           } else {
-            this.progress = '0%';
             this.$msgbox(res.message);
+            this.$refs.$war.value = '';
           }
         }).catch(e => {
-          this.progress = '0%';
+          this.progress = false;
           this.clicked = false;
           this.$msgbox(e);
+          this.$refs.$war.value = '';
         })
       }
     }
   },
   created() {
+    this.searchObj.branchName = !this.isSuperRole?this.$store.state.userInfo.brantch:'';
     this.getDataList();
   }
 };

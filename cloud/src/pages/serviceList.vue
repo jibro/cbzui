@@ -18,20 +18,21 @@
     </div>
     <div class="page-list-table-box">
       <div class="page-list-table-wrap bgf">
-        <div class="page-operation">
-          <czb-button width="105px" @btnClick="addItem" :min="true">
-            <i class="czbfont iczb-add" slot="left"></i>新增模板服务
+        <div class="page-operation" v-if="!isNormalRole">
+          <czb-button width="80px" @btnClick="addItem" :min="true">
+            <i class="czbfont iczb-add" slot="left"></i>新增服务
           </czb-button>
         </div>
         <!-- hascheck false -->
-        <czb-table v-if="tableData.length > 0" :columns="columns" :tabledata="tableData" v-model="choosedData"  @handleClick="handleClick" :handle="handle"></czb-table>
+        <czb-table v-if="tableData.length > 0 && !isNormalRole" :columns="columns" :tabledata="tableData" v-model="choosedData"  @handleClick="handleClick" :handle="handle"></czb-table>
+        <czb-table v-if="tableData.length > 0 && isNormalRole" :columns="columns" :tabledata="tableData" v-model="choosedData"></czb-table>
         <div class="pagination" v-if="tableData.length > 0">
           <czb-pagination :pagination="pagination" @goPage="goPage"></czb-pagination>
         </div>
         <no-data :show="noDatas"></no-data>
       </div>
     </div>
-    <czb-modal title="新增模板服务" :visible="addVisible" @closeModel="addVisible=false" @onsubmit="addSubmit">
+    <czb-modal title="新增服务" :visible="addVisible" @closeModel="addVisible=false" @onsubmit="addSubmit">
       <div class="page-form">
         <div class="page-form-item">
           <label class="page-form-label"><span>服务名称:</span></label>
@@ -39,7 +40,7 @@
         </div>
         <div class="page-form-item">
           <label class="page-form-label"><span>所属环境:</span></label>
-          <czb-input v-model="addObj.branchName" :autowidth="true" :disabled="true"></czb-input>
+          <czb-input v-model="addObj.branchName" placeholder="请输入所属环境" :autowidth="true" :disabled="!isSuperRole"></czb-input>
         </div>
       </div>
     </czb-modal>
@@ -63,18 +64,20 @@ export default {
       loaded: false,
       choosedData: [],
       selectedVal: {},
+      isSuperRole: this.$store.state.userInfo.roles.indexOf('10001') !== -1,
+      isNormalRole: this.$store.state.userInfo.roles.indexOf('10003') !== -1,
       statusData: [
         {id: 1, name:'已启用'},
         {id: 2, name:'未启用'}
       ],
       searchObj: {
         name: '',
-        branchName: 'dragon-template',
+        branchName: '',
         status: ''
       },
       addObj: {
         name: '',
-        branchName: 'dragon-template'
+        branchName: ''
       },
       addVisible: false,
       pagination: {
@@ -128,7 +131,7 @@ export default {
     handleClick(obj) {
       if (obj.btnIndex === 0) {
         this.$msgbox({title: '提示', message: `是否删除服务${obj.row.name}？`, showCancel: true}).then(res => {
-          API.delTemplateService({
+          API.delService({
             serviceId: obj.row.id,
             name:obj.row.name,
             branchName:obj.row.environment.branchName
@@ -192,7 +195,7 @@ export default {
       this.addVisible = true;
     },
     addSubmit() {
-      API.addTemplateService(this.addObj).then(res => {
+      API.addService(this.addObj).then(res => {
         console.log(res);
         if (res.success) {
           this.$toast('新增成功！');
@@ -208,6 +211,8 @@ export default {
     }
   },
   created() {
+    this.searchObj.branchName = !this.isSuperRole?this.$store.state.userInfo.brantch:'';
+    this.addObj.branchName = !this.isSuperRole?this.$store.state.userInfo.brantch:'';
     this.getDataList();
   }
 };

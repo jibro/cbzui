@@ -71,15 +71,15 @@
     </czb-modal>
     <czb-modal title="查看本用户的所有角色" :visible="userRoleVisible" @closeModel="userRoleVisible = false" @onsubmit="userRoleVisible = false">
       <ul class="page-modal-list">
-        <li v-for="x in thisUserRoles">{{x}}</li>
+        <li v-for="(x, i) in thisUserRoles" :key="i">{{x}}</li>
       </ul>
     </czb-modal>
     <czb-modal title="为用户更改角色" :visible="updateUserRoleVisible" @closeModel="updateUserRoleVisible = false" @onsubmit="updateUserRole">
-      <czb-checkbox :datas="needUserRole" :hasborder="true" v-model="chooseUserRole"></czb-checkbox>
+      <czb-radio :datas="needUserRole" :hasborder="true" v-model="chooseUserRole"></czb-radio>
     </czb-modal>
     <czb-modal title="查看本角色权限" :visible="permissonVisible" @closeModel="permissonVisible = false" @onsubmit="permissonVisible = false">
       <ul class="page-modal-list">
-        <li v-for="x in thisRolePermissons">{{x}}</li>
+        <li v-for="(x, i) in thisRolePermissons" :key="i">{{x}}</li>
       </ul>
     </czb-modal>
     <czb-modal title="为角色更改权限" :visible="addPermissonVisible" @closeModel="addPermissonVisible = false" @onsubmit="updateRolePermissionsRole">
@@ -93,7 +93,8 @@
         </div>
         <div class="page-form-item">
           <label class="page-form-label"><span>角色类型:</span></label>
-          <czb-input v-model="addRoleObj.type" placeholder="请输入角色类型" :autowidth="true"></czb-input>
+          <!-- <czb-input v-model="addRoleObj.type" placeholder="请输入角色类型" :autowidth="true"></czb-input> -->
+          <czb-select :datas="addRoleTypes" v-model="addRoleObj.type" placeholder="请选择角色类型" :autowidth="true"></czb-select>
         </div>
       </div>
     </czb-modal>
@@ -105,7 +106,8 @@
         </div>
         <div class="page-form-item">
           <label class="page-form-label"><span>角色类型:</span></label>
-          <czb-input v-model="updateRoleObj.type" placeholder="请输入角色类型" :autowidth="true"></czb-input>
+          <!-- <czb-input v-model="updateRoleObj.type" placeholder="请输入角色类型" :autowidth="true"></czb-input> -->
+          <czb-select :datas="updateRoleTypes" v-model="updateRoleObj.type" placeholder="请选择角色类型" :autowidth="true"></czb-select>
         </div>
       </div>
     </czb-modal>
@@ -151,6 +153,16 @@ export default {
       addPermissonData: [],
       choosedRow: null,
       choosedUserRow: null,
+      addRoleTypes: [
+        {id: '10001', name: '10001'},
+        {id: '10002', name: '10002'},
+        {id: '10003', name: '10003'}
+      ],
+      updateRoleTypes: [
+        {id: '10001', name: '10001'},
+        {id: '10002', name: '10002'},
+        {id: '10003', name: '10003'}
+      ],
       tabData: [
         {id: '1', name: '用户管理', active: true},
         {id: '2', name: '角色管理', active: false},
@@ -194,7 +206,7 @@ export default {
       thisUserRoles: [],
       userData: [],
       needUserRole: [],
-      chooseUserRole: '',
+      chooseUserRole: {},
       userColumns: [
         {
           title: '用户名',
@@ -247,7 +259,7 @@ export default {
       roleData: [],
       permissonData: [],
       handle: {
-        width: '10%',
+        width: '11%',
         type: 'icon',
         fontClass: 'czbfont',
         btns: [
@@ -258,7 +270,7 @@ export default {
         ]
       },
       handle1: {
-        width: '10%',
+        width: '11%',
         type: 'icon',
         fontClass: 'czbfont',
         btns: [
@@ -363,6 +375,12 @@ export default {
       if (obj.btnIndex === 2) {
         this.updateRoleVisible = true;
         this.updateRoleObj = {...obj.row};
+        this.updateRoleTypes.forEach((item, i) => {
+          this.$set(this.updateRoleTypes[i], 'isChoosed', false)
+          if (item.id === obj.row.type) {
+            this.$set(this.updateRoleTypes[i], 'isChoosed', true)
+          }
+        })
       }
       if (obj.btnIndex === 3) {
         this.$msgbox(`是否删除角色${obj.row.name}？`).then(() => {
@@ -421,10 +439,9 @@ export default {
     },
     updateUserRole() {
       let userRoles = [];
-      this.chooseUserRole.forEach(obj => {
-        userRoles.push(obj.value)
-      })
-      console.log(this.chooseUserRole, userRoles)
+      if (this.chooseUserRole.value) {
+        userRoles.push(this.chooseUserRole.value)
+      }
       API.updateUserRoles(this.choosedUserRow.username, {
         'roles': userRoles
       }).then(res => {
@@ -521,12 +538,16 @@ export default {
     },
     addRoleSubmit() {
       for(let key in this.addRoleObj) {
+        console.log(key, this.addRoleObj[key], !this.addRoleObj[key])
         if(!this.addRoleObj[key]) {
           this.$msgbox('字段不可以为空！');
           return;
         }
       }
-      API.addRole(this.addRoleObj).then(res => {
+      API.addRole({
+        name: this.addRoleObj.name,
+        type: this.addRoleObj.type.id
+      }).then(res => {
         console.log(res);
         if (res.success) {
           this.$toast('添加成功！');
@@ -534,6 +555,9 @@ export default {
             name: '',
             type: ''
           };
+          this.addRoleTypes.forEach(obj => {
+            obj.isChoosed = false
+          })
           this.queryAllRole();
           this.addRoleVisible = false;
         } else {
@@ -570,7 +594,11 @@ export default {
           return;
         }
       }
-      API.updateRole(this.updateRoleObj).then(res => {
+      API.updateRole({
+        id: this.updateRoleObj.id,
+        name: this.updateRoleObj.name,
+        type: this.updateRoleObj.type.id
+      }).then(res => {
         console.log(res);
         if (res.success) {
           this.$toast('修改成功！');

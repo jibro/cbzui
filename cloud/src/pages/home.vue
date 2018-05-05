@@ -14,7 +14,7 @@
       <div class="page-top">
         <div class="page-top-title">{{$route.meta.title}}</div>
         <div class="page-top-info">
-          <div class="page-top-welcome">欢迎您<span>{{$store.state.userInfo.userName}}</span></div>
+          <div class="page-top-welcome">欢迎<span>{{$store.state.userInfo.userName}}</span></div>
           <div @click="cancellation" class="page-top-cancel cw tc">注销</div>
         </div>
       </div>
@@ -22,7 +22,6 @@
         <router-view></router-view>
       </div>
     </div>
-    <div class="page-bottom"></div>
   </div>
 </template>
 

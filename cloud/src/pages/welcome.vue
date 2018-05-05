@@ -1,7 +1,7 @@
 <template>
   <div class="welcome bgf">
     <h2>welcome, <span>{{$store.state.userInfo.userName}}</span></h2>
-    <h2>持续集成项目管理</h2>    
+    <h2>ZcCloud置车云平台</h2>    
     <h2>{{new Date() | formatData}}</h2>
   </div>
 </template>
@@ -15,7 +15,7 @@ export default {
         return formatDate(new Date(val), 'yyyy-MM-dd hh:mm:ss');
       }
     }
-  },
+  }
 }
 </script>
 <style lang="less">

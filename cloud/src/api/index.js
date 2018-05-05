@@ -1,7 +1,7 @@
 import axios from 'axios';
 import qs from 'qs';
 import store from '../store'
-axios.defaults.timeout = 10000;
+axios.defaults.timeout = 120000;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
 axios.defaults.baseURL = '/cloudapi/';
 
@@ -25,13 +25,12 @@ axios.interceptors.response.use(function (response) {
     window.localStorage.token = '';
     window.localStorage.userName = '';
     store.dispatch('toSaveUserInfo', '');
-    window.msgbox('用户会话过期', function () {
-      window.logout();
-    })
+    window.msgbox('用户会话过期')
+  } else if (status == 403) {
+    window.msgbox('没有访问权限！')
   }else{
     let meg = data.error?data.error:data
-    window.msgbox(`${meg}`, function () {
-    })
+    window.msgbox(meg)
   }
   return Promise.reject(error)
 })

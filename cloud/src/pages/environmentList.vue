@@ -97,7 +97,8 @@ export default {
     return {
       noDatas: false,
       loaded: false,
-      isSuperRole: this.$store.state.userInfo.roles.indexOf('超级管理员') !== -1,
+      isSuperRole: this.$store.state.userInfo.roles.indexOf('10001') !== -1,
+      isNormalRole: this.$store.state.userInfo.roles.indexOf('10003') !== -1,
       choosedData: [],
       selectedVal: {},
       statusData: [
@@ -140,7 +141,7 @@ export default {
         },
         {
           title: '域名',
-          width: '18%',
+          width: '16%',
           key: 'domain'
         },
         {
@@ -172,7 +173,7 @@ export default {
       ],
       tableData: [],
       handle: {
-        width: '10%',
+        width: '11%',
         type: 'icon',
         fontClass: 'czbfont',
         btns: [
@@ -202,6 +203,7 @@ export default {
   },
   methods: {
     handleClick(obj) {
+      console.log(obj)
       if (obj.btnIndex === 0) {
         this.$msgbox({title: '提示', message: `是否回收环境${obj.row.branchName}？`, showCancel: true}).then(res => {
           API.releaseEnvironment({
@@ -317,6 +319,10 @@ export default {
   },
   created() {
     this.searchObj.branchName = !this.isSuperRole?this.$store.state.userInfo.brantch:'';
+    if (this.isNormalRole) {
+      this.handle.btns[0].isHide = true;
+      this.handle.btns[3].isHide = true;
+    }
     this.getDataList();
   }
 };

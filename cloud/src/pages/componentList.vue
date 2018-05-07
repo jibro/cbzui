@@ -31,11 +31,12 @@
 </template>
 <script>
 import API from '@/api';
-import {formatDate} from '@/utils';
+import {formatDate, keyupMixin} from '@/utils';
 import noData from '@/components/noData';
 import loading from '@/components/loading';
 export default {
   name: 'list-1',
+  mixins: [keyupMixin],
   components: {
     noData,
     loading

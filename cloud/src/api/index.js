@@ -88,7 +88,7 @@ export default {
     return axios.post('/cloud/container/restartContainer', qs.stringify(params));
   },
   replaceWar(params, config) {
-    return axios.post('/cloud/container/replaceWar', params, config);
+    return axios.post('/container/replaceWar', params, config);
   },
   // 环境查询
   searchEnvironment(params) {

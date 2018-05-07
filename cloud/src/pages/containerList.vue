@@ -38,7 +38,7 @@
         </div>
       </div>
     </czb-modal>
-    <czb-modal title="更新war" :visible="updateVisible" @closeModel="updateVisible=false" @onsubmit="updateWar">
+    <czb-modal title="更新war" :visible="updateVisible" @closeModel="updateVisible=false" @onsubmit="updateWar" :confrimDisabled="clicked">
       <form enctype="multipart/form-data" ref="$warfile">
         <input type="file" name="war" ref="$war">
         <div class="progress" :class="{'progress-anim': progress}"></div>
@@ -50,11 +50,12 @@
 </template>
 <script>
 import API from '@/api';
-import {formatDate} from '@/utils';
+import {formatDate, keyupMixin} from '@/utils';
 import noData from '@/components/noData';
 import loading from '@/components/loading';
 export default {
   name: 'list-2',
+  mixins: [keyupMixin],
   components: {
     noData,
     loading
@@ -272,6 +273,7 @@ export default {
         formData.append("name", this.choosedRow.name);
         formData.append("branchName", this.choosedRow.environment.branchName);
         let config = {
+          baseURL: '/fileapi/',
           headers: {'Content-Type':'multipart/form-data'}
         }
         this.progress = true;

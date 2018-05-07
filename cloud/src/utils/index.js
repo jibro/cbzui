@@ -20,4 +20,18 @@ export function formatDate (date, fmt) {
   }
   return fmt
 };
-
+export const keyupMixin = {
+  methods: {
+    enterSearch(e) {
+      if (e.keyCode === 13) {
+        this.getDataList();
+      }
+    }
+  },
+  mounted() {
+    document.addEventListener('keyup', this.enterSearch, false);
+  },
+  beforeDestroy() {
+    document.removeEventListener('keyup', this.enterSearch, false);
+  }
+}

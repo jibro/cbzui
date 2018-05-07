@@ -12,7 +12,7 @@
                         <slot></slot>
                     </div>
                     <div class="czb-modal-footer">
-                            <czb-button @btnClick="onsubmit">确定</czb-button>
+                            <czb-button @btnClick="onsubmit" :disabled="confrimDisabled">确定</czb-button>
                             <czb-button style="margin-left: 15px" @btnClick="myVisible=false" type="reverse">返回</czb-button>
                     </div>
                 </div>
@@ -56,6 +56,10 @@
             height:{
                 type: [String],
                 default: ''
+            },
+            confrimDisabled: {
+                type: [Boolean],
+                default: false
             }
         },
         methods: {

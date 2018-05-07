@@ -70,7 +70,18 @@ export default {
       } else {
         return null
       }
+    },
+    enterLogin(e) {
+      if (e.keyCode === 13) {
+        this.commit();
+      }
     }
+  },
+  mounted() {
+    document.addEventListener('keyup', this.enterLogin, false);
+  },
+  beforeDestroy() {
+    document.removeEventListener('keyup', this.enterLogin, false);
   }
 };
 </script>

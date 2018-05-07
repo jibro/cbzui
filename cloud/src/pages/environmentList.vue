@@ -35,7 +35,7 @@
         <no-data :show="noDatas"></no-data>
       </div>
     </div>
-    <czb-modal title="创建环境" :visible="addVisible" @closeModel="addVisible=false" @onsubmit="addSubmit">
+    <czb-modal title="创建环境" :visible="addVisible" @closeModel="addVisible=false" @onsubmit="addSubmit" :confrimDisabled="clicked">
       <div class="page-form">
         <div class="page-form-item">
           <label class="page-form-label"><span>分支名称:</span></label>
@@ -84,11 +84,12 @@
 </template>
 <script>
 import API from '@/api';
-import {formatDate} from '@/utils';
+import {formatDate, keyupMixin} from '@/utils';
 import noData from '@/components/noData';
 import loading from '@/components/loading';
 export default {
   name: 'list-2',
+  mixins: [keyupMixin],
   components: {
     noData,
     loading
@@ -97,6 +98,7 @@ export default {
     return {
       noDatas: false,
       loaded: false,
+      clicked: false,
       isSuperRole: this.$store.state.userInfo.roles.indexOf('10001') !== -1,
       isNormalRole: this.$store.state.userInfo.roles.indexOf('10003') !== -1,
       choosedData: [],
@@ -220,7 +222,7 @@ export default {
         })
       }
       if (obj.btnIndex === 1) {
-        window.open(`/cloudapi/cloud/environment/export/${obj.row.branchName}`);
+        window.open(`/cloudapi/cloud/environment/export/${obj.row.branchName}?token=${localStorage.token}`);
       }
       if (obj.btnIndex === 2) {
         API.logEnvironment({
@@ -301,20 +303,27 @@ export default {
       this.addVisible = true;
     },
     addSubmit() {
-      API.createEnvironment(this.addObj).then(res => {
-        console.log(res);
-        if (res.success) {
-          this.$toast('新增成功！');
-          this.resetSearch();
-          this.addObj = {
-            name: '',
-            branchName: ''
-          };
-          this.addVisible = false;
-        } else {
-          this.$msgbox(res.message);
-        }
-      })
+      if (!this.clicked) {
+        this.clicked = true;
+        API.createEnvironment(this.addObj).then(res => {
+          this.clicked = false;
+          console.log(res);
+          if (res.success) {
+            this.$toast('新增成功！');
+            this.resetSearch();
+            this.addObj = {
+              name: '',
+              branchName: ''
+            };
+            this.addVisible = false;
+          } else {
+            this.$msgbox(res.message);
+          }
+        }).catch(error => {
+          this.clicked = false;
+          this.$msgbox(error);
+        })
+      }
     }
   },
   created() {
